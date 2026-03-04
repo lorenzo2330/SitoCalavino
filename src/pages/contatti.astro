@@ -1,0 +1,281 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="Contatti — Calavino" description="Contattaci per informazioni e disponibilità.">
+
+  <!-- HERO SLIM -->
+  <section class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-content">
+      <span class="eyebrow fade-in">Siamo qui per te</span>
+      <h1 class="fade-in">Contatti</h1>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container contacts-layout">
+
+      <!-- FORM -->
+      <div class="contact-form-wrap">
+        <span class="eyebrow">Scrivici</span>
+        <h2>Richiedi informazioni</h2>
+        <div class="divider" style="margin-left:0"></div>
+        <p class="form-intro">Compila il modulo e ti risponderemo entro 24 ore. Per richieste urgenti puoi contattarci direttamente via telefono o WhatsApp.</p>
+
+        <form class="contact-form" action="https://formspree.io/f/TUOID" method="POST">
+          <div class="form-row">
+            <div class="field">
+              <label for="nome">Nome e cognome</label>
+              <input type="text" id="nome" name="nome" placeholder="Mario Rossi" required />
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="mario@email.com" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="field">
+              <label for="appartamento">Appartamento di interesse</label>
+              <select id="appartamento" name="appartamento">
+                <option value="">— Seleziona —</option>
+                <option value="apt1">Appartamento 1 — Il Nido del Bosco</option>
+                <option value="apt2">Appartamento 2 — La Dimora del Larice</option>
+                <option value="entrambi">Entrambi</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="ospiti">Numero di ospiti</label>
+              <input type="number" id="ospiti" name="ospiti" min="1" max="6" placeholder="2" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="field">
+              <label for="checkin">Data di arrivo</label>
+              <input type="date" id="checkin" name="checkin" />
+            </div>
+            <div class="field">
+              <label for="checkout">Data di partenza</label>
+              <input type="date" id="checkout" name="checkout" />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="messaggio">Messaggio</label>
+            <textarea id="messaggio" name="messaggio" rows="5" placeholder="Scrivi qui la tua richiesta..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Invia richiesta</button>
+        </form>
+      </div>
+
+      <!-- INFO -->
+      <aside class="contact-info">
+
+        <div class="info-card">
+          <h3>Informazioni di contatto</h3>
+          <div class="divider" style="margin-left:0; margin-top:1rem;"></div>
+
+          <div class="info-row">
+            <span class="info-icon">📞</span>
+            <div>
+              <p class="info-label">Telefono / WhatsApp</p>
+              <a href="tel:+39000000000">+39 000 000 0000</a>
+            </div>
+          </div>
+
+          <div class="info-row">
+            <span class="info-icon">✉️</span>
+            <div>
+              <p class="info-label">Email</p>
+              <a href="mailto:info@calavino.it">info@calavino.it</a>
+            </div>
+          </div>
+
+          <div class="info-row">
+            <span class="info-icon">📍</span>
+            <div>
+              <p class="info-label">Dove siamo</p>
+              <p>Calavino, Trentino</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <h3>Check-in & Check-out</h3>
+          <div class="divider" style="margin-left:0; margin-top:1rem;"></div>
+          <div class="checkinout-row">
+            <div>
+              <p class="info-label">Check-in</p>
+              <p class="time">15:00 – 20:00</p>
+            </div>
+            <div class="co-separator"></div>
+            <div>
+              <p class="info-label">Check-out</p>
+              <p class="time">entro le 10:00</p>
+            </div>
+          </div>
+          <p style="font-size:0.82rem; color:var(--text-light); margin-top:1rem;">Per orari diversi contattaci in anticipo — faremo del nostro meglio per venire incontro alle tue esigenze.</p>
+        </div>
+
+      </aside>
+
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .page-hero {
+    position: relative;
+    height: 40vh;
+    min-height: 280px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .page-hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(to bottom, rgba(44,62,45,0.75), rgba(28,28,28,0.6)),
+      url('https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=1600&q=80') center/cover no-repeat;
+  }
+
+  .page-hero-content {
+    position: relative;
+    z-index: 2;
+    color: var(--cream);
+  }
+
+  .page-hero-content .eyebrow { color: var(--gold-light); }
+
+  .page-hero-content h1 {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    color: var(--cream);
+  }
+
+  /* LAYOUT */
+  .contacts-layout {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .contact-form-wrap h2 { font-size: 2rem; color: var(--deep-wood); }
+
+  .form-intro {
+    color: var(--text-light);
+    margin-bottom: 2.5rem;
+    line-height: 1.8;
+    font-size: 0.95rem;
+  }
+
+  /* FORM */
+  .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+
+  .field { display: flex; flex-direction: column; gap: 0.4rem; }
+
+  label {
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--bark);
+    font-weight: 500;
+  }
+
+  input, select, textarea {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: var(--text);
+    background: var(--cream);
+    border: 1px solid var(--stone);
+    padding: 0.75rem 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+    border-radius: var(--radius);
+  }
+
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--bark);
+  }
+
+  textarea { resize: vertical; min-height: 120px; }
+
+  /* INFO CARDS */
+  .contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
+
+  .info-card {
+    background: var(--cream);
+    padding: 1.8rem;
+    border-top: 3px solid var(--gold);
+  }
+
+  .info-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    color: var(--deep-wood);
+  }
+
+  .info-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(196,180,154,0.3);
+  }
+
+  .info-row:last-child { border-bottom: none; }
+
+  .info-icon { font-size: 1.2rem; margin-top: 0.1rem; }
+
+  .info-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--bark);
+    margin-bottom: 0.2rem;
+  }
+
+  .info-row a, .info-row p:not(.info-label) {
+    font-size: 0.95rem;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .info-row a:hover { color: var(--gold); }
+
+  .checkinout-row {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding-top: 0.5rem;
+  }
+
+  .co-separator {
+    width: 1px;
+    height: 40px;
+    background: var(--stone);
+    opacity: 0.5;
+  }
+
+  .time {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    color: var(--deep-wood);
+  }
+
+  @media (max-width: 900px) {
+    .contacts-layout { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>

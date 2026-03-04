@@ -1,23 +1,288 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+const { title, description = "Appartamenti in affitto tra i monti" } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <title>{title}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-logo">Calavino</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/appartamento1">Appartamento 1</a></li>
+      <li><a href="/appartamento2">Appartamento 2</a></li>
+      <li><a href="/contatti" class="nav-cta">Contatti</a></li>
+    </ul>
+    <button class="nav-toggle" aria-label="Menu">&#9776;</button>
+  </nav>
+
+  <main>
+    <slot />
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <p class="footer-brand">Calavino</p>
+      <p class="footer-tagline">Dove la montagna diventa casa</p>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/appartamento1">Appartamento 1</a>
+        <a href="/appartamento2">Appartamento 2</a>
+        <a href="/contatti">Contatti</a>
+      </div>
+      <p class="footer-copy">&copy; {new Date().getFullYear()} Calavino — Tutti i diritti riservati</p>
+    </div>
+  </footer>
+
+</body>
 </html>
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+<style is:global>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream:     #F5F0E8;
+    --warm-white:#FDFAF4;
+    --stone:     #C4B49A;
+    --bark:      #8B6F47;
+    --deep-wood: #4A3728;
+    --forest:    #2C3E2D;
+    --gold:      #B8922A;
+    --gold-light:#D4A843;
+    --charcoal:  #1C1C1C;
+    --text:      #2E2219;
+    --text-light:#7A6A58;
+
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body:    'Jost', sans-serif;
+
+    --max-w: 1200px;
+    --radius: 2px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--warm-white);
+    color: var(--text);
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NAVBAR ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.4rem 3rem;
+    background: rgba(253, 250, 244, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(196, 180, 154, 0.3);
+    transition: padding 0.3s;
+  }
+
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--deep-wood);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  .nav-links a {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--deep-wood); }
+
+  .nav-cta {
+    padding: 0.5rem 1.4rem !important;
+    border: 1px solid var(--bark) !important;
+    color: var(--bark) !important;
+    transition: all 0.2s !important;
+  }
+
+  .nav-cta:hover {
+    background: var(--bark) !important;
+    color: var(--cream) !important;
+  }
+
+  .nav-toggle { display: none; background: none; border: none; font-size: 1.4rem; cursor: pointer; color: var(--deep-wood); }
+
+  /* ── MAIN ── */
+  main { padding-top: 72px; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--deep-wood);
+    color: var(--stone);
+    padding: 4rem 2rem;
+    text-align: center;
+    margin-top: 6rem;
+  }
+
+  .footer-inner { max-width: var(--max-w); margin: 0 auto; }
+
+  .footer-brand {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--cream);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.3rem;
+  }
+
+  .footer-tagline {
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    color: var(--stone);
+    margin-bottom: 2rem;
+    font-style: italic;
+  }
+
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .footer-links a {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--stone);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--gold-light); }
+
+  .footer-copy { font-size: 0.75rem; color: var(--bark); letter-spacing: 0.05em; }
+
+  /* ── UTILITIES ── */
+.container { max-width: var(--max-w); margin: 0 auto; padding: 0 4rem; }
+
+  .section { padding: 6rem 4rem; }
+  .section-sm { padding: 4rem 4rem; }
+
+  .text-center { text-align: center; }
+
+  h1, h2, h3 { font-family: var(--font-display); font-weight: 400; line-height: 1.15; }
+
+  .eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-family: var(--font-body);
+    font-weight: 500;
+    display: block;
+    margin-bottom: 0.8rem;
+  }
+
+  .divider {
+    width: 48px;
+    height: 1px;
+    background: var(--gold);
+    margin: 1.5rem auto;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 0.85rem 2.4rem;
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.25s;
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn-primary {
+    background: var(--deep-wood);
+    color: var(--cream);
+  }
+  .btn-primary:hover { background: var(--forest); }
+
+  .btn-outline {
+    background: transparent;
+    border: 1px solid var(--bark);
+    color: var(--bark);
+  }
+  .btn-outline:hover { background: var(--bark); color: var(--cream); }
+
+  /* ── FADE-IN ── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    animation: fadeUp 0.8s ease forwards;
+  }
+  .fade-in:nth-child(2) { animation-delay: 0.15s; }
+  .fade-in:nth-child(3) { animation-delay: 0.3s; }
+  .fade-in:nth-child(4) { animation-delay: 0.45s; }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .nav-toggle { display: block; }
+
+    .nav-links.open {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 60px; left: 0; right: 0;
+      background: var(--warm-white);
+      padding: 2rem;
+      gap: 1.5rem;
+      border-bottom: 1px solid var(--stone);
+    }
+  }
 </style>
+
+<script>
+  const toggle = document.querySelector('.nav-toggle');
+  const links = document.querySelector('.nav-links');
+  toggle?.addEventListener('click', () => links?.classList.toggle('open'));
+</script>
