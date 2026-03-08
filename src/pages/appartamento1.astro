@@ -1,126 +1,82 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { appartamento1 as apt } from '../content/appartamento1';
 
-// PREZZI — modifica qui facilmente
-const prezzi = {
-  feriale: 90,
-  festivo: 120,
-  alta_stagione: ["Luglio", "Agosto", "Dicembre", "Gennaio"],
-  alta_stagione_feriale: 110,
-  alta_stagione_festivo: 150,
-};
-
-const dotazioni = [
-  "Wi-Fi gratuito",
-  "Cucina completamente attrezzata",
-  "Smart TV",
-  "Biancheria inclusa",
-  "Asciugamani inclusi",
-  "Riscaldamento autonomo",
-  "Posto auto privato",
-  "Terrazza con vista",
-];
-
-const regole = [
-  "Check-in: 15:00 – 20:00",
-  "Check-out: entro le 10:00",
-  "Non fumatori",
-  "Animali non ammessi",
-  "Massimo 4 ospiti",
-];
+const fotoPrincipale = apt.foto[0];
+const altreFoto = apt.foto.slice(1);
 ---
-<Layout title="Appartamento 1 — Il Nido del Bosco" description="Appartamento per 4 persone immerso nel bosco di montagna.">
+<Layout title={apt.seo_title} description={apt.seo_description}>
 
-  <!-- HERO -->
   <section class="apt-hero">
     <div class="apt-hero-bg"></div>
     <div class="apt-hero-content">
-      <span class="eyebrow fade-in">Appartamento 1</span>
-      <h1 class="fade-in">Il Nido del Bosco</h1>
-      <p class="fade-in">Fino a 4 ospiti · Vista panoramica · Terrazza privata</p>
+      <span class="eyebrow fade-in">{apt.eyebrow}</span>
+      <h1 class="fade-in">{apt.nome}</h1>
+      <p class="fade-in">{apt.caratteristiche}</p>
     </div>
   </section>
 
-  <!-- CORPO -->
   <section class="section">
     <div class="container apt-layout">
 
-      <!-- COLONNA SINISTRA -->
       <div class="apt-main">
-
         <div class="apt-desc">
-          <span class="eyebrow">Il tuo rifugio</span>
-          <h2>Un angolo di paradiso</h2>
+          <span class="eyebrow">{apt.sezione_eyebrow}</span>
+          <h2>{apt.sezione_titolo}</h2>
           <div class="divider" style="margin-left:0"></div>
-          <p>Immerso nel silenzio del bosco, il Nido del Bosco è un appartamento accogliente e luminoso, arredato con cura con materiali naturali. Travi a vista, parquet in legno di larice e ampie finestre panoramiche creano un'atmosfera unica, dove il confine tra interno ed esterno quasi scompare.</p>
-          <p style="margin-top:1rem">Ideale per una coppia o una famiglia, offre tutto il necessario per un soggiorno rigenerante in montagna, in ogni stagione dell'anno.</p>
+          <p>{apt.descrizione_1}</p>
+          <p style="margin-top:1rem">{apt.descrizione_2}</p>
         </div>
 
-        <!-- GALLERIA PLACEHOLDER -->
         <div class="gallery">
-          <div class="gallery-main img-placeholder">
-            <span>📷 Foto principale</span>
+          <div class="gallery-main">
+            {fotoPrincipale ? (
+              <img src={fotoPrincipale.src} alt={fotoPrincipale.alt} class="gallery-img" id="foto-principale" />
+            ) : (
+              <div class="img-placeholder"><span>📷 Aggiungi foto in src/content/appartamento1.ts</span></div>
+            )}
           </div>
-          <div class="gallery-thumbs">
-            <div class="img-placeholder small"><span>📷</span></div>
-            <div class="img-placeholder small"><span>📷</span></div>
-            <div class="img-placeholder small"><span>📷</span></div>
-          </div>
+          {altreFoto.length > 0 && (
+            <div class="gallery-grid">
+              {altreFoto.map((foto) => (
+                <button class="gallery-thumb" onclick={`cambiaFoto('${foto.src}', '${foto.alt}')`} aria-label={`Mostra: ${foto.alt}`}>
+                  <img src={foto.src} alt={foto.alt} class="thumb-img" />
+                </button>
+              ))}
+            </div>
+          )}
+          <p class="gallery-count">{apt.foto.length} foto · clicca sulle miniature per ingrandire</p>
         </div>
 
-        <!-- DOTAZIONI -->
         <div class="apt-section">
           <h3>Dotazioni</h3>
           <ul class="dotazioni-grid">
-            {dotazioni.map(d => (
-              <li>
-                <span class="check">✓</span>
-                {d}
-              </li>
+            {apt.dotazioni.map(d => (
+              <li><span class="check">✓</span>{d}</li>
             ))}
           </ul>
         </div>
 
-        <!-- REGOLE -->
         <div class="apt-section">
           <h3>Regole della casa</h3>
           <ul class="regole-list">
-            {regole.map(r => <li>{r}</li>)}
+            {apt.regole.map(r => <li>{r}</li>)}
           </ul>
         </div>
-
       </div>
 
-      <!-- COLONNA DESTRA — PREZZI -->
       <aside class="apt-sidebar">
         <div class="price-card">
           <h3>Prezzi per notte</h3>
           <div class="divider" style="margin: 1rem 0;"></div>
-
-          <div class="price-row">
-            <span>Feriale</span>
-            <strong>€{prezzi.feriale}</strong>
-          </div>
-          <div class="price-row">
-            <span>Festivo</span>
-            <strong>€{prezzi.festivo}</strong>
-          </div>
-
+          <div class="price-row"><span>Feriale</span><strong>€{apt.prezzi.feriale}</strong></div>
+          <div class="price-row"><span>Festivo</span><strong>€{apt.prezzi.festivo}</strong></div>
           <div class="price-separator"></div>
-          <p class="price-label">Alta stagione<br/><small>({prezzi.alta_stagione.join(", ")})</small></p>
-
-          <div class="price-row">
-            <span>Feriale</span>
-            <strong>€{prezzi.alta_stagione_feriale}</strong>
-          </div>
-          <div class="price-row">
-            <span>Festivo</span>
-            <strong>€{prezzi.alta_stagione_festivo}</strong>
-          </div>
-
+          <p class="price-label">Alta stagione<br/><small>({apt.prezzi.alta_stagione_mesi.join(", ")})</small></p>
+          <div class="price-row"><span>Feriale</span><strong>€{apt.prezzi.alta_stagione_feriale}</strong></div>
+          <div class="price-row"><span>Festivo</span><strong>€{apt.prezzi.alta_stagione_festivo}</strong></div>
           <div class="price-separator"></div>
-          <p class="price-note">* Prezzi per notte, IVA inclusa.<br/>Pulizia finale inclusa nel prezzo.</p>
-
+          <p class="price-note">* {apt.prezzi.nota}</p>
           <a href="/contatti" class="btn btn-primary" style="width:100%; text-align:center; margin-top:1.5rem; display:block;">
             Richiedi disponibilità
           </a>
@@ -139,10 +95,8 @@ const regole = [
     min-height: 400px;
     display: flex;
     align-items: flex-end;
-    justify-content: flex-start;
     overflow: hidden;
   }
-
   .apt-hero-bg {
     position: absolute;
     inset: 0;
@@ -150,164 +104,57 @@ const regole = [
       linear-gradient(to top, rgba(28,28,28,0.85) 0%, rgba(74,55,40,0.3) 60%, transparent 100%),
       url('https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?w=1600&q=80') center/cover no-repeat;
   }
-
-  .apt-hero-content {
-    position: relative;
-    z-index: 2;
-    padding: 3rem;
-    color: var(--cream);
-  }
-
+  .apt-hero-content { position: relative; z-index: 2; padding: 3rem; color: var(--cream); }
   .apt-hero-content .eyebrow { color: var(--gold-light); }
-
-  .apt-hero-content h1 {
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
-    color: var(--cream);
-    margin-bottom: 0.5rem;
-  }
-
+  .apt-hero-content h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); color: var(--cream); margin-bottom: 0.5rem; }
   .apt-hero-content p { color: rgba(245,240,232,0.75); font-size: 0.9rem; letter-spacing: 0.1em; }
-
-  /* LAYOUT */
-  .apt-layout {
-    display: grid;
-    grid-template-columns: 1fr 340px;
-    gap: 4rem;
-    align-items: start;
-  }
-
+  .apt-layout { display: grid; grid-template-columns: 1fr 340px; gap: 4rem; align-items: start; }
   .apt-desc h2 { font-size: 2.2rem; color: var(--deep-wood); margin-bottom: 0.5rem; }
   .apt-desc p { color: var(--text-light); line-height: 1.9; }
-
-  /* GALLERY */
   .gallery { margin: 3rem 0; }
-
-  .gallery-main {
-    height: 360px;
-    margin-bottom: 0.75rem;
-    border-radius: var(--radius);
-    overflow: hidden;
-  }
-
-  .gallery-thumbs {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.75rem;
-  }
-
-  .img-placeholder {
-    background: var(--cream);
-    border: 2px dashed var(--stone);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-light);
-    font-size: 0.85rem;
-    flex-direction: column;
-    gap: 0.5rem;
-    border-radius: var(--radius);
-  }
-
-  .img-placeholder.small { height: 110px; }
-
-  /* SEZIONI */
+  .gallery-main { width: 100%; height: 420px; overflow: hidden; background: var(--cream); margin-bottom: 0.75rem; border-radius: var(--radius); border: 2px solid var(--stone); padding: 8px; box-shadow: 0 4px 20px rgba(74,55,40,0.12); }  
+  .gallery-img { width: 100%; height: 100%; object-fit: contain; background: var(--cream); transition: opacity 0.3s ease; display: block; }  
+  .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 0.6rem; }
+  .gallery-thumb { border: 2px solid var(--stone); padding: 4px; cursor: pointer; overflow: hidden; height: 90px; background: var(--cream); border-radius: var(--radius); transition: opacity 0.2s, transform 0.2s; }
+  .gallery-thumb:hover { opacity: 0.85; transform: scale(1.02); }
+  .thumb-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .gallery-count { font-size: 0.75rem; color: var(--text-light); letter-spacing: 0.05em; margin-top: 0.6rem; }
+  .img-placeholder { width: 100%; height: 100%; background: var(--cream); border: 2px dashed var(--stone); display: flex; align-items: center; justify-content: center; color: var(--text-light); font-size: 0.85rem; text-align: center; padding: 1rem; }
   .apt-section { margin-top: 3rem; }
-
-  .apt-section h3 {
-    font-family: var(--font-display);
-    font-size: 1.6rem;
-    color: var(--deep-wood);
-    margin-bottom: 1.2rem;
-    padding-bottom: 0.7rem;
-    border-bottom: 1px solid var(--stone);
-  }
-
-  .dotazioni-grid {
-    list-style: none;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.7rem 1.5rem;
-  }
-
-  .dotazioni-grid li {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    font-size: 0.9rem;
-    color: var(--text-light);
-  }
-
+  .apt-section h3 { font-family: var(--font-display); font-size: 1.6rem; color: var(--deep-wood); margin-bottom: 1.2rem; padding-bottom: 0.7rem; border-bottom: 1px solid var(--stone); }
+  .dotazioni-grid { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem 1.5rem; }
+  .dotazioni-grid li { display: flex; align-items: center; gap: 0.6rem; font-size: 0.9rem; color: var(--text-light); }
   .check { color: var(--gold); font-weight: bold; }
-
-  .regole-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-  }
-
-  .regole-list li {
-    font-size: 0.9rem;
-    color: var(--text-light);
-    padding-left: 1rem;
-    border-left: 2px solid var(--stone);
-  }
-
-  /* PRICE CARD */
-  .price-card {
-    background: var(--cream);
-    padding: 2rem;
-    position: sticky;
-    top: 100px;
-    border-top: 3px solid var(--gold);
-  }
-
-  .price-card h3 {
-    font-family: var(--font-display);
-    font-size: 1.5rem;
-    color: var(--deep-wood);
-  }
-
-  .price-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.6rem 0;
-    font-size: 0.95rem;
-    color: var(--text-light);
-  }
-
-  .price-row strong {
-    font-family: var(--font-display);
-    font-size: 1.4rem;
-    color: var(--deep-wood);
-    font-weight: 600;
-  }
-
-  .price-separator {
-    height: 1px;
-    background: var(--stone);
-    margin: 1rem 0;
-    opacity: 0.4;
-  }
-
-  .price-label {
-    font-size: 0.8rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--bark);
-    margin-bottom: 0.5rem;
-  }
-
+  .regole-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  .regole-list li { font-size: 0.9rem; color: var(--text-light); padding-left: 1rem; border-left: 2px solid var(--stone); }
+  .price-card { background: var(--cream); padding: 2rem; position: sticky; top: 100px; border-top: 3px solid var(--gold); }
+  .price-card h3 { font-family: var(--font-display); font-size: 1.5rem; color: var(--deep-wood); }
+  .price-row { display: flex; justify-content: space-between; align-items: center; padding: 0.6rem 0; font-size: 0.95rem; color: var(--text-light); }
+  .price-row strong { font-family: var(--font-display); font-size: 1.4rem; color: var(--deep-wood); font-weight: 600; }
+  .price-separator { height: 1px; background: var(--stone); margin: 1rem 0; opacity: 0.4; }
+  .price-label { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bark); margin-bottom: 0.5rem; }
   .price-label small { text-transform: none; letter-spacing: 0; font-weight: 300; }
-
   .price-note { font-size: 0.75rem; color: var(--text-light); line-height: 1.6; }
-
   @media (max-width: 900px) {
     .apt-layout { grid-template-columns: 1fr; }
     .apt-sidebar { order: -1; }
     .price-card { position: static; }
     .dotazioni-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); }
   }
 </style>
+
+<script>
+  function cambiaFoto(src: string, alt: string) {
+    const principale = document.getElementById('foto-principale') as HTMLImageElement;
+    if (principale) {
+      principale.style.opacity = '0';
+      setTimeout(() => {
+        principale.src = src;
+        principale.alt = alt;
+        principale.style.opacity = '1';
+      }, 200);
+    }
+  }
+  (window as any).cambiaFoto = cambiaFoto;
+</script>

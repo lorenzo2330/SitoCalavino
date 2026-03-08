@@ -19,11 +19,11 @@ const { title, description = "Appartamenti in affitto tra i monti" } = Astro.pro
 <body>
 
   <nav>
-    <a href="/" class="nav-logo">Calavino</a>
+    <a href="/" class="nav-logo">Dimora Concordia - Calavino</a>
     <ul class="nav-links">
       <li><a href="/">Home</a></li>
-      <li><a href="/appartamento1">Appartamento 1</a></li>
-      <li><a href="/appartamento2">Appartamento 2</a></li>
+      <li><a href="/appartamento1">Mini appartamento</a></li>
+      <li><a href="/appartamento2">Appartamento duplex</a></li>
       <li><a href="/contatti" class="nav-cta">Contatti</a></li>
     </ul>
     <button class="nav-toggle" aria-label="Menu">&#9776;</button>
@@ -39,8 +39,8 @@ const { title, description = "Appartamenti in affitto tra i monti" } = Astro.pro
       <p class="footer-tagline">Dove la montagna diventa casa</p>
       <div class="footer-links">
         <a href="/">Home</a>
-        <a href="/appartamento1">Appartamento 1</a>
-        <a href="/appartamento2">Appartamento 2</a>
+        <a href="/appartamento1">Mini appartamento</a>
+        <a href="/appartamento2">Appartamento duplex</a>
         <a href="/contatti">Contatti</a>
       </div>
       <p class="footer-copy">&copy; {new Date().getFullYear()} Calavino — Tutti i diritti riservati</p>
@@ -194,10 +194,10 @@ const { title, description = "Appartamenti in affitto tra i monti" } = Astro.pro
   .footer-copy { font-size: 0.75rem; color: var(--bark); letter-spacing: 0.05em; }
 
   /* ── UTILITIES ── */
-.container { max-width: var(--max-w); margin: 0 auto; padding: 0 4rem; }
+  .container { max-width: var(--max-w); margin: 0 auto; padding: 0 2rem; }
 
-  .section { padding: 6rem 4rem; }
-  .section-sm { padding: 4rem 4rem; }
+  .section { padding: 6rem 2rem; }
+  .section-sm { padding: 4rem 2rem; }
 
   .text-center { text-align: center; }
 

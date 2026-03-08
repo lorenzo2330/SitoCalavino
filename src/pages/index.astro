@@ -1,15 +1,22 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { sito } from '../content/sito';
+import { appartamento1 } from '../content/appartamento1';
+import { appartamento2 } from '../content/appartamento2';
+import { luoghiVicini, mappaEmbedUrl } from '../content/vicino';
+
+const foto1 = appartamento1.foto[0];
+const foto2 = appartamento2.foto[0];
 ---
-<Layout title="Calavino — Appartamenti in Montagna">
+<Layout title={`${sito.nome} — ${sito.place}`} description={sito.descrizione_seo}>
 
   <!-- HERO -->
   <section class="hero">
     <div class="hero-bg"></div>
     <div class="hero-content">
-      <span class="eyebrow fade-in">Rifugio in quota</span>
-      <h1 class="hero-title fade-in">Dove la montagna<br /><em>diventa casa</em></h1>
-      <p class="hero-sub fade-in">Due appartamenti immersi nel silenzio dei boschi.<br/>Comfort autentico, natura a portata di mano.</p>
+      <span class="eyebrow fade-in">{sito.hero.eyebrow}</span>
+      <h1 class="hero-title fade-in">{sito.hero.titolo_1}<br /><em>{sito.hero.titolo_2}</em></h1>
+      <p class="hero-sub fade-in">{sito.hero.sottotitolo}</p>
       <div class="hero-ctas fade-in">
         <a href="/appartamento1" class="btn btn-primary">Scopri gli appartamenti</a>
         <a href="/contatti" class="btn btn-outline">Richiedi disponibilità</a>
@@ -24,10 +31,10 @@ import Layout from '../layouts/Layout.astro';
   <!-- INTRO -->
   <section class="section text-center">
     <div class="container">
-      <span class="eyebrow">Il nostro rifugio</span>
-      <h2 class="intro-title">Un'esperienza autentica<br/>tra natura e comfort</h2>
+      <span class="eyebrow">{sito.intro.eyebrow}</span>
+      <h2 class="intro-title">{sito.intro.titolo}</h2>
       <div class="divider"></div>
-      <p class="intro-text">Calavino è sinonimo di tranquillità, aria pulita e panorami mozzafiato. I nostri due appartamenti sono stati curati nei minimi dettagli per offrire tutto ciò di cui hai bisogno, senza rinunciare al calore di un luogo che sembra fatto su misura per te.</p>
+      <p class="intro-text">{sito.intro.testo}</p>
     </div>
   </section>
 
@@ -35,31 +42,38 @@ import Layout from '../layouts/Layout.astro';
   <section class="section-sm">
     <div class="container">
       <div class="apartments-grid">
-
         <article class="apt-card">
-          <div class="apt-img apt-img-1">
-            <span class="apt-tag">Appartamento 1</span>
+          <div class="apt-img">
+            {foto1 ? (
+              <img src={foto1.src} alt={foto1.alt} class="apt-img-photo" />
+            ) : (
+              <div class="apt-img-fallback apt-img-1"></div>
+            )}
+            <span class="apt-tag">{appartamento1.eyebrow}</span>
           </div>
           <div class="apt-body">
-            <span class="eyebrow">Fino a 4 ospiti</span>
-            <h3>Il Nido del Bosco</h3>
-            <p>Accogliente e luminoso, con vista sulle cime innevate. Perfetto per coppie e famiglie che cercano intimità e relax.</p>
+            <span class="eyebrow">Fino a {appartamento1.ospiti_max} ospiti</span>
+            <h3>{appartamento1.nome}</h3>
+            <p>{appartamento1.descrizione_breve}</p>
             <a href="/appartamento1" class="btn btn-outline" style="margin-top:1.2rem">Scopri di più</a>
           </div>
         </article>
-
         <article class="apt-card">
-          <div class="apt-img apt-img-2">
-            <span class="apt-tag">Appartamento 2</span>
+          <div class="apt-img">
+            {foto2 ? (
+              <img src={foto2.src} alt={foto2.alt} class="apt-img-photo" />
+            ) : (
+              <div class="apt-img-fallback apt-img-2"></div>
+            )}
+            <span class="apt-tag">{appartamento2.eyebrow}</span>
           </div>
           <div class="apt-body">
-            <span class="eyebrow">Fino a 6 ospiti</span>
-            <h3>La Dimora del Larice</h3>
-            <p>Spazioso e avvolgente, con terrazza panoramica e interni in legno pregiato. Ideale per gruppi di amici o famiglie numerose.</p>
+            <span class="eyebrow">Fino a {appartamento2.ospiti_max} ospiti</span>
+            <h3>{appartamento2.nome}</h3>
+            <p>{appartamento2.descrizione_breve}</p>
             <a href="/appartamento2" class="btn btn-outline" style="margin-top:1.2rem">Scopri di più</a>
           </div>
         </article>
-
       </div>
     </div>
   </section>
@@ -68,221 +82,244 @@ import Layout from '../layouts/Layout.astro';
   <section class="section features-section">
     <div class="container">
       <div class="features-grid">
-        <div class="feature">
-          <div class="feature-icon">❄️</div>
-          <h4>Ogni stagione</h4>
-          <p>Sci d'inverno, trekking d'estate. La montagna offre sempre qualcosa di straordinario.</p>
-        </div>
-        <div class="feature">
-          <div class="feature-icon">🏡</div>
-          <h4>Comfort autentico</h4>
-          <p>Interni curati, biancheria di qualità, cucina attrezzata. Come a casa, ma meglio.</p>
-        </div>
-        <div class="feature">
-          <div class="feature-icon">🌲</div>
-          <h4>Natura incontaminata</h4>
-          <p>Boschi, sentieri e panorami direttamente fuori dalla porta.</p>
-        </div>
-        <div class="feature">
-          <div class="feature-icon">✉️</div>
-          <h4>Assistenza diretta</h4>
-          <p>Nessun intermediario. Parlerai direttamente con noi per ogni esigenza.</p>
-        </div>
+        {sito.punti_forza.map(p => (
+          <div class="feature">
+            <div class="feature-icon">{p.icona}</div>
+            <h4>{p.titolo}</h4>
+            <p>{p.testo}</p>
+          </div>
+        ))}
       </div>
+    </div>
+  </section>
+
+  <!-- NELLE VICINANZE -->
+  <section class="section vicino-section">
+    <div class="container">
+
+      <div class="vicino-header text-center">
+        <span class="eyebrow">Dintorni</span>
+        <h2 class="vicino-titolo">Nelle vicinanze</h2>
+        <div class="divider"></div>
+        <p class="vicino-intro">Tutto ciò che ti serve è a portata di mano. Esplora i dintorni di Calavino.</p>
+      </div>
+
+      <div class="vicino-filtro">
+        <label for="filtro-categoria" class="filtro-label">Mostra:</label>
+        <select id="filtro-categoria" class="filtro-select" onchange="filtraLuoghi(this.value)">
+          <option value="tutti">Tutto</option>
+          <option value="Ristoranti / Bar">🍽️ Ristoranti / Bar</option>
+          <option value="Escursioni / Sentieri">🥾 Escursioni / Sentieri</option>
+          <option value="Sci / Impianti">⛷️ Sci / Impianti</option>
+          <option value="Negozi / Supermercati">🛒 Negozi / Supermercati</option>
+        </select>
+      </div>
+
+      <div class="vicino-grid" id="vicino-grid">
+        {luoghiVicini.map((luogo) => (
+          <div class="luogo-card" data-categoria={luogo.categoria}>
+            <div class="luogo-header">
+              <span class="luogo-icona">{luogo.icona}</span>
+              <div class="luogo-info">
+                <span class="luogo-cat">{luogo.categoria}</span>
+                <h4 class="luogo-nome">{luogo.nome}</h4>
+              </div>
+              <span class="luogo-distanza">{luogo.distanza}</span>
+            </div>
+            <p class="luogo-desc">{luogo.descrizione}</p>
+            <a href={luogo.maps_url} target="_blank" rel="noopener noreferrer" class="luogo-maps">
+              📍 Indicazioni
+            </a>
+          </div>
+        ))}
+      </div>
+
+      <div class="mappa-wrap">
+        <iframe
+          src={mappaEmbedUrl}
+          class="mappa-iframe"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Mappa di Calavino"
+        ></iframe>
+      </div>
+
     </div>
   </section>
 
   <!-- CTA FINALE -->
   <section class="section text-center cta-section">
     <div class="container">
-      <span class="eyebrow">Prenota il tuo soggiorno</span>
-      <h2>Pronto a partire?</h2>
+      <span class="eyebrow">{sito.cta_finale.eyebrow}</span>
+      <h2>{sito.cta_finale.titolo}</h2>
       <div class="divider"></div>
-      <p style="max-width:480px; margin: 0 auto 2.5rem;">Contattaci per verificare la disponibilità e ricevere un preventivo personalizzato.</p>
-      <a href="/contatti" class="btn btn-primary">Contattaci ora</a>
+      <p style="max-width:480px; margin: 0 auto 2.5rem;">{sito.cta_finale.testo}</p>
+      <a href="/contatti" class="btn btn-primary">{sito.cta_finale.bottone}</a>
     </div>
   </section>
 
 </Layout>
 
 <style>
-  /* HERO */
-  .hero {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    background: var(--deep-wood);
-  }
-
-  .hero-bg {
-    position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(160deg, rgba(44,62,45,0.7) 0%, rgba(74,55,40,0.5) 60%, rgba(28,28,28,0.8) 100%),
-      url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1800&q=80') center/cover no-repeat;
-  }
-
-  .hero-content {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    padding: 2rem;
-    max-width: 760px;
-  }
-
+  /* ── HERO ── */
+  .hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; background: var(--deep-wood); }
+  .hero-bg { position: absolute; inset: 0; background: linear-gradient(160deg, rgba(44,62,45,0.7) 0%, rgba(74,55,40,0.5) 60%, rgba(28,28,28,0.8) 100%), url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1800&q=80') center/cover no-repeat; }
+  .hero-content { position: relative; z-index: 2; text-align: center; padding: 2rem; max-width: 760px; }
   .hero-content .eyebrow { color: var(--gold-light); }
-
-  .hero-title {
-    font-size: clamp(3rem, 8vw, 6rem);
-    color: var(--cream);
-    margin-bottom: 1.5rem;
-    line-height: 1.05;
-  }
-
+  .hero-title { font-size: clamp(3rem, 8vw, 6rem); color: var(--cream); margin-bottom: 1.5rem; line-height: 1.05; }
   .hero-title em { color: var(--gold-light); font-style: italic; }
-
-  .hero-sub {
-    font-size: 1.05rem;
-    color: rgba(245,240,232,0.8);
-    margin-bottom: 3rem;
-    font-weight: 300;
-    line-height: 1.8;
-  }
-
+  .hero-sub { font-size: 1.05rem; color: rgba(245,240,232,0.8); margin-bottom: 3rem; font-weight: 300; line-height: 1.8; white-space: pre-line; }
   .hero-ctas { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .hero-scroll { position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 0.5rem; color: rgba(245,240,232,0.5); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; }
+  .scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, rgba(245,240,232,0.5), transparent); animation: scrollPulse 2s ease-in-out infinite; }
+  @keyframes scrollPulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
 
-  .hero-scroll {
-    position: absolute;
-    bottom: 2.5rem;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    color: rgba(245,240,232,0.5);
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-  }
+  /* ── INTRO ── */
+  .intro-title { font-size: clamp(1.8rem, 3vw, 2.8rem); color: var(--deep-wood); margin-bottom: 0.5rem; white-space: pre-line; }
+  .intro-text { max-width: 640px; margin: 0 auto; color: var(--text-light); font-size: 1.05rem; line-height: 1.9; }
 
-  .scroll-line {
-    width: 1px;
-    height: 40px;
-    background: linear-gradient(to bottom, rgba(245,240,232,0.5), transparent);
-    animation: scrollPulse 2s ease-in-out infinite;
-  }
-
-  @keyframes scrollPulse {
-    0%, 100% { opacity: 0.3; transform: scaleY(1); }
-    50% { opacity: 1; transform: scaleY(1.2); }
-  }
-
-  /* INTRO */
-  .intro-title {
-    font-size: clamp(2rem, 4vw, 3.2rem);
-    color: var(--deep-wood);
-    margin-bottom: 0.5rem;
-  }
-
-  .intro-text {
-    max-width: 640px;
-    margin: 0 auto;
-    color: var(--text-light);
-    font-size: 1.05rem;
-    line-height: 1.9;
-  }
-
-  /* APPARTAMENTI */
-  .apartments-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2.5rem;
-  }
-
-  .apt-card {
-    background: var(--cream);
-    overflow: hidden;
-    transition: transform 0.3s;
-  }
-
+  /* ── APPARTAMENTI ── */
+  .apartments-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+  .apt-card { background: var(--cream); overflow: hidden; transition: transform 0.3s; }
   .apt-card:hover { transform: translateY(-4px); }
-
-  .apt-img {
-    height: 300px;
-    position: relative;
-    background-size: cover;
-    background-position: center;
-  }
-
-  .apt-img-1 {
-    background-image:
-      linear-gradient(to bottom, transparent 50%, rgba(74,55,40,0.4)),
-      url('https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?w=800&q=80');
-  }
-
-  .apt-img-2 {
-    background-image:
-      linear-gradient(to bottom, transparent 50%, rgba(44,62,45,0.4)),
-      url('https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80');
-  }
-
-  .apt-tag {
-    position: absolute;
-    top: 1.2rem; left: 1.2rem;
-    background: var(--gold);
-    color: var(--cream);
-    font-size: 0.65rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    padding: 0.35rem 0.9rem;
-  }
-
+  .apt-img { height: 300px; position: relative; overflow: hidden; }
+  .apt-img-photo { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .apt-img-fallback { width: 100%; height: 100%; background-size: cover; background-position: center; }
+  .apt-img-1 { background-image: linear-gradient(to bottom, transparent 50%, rgba(74,55,40,0.4)), url('https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?w=800&q=80'); }
+  .apt-img-2 { background-image: linear-gradient(to bottom, transparent 50%, rgba(44,62,45,0.4)), url('https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80'); }
+  .apt-tag { position: absolute; top: 1.2rem; left: 1.2rem; background: var(--gold); color: var(--cream); font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; padding: 0.35rem 0.9rem; }
   .apt-body { padding: 2rem; }
-
-  .apt-body h3 {
-    font-size: 1.8rem;
-    color: var(--deep-wood);
-    margin-bottom: 0.8rem;
-  }
-
+  .apt-body h3 { font-size: 1.8rem; color: var(--deep-wood); margin-bottom: 0.8rem; }
   .apt-body p { color: var(--text-light); font-size: 0.95rem; }
 
-  /* FEATURES */
+  /* ── FEATURES ── */
   .features-section { background: var(--cream); }
-
-  .features-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-    text-align: center;
-  }
-
+  .features-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; text-align: center; }
   .feature { padding: 2rem 1rem; }
-
   .feature-icon { font-size: 2rem; margin-bottom: 1rem; }
-
-  .feature h4 {
-    font-family: var(--font-display);
-    font-size: 1.2rem;
-    color: var(--deep-wood);
-    margin-bottom: 0.6rem;
-  }
-
+  .feature h4 { font-family: var(--font-display); font-size: 1.2rem; color: var(--deep-wood); margin-bottom: 0.6rem; }
   .feature p { font-size: 0.9rem; color: var(--text-light); }
 
-  /* CTA */
-  .cta-section h2 { font-size: clamp(2rem, 4vw, 3rem); color: var(--deep-wood); }
+  /* ── NELLE VICINANZE ── */
+  .vicino-section { background: var(--warm-white); }
+  .vicino-titolo { font-size: clamp(1.8rem, 3vw, 2.8rem); color: var(--deep-wood); margin-bottom: 0.5rem; }
+  .vicino-intro { max-width: 540px; margin: 0 auto; color: var(--text-light); font-size: 0.95rem; line-height: 1.8; }
 
-  @media (max-width: 900px) {
-    .features-grid { grid-template-columns: repeat(2, 1fr); }
+  .vicino-filtro {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 2.5rem 0 2rem;
+    justify-content: center;
   }
 
+  .filtro-label { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bark); font-weight: 500; }
+
+  .filtro-select {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--text);
+    background: var(--cream);
+    border: 1px solid var(--stone);
+    padding: 0.55rem 1.2rem;
+    cursor: pointer;
+    outline: none;
+    border-radius: var(--radius);
+    transition: border-color 0.2s;
+    min-width: 220px;
+  }
+
+  .filtro-select:focus { border-color: var(--bark); }
+
+  .vicino-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.2rem;
+    margin-bottom: 3rem;
+  }
+
+  .luogo-card { background: var(--cream); padding: 1.4rem; border-left: 3px solid var(--gold); transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; }
+
+  .luogo-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(74,55,40,0.08); }
+
+  .luogo-card.nascosto { display: none; }
+
+  .luogo-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    margin-bottom: 0.7rem;
+  }
+
+  .luogo-icona { font-size: 1.4rem; flex-shrink: 0; margin-top: 0.1rem; }
+
+  .luogo-info { flex: 1; }
+
+  .luogo-cat {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--bark);
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+
+  .luogo-nome {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    color: var(--deep-wood);
+    font-weight: 400;
+  }
+
+  .luogo-distanza {
+    font-size: 0.75rem;
+    color: var(--text-light);
+    background: var(--warm-white);
+    border: 1px solid var(--stone);
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .luogo-desc { font-size: 0.88rem; color: var(--text-light); line-height: 1.7; margin-bottom: 0.8rem; flex: 1; }
+  .luogo-maps { display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bark); text-decoration: none; border-bottom: 1px solid var(--stone); padding-bottom: 0.1rem; transition: color 0.2s, border-color 0.2s; }
+  .luogo-maps:hover { color: var(--gold); border-color: var(--gold); }
+
+  /* ── MAPPA ── */
+  .mappa-wrap {
+    border: 2px solid var(--stone);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(74,55,40,0.1);
+  }
+
+  .mappa-iframe { width: 100%; height: 420px; border: none; display: block; }
+
+  /* ── CTA ── */
+  .cta-section h2 { font-size: clamp(2rem, 4vw, 3rem); color: var(--deep-wood); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) { .features-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 640px) {
     .apartments-grid { grid-template-columns: 1fr; }
     .features-grid { grid-template-columns: 1fr; }
+    .vicino-grid { grid-template-columns: 1fr; }
+    .mappa-iframe { height: 300px; }
   }
 </style>
+
+<script>
+  function filtraLuoghi(categoria: string) {
+    const cards = document.querySelectorAll<HTMLElement>('.luogo-card');
+    cards.forEach(card => {
+      if (categoria === 'tutti' || card.dataset.categoria === categoria) {
+        card.classList.remove('nascosto');
+      } else {
+        card.classList.add('nascosto');
+      }
+    });
+  }
+  (window as any).filtraLuoghi = filtraLuoghi;
+</script>

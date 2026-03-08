@@ -1,0 +1,43 @@
+/* ============================================================
+   theme.css — variabili di stile globali
+   Modifica qui colori, font, spaziature e dimensioni
+   ============================================================ */
+
+:root {
+
+  /* ── COLORI ───────────────────────────────────────────────
+     Palette ispirata a legno, pietra e bosco di montagna     */
+  --cream:      #F5F0E8;   /* sfondo carte e sezioni alternate */
+  --warm-white: #FDFAF4;   /* sfondo principale pagine         */
+  --stone:      #C4B49A;   /* bordi, separatori, dettagli      */
+  --bark:       #8B6F47;   /* testo secondario scuro, bottoni  */
+  --deep-wood:  #4A3728;   /* titoli, elementi primari         */
+  --forest:     #2C3E2D;   /* accento verde bosco              */
+  --gold:       #B8922A;   /* eyebrow, accenti dorati          */
+  --gold-light: #D4A843;   /* hover dorato, hero               */
+  --charcoal:   #1C1C1C;   /* nero profondo (riserva)          */
+  --text:       #2E2219;   /* testo corpo principale           */
+  --text-light: #7A6A58;   /* testo secondario / descrizioni   */
+
+  /* ── FONT ────────────────────────────────────────────────
+     Display: Cormorant Garamond (elegante, serif)
+     Body:    Jost (moderno, leggibile)
+     Entrambi caricati da Google Fonts in Layout.astro        */
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'Jost', sans-serif;
+
+  /* ── LAYOUT ──────────────────────────────────────────────  */
+  --max-w:  1200px;   /* larghezza massima contenuto           */
+  --radius: 2px;      /* border-radius globale (quasi piatto)  */
+
+  /* ── SPAZIATURE SEZIONI ──────────────────────────────────  */
+  --section-padding-v:    6rem;   /* padding verticale sezioni  */
+  --section-padding-v-sm: 4rem;   /* padding verticale ridotto  */
+  --section-padding-h:    4rem;   /* padding orizzontale        */
+
+  /* ── NAVBAR ──────────────────────────────────────────────  */
+  --nav-height:      72px;
+  --nav-bg:          rgba(253, 250, 244, 0.92);
+  --nav-border:      rgba(196, 180, 154, 0.3);
+  --nav-blur:        12px;
+}
