@@ -18,7 +18,7 @@ export const appartamento1 = {
   descrizione_2: "TODO-Appartamento luminoso e accogliente, con una camera da letto matrimoniale, un bagno moderno e una cucina completamente attrezzata. Perfetto per chi cerca intimità e relax, con la comodità di essere a pochi passi dalle meraviglie naturali del Trentino",
 
   // Testo breve per la card in Home
-  descrizione_breve: "TODO-Accogliente e luminoso. Perfetto per coppie che cercano intimità e relax.",
+  descrizione_breve: "Accogliente e luminoso. Perfetto per coppie che cercano intimità e relax.",
 
   // ── FOTO ──────────────────────────────────────────────────
   //
@@ -65,6 +65,14 @@ export const appartamento1 = {
       src: "/foto/appartamento1/bagno-mini.jpeg",
       alt: "Bagno",
     },
+    {
+      src: "/foto/generali/planimetria_p0.png",
+      alt: "Planimetria piano terra",
+    },
+    {
+      src: "/foto/generali/planimetria_p1.png",
+      alt: "Planimetria appartamento",
+    },
     // Aggiungi altre foto qui sotto seguendo lo stesso formato:
     // {
     //   src: "/foto/appartamento1/altra-foto.jpg",
@@ -74,11 +82,12 @@ export const appartamento1 = {
 
   // ── PREZZI ────────────────────────────────────────────────
   prezzi: {
-    feriale: 90,
-    festivo: 120,
-    alta_stagione_mesi: ["Luglio", "Agosto", "Dicembre", "Gennaio"],
-    alta_stagione_feriale: 110,
-    alta_stagione_festivo: 150,
+    feriale: 100,
+    festivo: 110,
+    alta_stagione_mesi: ["Giugno", "Luglio", "Agosto", "Dicembre", "Gennaio"],
+    alta_stagione: 115,
+    alta_stagione_cinque_notti: 525,
+    alta_stagione_sei_notti: 615,
     nota: "Prezzi per notte, IVA inclusa. Pulizia finale inclusa nel prezzo.",
   },
 
@@ -86,17 +95,21 @@ export const appartamento1 = {
   dotazioni: [
     "Posto auto privato",
     "Wi-Fi gratuito",
-    "Cucina completamente attrezzata",
+    "Cucina (forno, fornello ad induzione, macchina del caffè, frigo, freezer, lavastoviglie, lavandino)",
     "Smart TV",
-    "Bagno privato compreso di doccia, asciugacapelli e set di cortesia",
+    "Bagno privato (doccia, asciugacapelli e set di cortesia)",
     "Biancheria inclusa",
     "Riscaldamento autonomo",
+    "Divano letto",
+    "Lavatrice",
+    "Asciugatrice",
+    "Zona parcheggio biciclette",
   ],
 
   // ── REGOLE ────────────────────────────────────────────────
   regole: [
-    "Check-in: 15:00 – 20:00",
-    "Check-out: entro le 10:00",
+    "Check-in: 14:00 - 18:00",
+    "Check-out: 08:00 - 11:00",
     "Camere non fumatori",
     "Animali non ammessi",
     "Massimo 2 ospiti",

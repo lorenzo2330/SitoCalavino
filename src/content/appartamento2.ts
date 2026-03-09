@@ -7,9 +7,9 @@ export const appartamento2 = {
 
   // ── IDENTITÀ ──────────────────────────────────────────────
   nome: "Appartamento Duplex",
-  eyebrow: "Secondo piano",
-  ospiti_max: 4,
-  caratteristiche: "Fino a 4 ospiti · 2 camere da letto · 2 bagni",
+  eyebrow: "Secondo e terzo piano",
+  ospiti_max: 5,
+  caratteristiche: "Fino a 5 ospiti · 2 camere da letto · 2 bagni",
 
   // ── TESTI ─────────────────────────────────────────────────
   sezione_eyebrow: "Perfetto per la tua esperienza in Trentino",
@@ -18,7 +18,7 @@ export const appartamento2 = {
   descrizione_2: "TODO-Descrizione 2",
 
   // Testo breve per la card in Home
-  descrizione_breve: "TODO-Descrizione breve",
+  descrizione_breve: "Appartamento su due piani con vista panoramica sulle montagne del Trentino",
 
   // ── FOTO ──────────────────────────────────────────────────
   //
@@ -69,6 +69,18 @@ export const appartamento2 = {
       src: "/foto/appartamento2/soggiorno-duplex.jpeg",
       alt: "Soggiorno",
     },
+    {
+      src: "/foto/generali/planimetria_p0.png",
+      alt: "Planimetria piano terra",
+    },
+    {
+      src: "/foto/generali/planimetria_p2.png",
+      alt: "Planimetria appartamento (secondo piano)",
+    },
+    {
+      src: "/foto/generali/planimetria_p3.png",
+      alt: "Planimetria appartamento (terzo piano)",
+    },
     // Aggiungi altre foto qui sotto seguendo lo stesso formato:
     // {
     //   src: "/foto/appartamento2/altra-foto.jpg",
@@ -78,35 +90,39 @@ export const appartamento2 = {
 
   // ── PREZZI ────────────────────────────────────────────────
   prezzi: {
-    feriale: 120,
-    festivo: 160,
-    alta_stagione_mesi: ["Luglio", "Agosto", "Dicembre", "Gennaio"],
-    alta_stagione_feriale: 145,
-    alta_stagione_festivo: 195,
+    feriale: 115,
+    festivo: 125,
+    alta_stagione_mesi: ["Giugno", "Luglio", "Agosto", "Dicembre", "Gennaio"],
+    alta_stagione: 130,
+    alta_stagione_cinque_notti: 600,
+    alta_stagione_sei_notti: 700,
     nota: "Prezzi per notte, IVA inclusa. Pulizia finale inclusa nel prezzo.",
   },
 
   // ── DOTAZIONI ─────────────────────────────────────────────
   dotazioni: [
     "Wi-Fi gratuito",
-    "Cucina completamente attrezzata",
+    "Cucina (forno, fornello ad induzione, macchina del caffè, frigo, freezer, lavastoviglie, lavandino)",
+    "Ferro da stiro",
+    "Divano letto",
     "Smart TV",
     "Biancheria inclusa",
-    "Asciugamani inclusi",
     "Riscaldamento autonomo",
     "Posto auto privato",
+    "Zona parcheggio biciclette",
+    "Bagno privato (doccia, asciugacapelli e set di cortesia)",
   ],
 
   // ── REGOLE ────────────────────────────────────────────────
   regole: [
-    "Check-in: 15:00 – 20:00",
-    "Check-out: entro le 10:00",
+    "Check-in: 14:00 - 18:00",
+    "Check-out: 08:00 - 11:00",
     "Non fumatori",
     "Animali non ammessi",
-    "Massimo 4 ospiti",
+    "Massimo 5 ospiti",
   ],
 
   // ── SEO ───────────────────────────────────────────────────
   seo_title: "Appartamento 2 — Appartamento Duplex",
-  seo_description: "Appartamento per 4 persone.",
+  seo_description: "Appartamento per 5 persone.",
 };

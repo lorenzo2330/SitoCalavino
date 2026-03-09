@@ -73,8 +73,9 @@ const altreFoto = apt.foto.slice(1);
           <div class="price-row"><span>Festivo</span><strong>€{apt.prezzi.festivo}</strong></div>
           <div class="price-separator"></div>
           <p class="price-label">Alta stagione<br/><small>({apt.prezzi.alta_stagione_mesi.join(", ")})</small></p>
-          <div class="price-row"><span>Feriale</span><strong>€{apt.prezzi.alta_stagione_feriale}</strong></div>
-          <div class="price-row"><span>Festivo</span><strong>€{apt.prezzi.alta_stagione_festivo}</strong></div>
+          <div class="price-row"><span>Feriale & Festivo</span><strong>€{apt.prezzi.alta_stagione}</strong></div>
+          <div class="price-row"><span>Combo 5 notti</span><strong>€{apt.prezzi.alta_stagione_cinque_notti}</strong></div>
+          <div class="price-row"><span>Combo 6 notti</span><strong>€{apt.prezzi.alta_stagione_sei_notti}</strong></div>
           <div class="price-separator"></div>
           <p class="price-note">* {apt.prezzi.nota}</p>
           <a href="/contatti" class="btn btn-primary" style="width:100%; text-align:center; margin-top:1.5rem; display:block;">

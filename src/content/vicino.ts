@@ -3,40 +3,76 @@
 //  Modifica qui per aggiungere, rimuovere o modificare luoghi
 // ============================================================
 
-export type Categoria = "Ristoranti / Bar" | "Escursioni / Sentieri" | "Sci / Impianti" | "Negozi / Supermercati";
+export type Categoria = "Ristoranti / Bar" | "Escursioni / Sentieri" | "Sci / Impianti" | "Negozi / Supermercati" | "Altro";
 
 export const luoghiVicini = [
 
   // ── RISTORANTI / BAR ──────────────────────────────────────
   {
     categoria: "Ristoranti / Bar" as Categoria,
-    nome: "Ristorante Esempio",
-    descrizione: "Cucina tipica trentina, ottimi canederli e selvaggina.",
-    distanza: "500 m",
+    nome: "Ristorante Cipriano",
+    descrizione: "Cucina tipica trentina",
+    distanza: "350 m",
     icona: "🍽️",
     // Come ottenere maps_url:
     // 1. Cerca il posto su Google Maps
     // 2. Clicca sul risultato → copia il link dalla barra del browser
     // 3. Incollalo qui sotto
-    maps_url: "https://maps.google.com/maps?q=Ristorante+Esempio+Calavino",
+    maps_url: "https://maps.app.goo.gl/XrXRDkNLdWPubUsr8",
   },
   {
     categoria: "Ristoranti / Bar" as Categoria,
-    nome: "Bar Sport",
+    nome: "Il Giardino delle Spezie",
+    descrizione: "Ristorante pizzeria",
+    distanza: "6 km",
+    icona: "🍽️",
+    // Come ottenere maps_url:
+    // 1. Cerca il posto su Google Maps
+    // 2. Clicca sul risultato → copia il link dalla barra del browser
+    // 3. Incollalo qui sotto
+    maps_url: "https://maps.app.goo.gl/9rYsqCgQWVm96NES6",
+  },
+  {
+    categoria: "Ristoranti / Bar" as Categoria,
+    nome: "Alla Stretta",
+    descrizione: "Ristorante pizzeria",
+    distanza: "6 km",
+    icona: "🍽️",
+    // Come ottenere maps_url:
+    // 1. Cerca il posto su Google Maps
+    // 2. Clicca sul risultato → copia il link dalla barra del browser
+    // 3. Incollalo qui sotto
+    maps_url: "https://maps.app.goo.gl/N3gKjPDCex3fsE3r7",
+  },
+  {
+    categoria: "Ristoranti / Bar" as Categoria,
+    nome: "Pomodoro",
+    descrizione: "Pizzeria",
+    distanza: "4 km",
+    icona: "🍽️",
+    // Come ottenere maps_url:
+    // 1. Cerca il posto su Google Maps
+    // 2. Clicca sul risultato → copia il link dalla barra del browser
+    // 3. Incollalo qui sotto
+    maps_url: "https://maps.app.goo.gl/13vLqzqR2fXJLknk9",
+  },
+  {
+    categoria: "Ristoranti / Bar" as Categoria,
+    nome: "Bar Contrada",
     descrizione: "Colazioni, aperitivi e snack veloci nel centro del paese.",
-    distanza: "200 m",
+    distanza: "300 m",
     icona: "☕",
-    maps_url: "https://maps.google.com/maps?q=Bar+Sport+Calavino",
+    maps_url: "https://maps.app.goo.gl/hXm9K2A3mPQ8BWoh9",
   },
 
   // ── ESCURSIONI / SENTIERI ─────────────────────────────────
   {
     categoria: "Escursioni / Sentieri" as Categoria,
-    nome: "Sentiero del Lago di Toblino",
-    descrizione: "Percorso panoramico attorno al lago, adatto a tutta la famiglia.",
-    distanza: "2 km",
-    icona: "🥾",
-    maps_url: "https://maps.google.com/maps?q=Lago+di+Toblino+Trentino",
+    nome: "Lago di Toblino",
+    descrizione: "Luogo tranquillo con percorsi attorno al lago, adatto a tutta la famiglia.",
+    distanza: "6 km",
+    icona: "🏞️",
+    maps_url: "https://maps.app.goo.gl/LyWMYQhcEKs2XjiHA",
   },
   {
     categoria: "Escursioni / Sentieri" as Categoria,
@@ -68,19 +104,21 @@ export const luoghiVicini = [
   // ── NEGOZI / SUPERMERCATI ─────────────────────────────────
   {
     categoria: "Negozi / Supermercati" as Categoria,
-    nome: "Supermercato Famiglia Cooperativa",
+    nome: "Margherita Conad",
     descrizione: "Fornito supermercato con prodotti locali trentini.",
-    distanza: "300 m",
+    distanza: "350 m",
     icona: "🛒",
-    maps_url: "https://maps.google.com/maps?q=Famiglia+Cooperativa+Calavino",
+    maps_url: "https://maps.app.goo.gl/pNXaxiM5wD6e8dVZ7",
   },
+
+    // ── ALTRO ───────────────────────────────────────────────
   {
-    categoria: "Negozi / Supermercati" as Categoria,
-    nome: "Panificio Artigianale",
-    descrizione: "Pane fresco ogni mattina, specialità locali e dolci tipici.",
-    distanza: "400 m",
-    icona: "🥐",
-    maps_url: "https://maps.google.com/maps?q=Panificio+Calavino",
+    categoria: "Altro" as Categoria,
+    nome: "Paintball Park Trento (Vezzano)",
+    descrizione: "Campo di paintball",
+    distanza: "5 km",
+    icona: "🔫",
+    maps_url: "https://maps.app.goo.gl/9htzELiGNqq642pBA",
   },
 
   // Aggiungi altri luoghi qui sotto:
