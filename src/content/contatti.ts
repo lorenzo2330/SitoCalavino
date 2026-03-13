@@ -6,15 +6,46 @@
 export const contatti = {
 
   // ── RECAPITI ──────────────────────────────────────────────
-  telefono: "+39 000 000 0000",
-  telefono_href: "tel:+39000000000",
-  email: "info@calavino.it",
-  email_href: "mailto:info@calavino.it",
-  indirizzo: "Calavino, Trentino",
+  telefoni: [
+    {
+      nome: "Sara",
+      numero: "+39 329 284 4904",
+      href: "tel:+393292844904",
+      whatsapp: "https://wa.me/393292844904",
+    },
+    {
+      nome: "Simone",
+      numero: "+39 334 100 3503",
+      href: "tel:+393341003503",
+      whatsapp: "https://wa.me/393341003503",
+    },
+  ],
+
+  email: [
+    {
+      nome: "Sara",
+      indirizzo: "sara2003leo@gmail.com",
+      href: "mailto:sara2003leo@gmail.com",
+    },
+    {
+      nome: "Simone",
+      indirizzo: "simo2000leo@gmail.com",
+      href: "mailto:simo2000leo@gmail.com",
+    },
+  ],
+
+  // ── INDIRIZZO & MAPPA ─────────────────────────────────────
+  // Stesso link usato anche nella mappa in home (vicino.ts → mappaEmbedUrl).
+  // Per aprire su Maps al click, usa il link diretto (non l'embed):
+  // 1. Vai su maps.google.com → cerca l'indirizzo
+  // 2. Clicca "Condividi" → "Copia link"
+  // 3. Incollalo qui sotto
+  indirizzo: "Via Concordia, 3 — Calavino (TN)",
+  indirizzo_maps_url: "https://maps.app.goo.gl/FwAA3PCeJnnPGeYS7",
 
   // ── ORARI ─────────────────────────────────────────────────
-  checkin: "15:00 – 20:00",
-  checkout: "entro le 10:00",
+  checkin: "14:00 – 18:00",
+  checkout: "08:00 – 11:00",
   orari_nota: "Per orari diversi contattaci in anticipo — faremo del nostro meglio per venire incontro alle tue esigenze.",
 
   // ── FORM ──────────────────────────────────────────────────

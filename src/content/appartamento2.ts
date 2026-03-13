@@ -46,28 +46,116 @@ export const appartamento2 = {
   //
   foto: [
     {
-      src: "/foto/appartamento2/cucina3-duplex.jpeg",  // ← cambia con la tua foto
-      alt: "Vista principale dell'appartamento",
+      src: "/foto/appartamento2/cucina1-duplex.jpeg",
+      alt: "Cucina",
     },
     {
-      src: "/foto/appartamento2/cucina-duplex.jpeg",
+      src: "/foto/appartamento2/cucina2-duplex.jpeg",
       alt: "Cucina",
+    },
+    {
+      src: "/foto/appartamento2/cucina3-duplex.jpeg",
+      alt: "Cucina",
+    },
+    {
+      src: "/foto/appartamento2/cucina4-duplex.jpeg",
+      alt: "Cucina",
+    },
+    {
+      src: "/foto/appartamento2/camera1-duplex.jpeg",
+      alt: "Camera da letto",
     },
     {
       src: "/foto/appartamento2/camera2-duplex.jpeg",
       alt: "Camera da letto",
     },
     {
-      src: "/foto/appartamento2/camera-duplex.jpeg",
+      src: "/foto/appartamento2/camera3-duplex.jpeg",
       alt: "Camera da letto",
     },
     {
-      src: "/foto/appartamento2/bagno-duplex.jpeg",
+      src: "/foto/appartamento2/camera4-duplex.jpeg",
+      alt: "Camera da letto",
+    },
+    {
+      src: "/foto/appartamento2/camera5-duplex.jpeg",
+      alt: "Camera da letto",
+    },
+    {
+      src: "/foto/appartamento2/camera6-duplex.jpeg",
+      alt: "Camera da letto",
+    },
+    {
+      src: "/foto/appartamento2/camera7-duplex.jpeg",
+      alt: "Camera da letto",
+    },
+    {
+      src: "/foto/appartamento2/camera8-duplex.jpeg",
+      alt: "Camera da letto",
+    },
+    {
+      src: "/foto/appartamento2/bagno1-duplex.jpeg",
       alt: "Bagno",
     },
     {
-      src: "/foto/appartamento2/soggiorno-duplex.jpeg",
+      src: "/foto/appartamento2/bagno2-duplex.jpeg",
+      alt: "Bagno",
+    },
+    {
+      src: "/foto/appartamento2/bagno3-duplex.jpeg",
+      alt: "Bagno",
+    },
+    {
+      src: "/foto/appartamento2/bagno4-duplex.jpeg",
+      alt: "Bagno",
+    },
+    {
+      src: "/foto/appartamento2/bagno5-duplex.jpeg",
+      alt: "Bagno",
+    },
+    {
+      src: "/foto/appartamento2/bagno6-duplex.jpeg",
+      alt: "Bagno",
+    },
+    {
+      src: "/foto/appartamento2/soggiorno1-duplex.jpeg",
       alt: "Soggiorno",
+    },
+    {
+      src: "/foto/appartamento2/soggiorno2-duplex.jpeg",
+      alt: "Soggiorno",
+    },
+    {
+      src: "/foto/appartamento2/soggiorno3-duplex.jpeg",
+      alt: "Soggiorno",
+    },
+    {
+      src: "/foto/appartamento2/esterno1-duplex.jpeg",
+      alt: "Esterno",
+    },
+    {
+      src: "/foto/appartamento2/esterno2-duplex.jpeg",
+      alt: "Esterno",
+    },
+    {
+      src: "/foto/appartamento2/esterno3-duplex.jpeg",
+      alt: "Esterno",
+    },
+    {
+      src: "/foto/appartamento2/esterno4-duplex.jpeg",
+      alt: "Esterno",
+    },
+    {
+      src: "/foto/appartamento2/vista1-duplex.jpeg",
+      alt: "Vista",
+    },
+    {
+      src: "/foto/appartamento2/vista2-duplex.jpeg",
+      alt: "Vista",
+    },
+    {
+      src: "/foto/appartamento2/vista3-duplex.jpeg",
+      alt: "Vista",
     },
     {
       src: "/foto/generali/planimetria_p0.png",

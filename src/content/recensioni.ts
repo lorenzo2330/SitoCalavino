@@ -6,40 +6,41 @@
 export type Piattaforma = "Booking" | "Airbnb" | "Sito";
 
 export const recensioni = [
+
   {
-    nome: "Marco e Lucia",
-    testo: "Un posto meraviglioso, tranquillo e curatissimo. Abbiamo trascorso una settimana indimenticabile. La cucina era perfettamente attrezzata e la vista sui boschi al mattino era mozzafiato.",
-    valutazione: 5,
-    piattaforma: "Airbnb" as Piattaforma,
-    appartamento: "La Dimora del Larice",
+    nome: "Enrico [09/03/2026]",
+    testo: "Struttura in una zona ottima per raggiungere vari posti nei dintorni, proprietari davvero gentilissimi e disponibili.  L'appartamento è nuovo, restaurato da poco e dotato di tutti i comfort, 5 stelle!",
+    valutazione: 10,
+    piattaforma: "Booking" as Piattaforma,
+    appartamento: "Appartamento Duplex",
   },
   {
-    nome: "Sophie M.",
-    testo: "Appartamento piccolo ma perfetto per due. Pulito, caldo, con tutto il necessario. I proprietari sono stati gentilissimi e ci hanno dato ottimi consigli sui sentieri da fare.",
+    nome: "Francesco Antonio [01/03/2026]",
+    testo: "Piacevole weekend che ci ha permesso di scoprire un posto nuovo e inedito. Davvero apprezzato il lavoro di recupero del rudere. La ristrutturazione è davvero encomiabile!",
     valutazione: 5,
     piattaforma: "Booking" as Piattaforma,
-    appartamento: "Mini appartamento",
+    appartamento: "Appartamento Duplex",
   },
   {
-    nome: "Famiglia Rossi",
-    testo: "Abbiamo passato le vacanze di Natale qui e non potevamo scegliere meglio. Il camino a legna la sera, la neve fuori dalla finestra... i bambini erano entusiasti. Torneremo sicuramente.",
-    valutazione: 5,
-    piattaforma: "Sito" as Piattaforma,
-    appartamento: "La Dimora del Larice",
-  },
-  {
-    nome: "Andrea T.",
-    testo: "Posizione eccellente per esplorare la Valle dei Laghi. L'appartamento è esattamente come nelle foto, se non meglio. Silenzio assoluto di notte, aria freschissima.",
-    valutazione: 4,
-    piattaforma: "Airbnb" as Piattaforma,
-    appartamento: "Mini appartamento",
-  },
-  {
-    nome: "Giulia e Stefano",
-    testo: "Weekend romantico perfetto. L'atmosfera è da chalet di lusso ma con un calore autentico. Ritorneremo in estate per le escursioni.",
+    nome: "Anna [04/01/2026]",
+    testo: "Zona molto tranquilla ed appartamento bellissimo. Dimora Concordia è davvero bellissima.. l'appartamento è nuovo, pulito ed i proprietari gentilissimi",
     valutazione: 5,
     piattaforma: "Booking" as Piattaforma,
-    appartamento: "Mini appartamento",
+    appartamento: "Appartamento Duplex",
+  },
+  {
+    nome: "Valentina [03/01/2026]",
+    testo: "Alloggio fantastico, curato e ancora più bello rispetto alle foto. Posizione perfetta per visitare Trento e Riva del Garda.",
+    valutazione: 5,
+    piattaforma: "Booking" as Piattaforma,
+    appartamento: "Appartamento Duplex",
+  },
+  {
+    nome: "AndreaB [09/12/2025]",
+    testo: "Spazi ampi e comodi, appartamenti delle dimensioni giuste, completi di ogni comfort, moderni e funzionali. Ad una mezzoretta da Trento, comodo per raggiungere diversi punti d'interesse nella zona. Check in e check out perfetto grazie ad un'ottima comunicazione con il proprietario.",
+    valutazione: 5,
+    piattaforma: "Booking" as Piattaforma,
+    appartamento: "Appartamento Duplex",
   },
 
   // Per aggiungere una recensione, copia e incolla il blocco qui sotto:

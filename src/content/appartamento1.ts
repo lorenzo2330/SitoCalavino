@@ -46,24 +46,56 @@ export const appartamento1 = {
   //
   foto: [
     {
-      src: "/foto/appartamento1/vista-mini.jpeg",  // ← cambia con la tua foto
-      alt: "Vista principale dell'appartamento",
-    },
-    {
-      src: "/foto/appartamento1/vista-mini.jpeg",
+      src: "/foto/appartamento1/soggiorno1-mini.jpeg",  // ← cambia con la tua foto
       alt: "Soggiorno",
     },
     {
-      src: "/foto/appartamento1/vista-mini.jpeg",
-      alt: "Camera da letto",
+      src: "/foto/appartamento1/soggiorno2-mini.jpeg",
+      alt: "Soggiorno",
     },
     {
-      src: "/foto/appartamento1/vista-mini.jpeg",
+      src: "/foto/appartamento1/soggiorno3-mini.jpeg",
+      alt: "Soggiorno",
+    },
+    {
+      src: "/foto/appartamento1/cucina1-mini.jpeg",
       alt: "Cucina",
     },
     {
-      src: "/foto/appartamento1/bagno-mini.jpeg",
+      src: "/foto/appartamento1/cucina2-mini.jpeg",
+      alt: "Cucina",
+    },
+    {
+      src: "/foto/appartamento1/camera1-mini.jpeg",
+      alt: "Camera da letto",
+    },
+    {
+      src: "/foto/appartamento1/camera2-mini.jpeg",
+      alt: "Camera da letto",
+    },
+    {
+      src: "/foto/appartamento1/camera3-mini.jpeg",
+      alt: "Camera da letto",
+    },
+    {
+      src: "/foto/appartamento1/cabinaArmadio-mini.jpeg",
+      alt: "Cabina armadio",
+    },
+    {
+      src: "/foto/appartamento1/lavanderia-mini.jpeg",
+      alt: "Lavatrice e asciugatrice",
+    },    
+    {
+      src: "/foto/appartamento1/bagno1-mini.jpeg",
       alt: "Bagno",
+    },
+    {
+      src: "/foto/appartamento1/bagno2-mini.jpeg",
+      alt: "Bagno",
+    },
+    {
+      src: "/foto/appartamento1/atrio-mini.jpeg",
+      alt: "Atrio",
     },
     {
       src: "/foto/generali/planimetria_p0.png",

@@ -37,8 +37,8 @@ import { contatti as c } from '../content/contatti';
               <label for="appartamento">Appartamento di interesse</label>
               <select id="appartamento" name="appartamento">
                 <option value="">— Seleziona —</option>
-                <option value="apt1">Appartamento 1 — Il Nido del Bosco</option>
-                <option value="apt2">Appartamento 2 — La Dimora del Larice</option>
+                <option value="apt1">Mini appartamento</option>
+                <option value="apt2">Appartamento Duplex</option>
                 <option value="entrambi">Entrambi</option>
               </select>
             </div>
@@ -66,30 +66,56 @@ import { contatti as c } from '../content/contatti';
       </div>
 
       <aside class="contact-info">
+
         <div class="info-card">
           <h3>Informazioni di contatto</h3>
           <div class="divider" style="margin-left:0; margin-top:1rem;"></div>
+
+          <!-- TELEFONI -->
           <div class="info-row">
             <span class="info-icon">📞</span>
-            <div>
+            <div class="info-body">
               <p class="info-label">Telefono / WhatsApp</p>
-              <a href={c.telefono_href}>{c.telefono}</a>
+              {c.telefoni.map(t => (
+                <div class="info-persona">
+                  <span class="info-nome">{t.nome}</span>
+                  <div class="info-links">
+                    <a href={t.href}>{t.numero}</a>
+                    <a href={t.whatsapp} target="_blank" rel="noopener noreferrer" class="wa-link">
+                      <svg viewBox="0 0 24 24" class="wa-icon" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.533 5.851L.057 23.985l6.305-1.654A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.371l-.359-.214-3.722.976.994-3.622-.234-.372A9.818 9.818 0 1112 21.818z" fill-rule="evenodd"/></svg>
+                    </a>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
+
+          <!-- EMAIL -->
           <div class="info-row">
             <span class="info-icon">✉️</span>
-            <div>
+            <div class="info-body">
               <p class="info-label">Email</p>
-              <a href={c.email_href}>{c.email}</a>
+              {c.email.map(e => (
+                <div class="info-persona">
+                  <span class="info-nome">{e.nome}</span>
+                  <a href={e.href}>{e.indirizzo}</a>
+                </div>
+              ))}
             </div>
           </div>
+
+          <!-- INDIRIZZO — clicca per aprire Maps -->
           <div class="info-row">
             <span class="info-icon">📍</span>
-            <div>
+            <div class="info-body">
               <p class="info-label">Dove siamo</p>
-              <p>{c.indirizzo}</p>
+              <a href={c.indirizzo_maps_url} target="_blank" rel="noopener noreferrer" class="indirizzo-link">
+                {c.indirizzo}
+                <span class="indirizzo-hint">Apri su Maps →</span>
+              </a>
             </div>
           </div>
+
         </div>
 
         <div class="info-card">
@@ -108,8 +134,8 @@ import { contatti as c } from '../content/contatti';
           </div>
           <p style="font-size:0.82rem; color:var(--text-light); margin-top:1rem;">{c.orari_nota}</p>
         </div>
-      </aside>
 
+      </aside>
     </div>
   </section>
 
@@ -126,7 +152,6 @@ import { contatti as c } from '../content/contatti';
     overflow: hidden;
     text-align: center;
   }
-
   .page-hero-bg {
     position: absolute;
     inset: 0;
@@ -134,7 +159,6 @@ import { contatti as c } from '../content/contatti';
       linear-gradient(to bottom, rgba(44,62,45,0.75), rgba(28,28,28,0.6)),
       url('https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=1600&q=80') center/cover no-repeat;
   }
-
   .page-hero-content { position: relative; z-index: 2; color: var(--cream); }
   .page-hero-content .eyebrow { color: var(--gold-light); }
   .page-hero-content h1 { font-size: clamp(2.5rem, 6vw, 4rem); color: var(--cream); }
@@ -143,41 +167,43 @@ import { contatti as c } from '../content/contatti';
 
   .contact-form-wrap h2 { font-size: 2rem; color: var(--deep-wood); }
   .form-intro { color: var(--text-light); margin-bottom: 2.5rem; line-height: 1.8; font-size: 0.95rem; }
-
   .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
   .field { display: flex; flex-direction: column; gap: 0.4rem; }
-
   label { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--bark); font-weight: 500; }
-
-  input, select, textarea {
-    font-family: var(--font-body);
-    font-size: 0.95rem;
-    font-weight: 300;
-    color: var(--text);
-    background: var(--cream);
-    border: 1px solid var(--stone);
-    padding: 0.75rem 1rem;
-    outline: none;
-    transition: border-color 0.2s;
-    width: 100%;
-    border-radius: var(--radius);
-  }
-
+  input, select, textarea { font-family: var(--font-body); font-size: 0.95rem; font-weight: 300; color: var(--text); background: var(--cream); border: 1px solid var(--stone); padding: 0.75rem 1rem; outline: none; transition: border-color 0.2s; width: 100%; border-radius: var(--radius); }
   input:focus, select:focus, textarea:focus { border-color: var(--bark); }
   textarea { resize: vertical; min-height: 120px; }
 
+  /* ── SIDEBAR ── */
   .contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
   .info-card { background: var(--cream); padding: 1.8rem; border-top: 3px solid var(--gold); }
   .info-card h3 { font-family: var(--font-display); font-size: 1.4rem; color: var(--deep-wood); }
 
   .info-row { display: flex; align-items: flex-start; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid rgba(196,180,154,0.3); }
   .info-row:last-child { border-bottom: none; }
-  .info-icon { font-size: 1.2rem; margin-top: 0.1rem; }
-  .info-label { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--bark); margin-bottom: 0.2rem; }
-  .info-row a, .info-row p:not(.info-label) { font-size: 0.95rem; color: var(--text); text-decoration: none; }
-  .info-row a:hover { color: var(--gold); }
+  .info-icon { font-size: 1.2rem; margin-top: 0.15rem; flex-shrink: 0; }
+  .info-body { display: flex; flex-direction: column; gap: 0.5rem; flex: 1; }
+  .info-label { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--bark); }
 
+  /* Riga persona (nome + link/numero) */
+  .info-persona { display: flex; align-items: center; justify-content: space-between; gap: 0.8rem; }
+  .info-nome { font-size: 0.82rem; font-weight: 500; color: var(--text-light); min-width: 50px; }
+  .info-links { display: flex; align-items: center; gap: 0.8rem; }
+  .info-persona a, .info-row a { font-size: 0.92rem; color: var(--text); text-decoration: none; transition: color 0.2s; }
+  .info-persona a:hover, .info-row a:hover { color: var(--gold); }
+
+  /* Bottone WhatsApp */
+  .wa-link { display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bark) !important; border: 1px solid var(--stone); padding: 0.2rem 0.6rem; border-radius: 20px; transition: background 0.2s, color 0.2s, border-color 0.2s !important; }
+  .wa-link:hover { background: #25D366; color: white !important; border-color: #25D366; }
+  .wa-icon { width: 14px; height: 14px; fill: currentColor; }
+
+  /* Indirizzo cliccabile */
+  .indirizzo-link { display: flex; flex-direction: column; gap: 0.2rem; font-size: 0.92rem; color: var(--text); text-decoration: none; transition: color 0.2s; }
+  .indirizzo-link:hover { color: var(--gold); }
+  .indirizzo-hint { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bark); }
+
+  /* Check-in/out */
   .checkinout-row { display: flex; align-items: center; gap: 1.5rem; padding-top: 0.5rem; }
   .co-separator { width: 1px; height: 40px; background: var(--stone); opacity: 0.5; }
   .time { font-family: var(--font-display); font-size: 1.3rem; color: var(--deep-wood); }
