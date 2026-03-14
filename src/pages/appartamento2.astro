@@ -1,6 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { appartamento2 as apt } from '../content/appartamento2';
+import { fascePrezzi } from '../content/prezzi';
+
+const ospitiFull = Object.keys(apt.prezzi).map(Number).sort((a,b) => a - b);
+const prezziJson = JSON.stringify(apt.prezzi);
+const fasceJson  = JSON.stringify(fascePrezzi);
 ---
 <Layout title={apt.seo_title} description={apt.seo_description}>
 
@@ -25,7 +30,6 @@ import { appartamento2 as apt } from '../content/appartamento2';
           <p style="margin-top:1rem">{apt.descrizione_2}</p>
         </div>
 
-        <!-- GALLERIA con frecce + didascalia -->
         <div class="gallery" id="gallery" data-foto={JSON.stringify(apt.foto)}>
           <div class="gallery-main-wrap">
             <button class="gallery-arrow arrow-prev" id="arrow-prev" aria-label="Foto precedente">&#8592;</button>
@@ -38,22 +42,14 @@ import { appartamento2 as apt } from '../content/appartamento2';
             </div>
             <button class="gallery-arrow arrow-next" id="arrow-next" aria-label="Foto successiva">&#8594;</button>
           </div>
-
-          <!-- didascalia + contatore -->
           <div class="gallery-meta">
             <span class="gallery-alt" id="gallery-alt">{apt.foto[0]?.alt ?? ""}</span>
             <span class="gallery-count" id="gallery-count">1 / {apt.foto.length}</span>
           </div>
-
-          <!-- miniature -->
           {apt.foto.length > 1 && (
-            <div class="gallery-grid" id="gallery-grid">
+            <div class="gallery-grid">
               {apt.foto.map((foto, i) => (
-                <button
-                  class={`gallery-thumb${i === 0 ? " attiva" : ""}`}
-                  data-index={i}
-                  aria-label={`Mostra: ${foto.alt}`}
-                >
+                <button class={`gallery-thumb${i === 0 ? " attiva" : ""}`} data-index={i} aria-label={`Mostra: ${foto.alt}`}>
                   <img src={foto.src} alt={foto.alt} class="thumb-img" />
                 </button>
               ))}
@@ -78,19 +74,39 @@ import { appartamento2 as apt } from '../content/appartamento2';
         </div>
       </div>
 
+      <!-- SIDEBAR PREZZI -->
       <aside class="apt-sidebar">
-        <div class="price-card">
+        <div class="price-card"
+             data-prezzi={prezziJson}
+             data-fasce={fasceJson}
+             id="price-card">
+
           <h3>Prezzi per notte</h3>
           <div class="divider" style="margin: 1rem 0;"></div>
-          <div class="price-row"><span>Feriale</span><strong>€{apt.prezzi.feriale}</strong></div>
-          <div class="price-row"><span>Festivo</span><strong>€{apt.prezzi.festivo}</strong></div>
+
+          <!-- SELETTORE OSPITI -->
+          <div class="ospiti-selector">
+            <p class="ospiti-label">Numero di ospiti</p>
+            <div class="ospiti-btns" id="ospiti-btns">
+              {ospitiFull.map((n, i) => (
+                <button
+                  class={`ospiti-btn${i === 0 ? " attivo" : ""}`}
+                  data-ospiti={n}
+                  aria-label={`${n} ${n === 1 ? "ospite" : "ospiti"}`}
+                >
+                  {n}
+                </button>
+              ))}
+            </div>
+          </div>
+
           <div class="price-separator"></div>
-          <p class="price-label">Alta stagione<br/><small>({apt.prezzi.alta_stagione_mesi.join(", ")})</small></p>
-          <div class="price-row"><span>Feriale & Festivo</span><strong>€{apt.prezzi.alta_stagione}</strong></div>
-          <div class="price-row"><span>Combo 5 notti</span><strong>€{apt.prezzi.alta_stagione_cinque_notti}</strong></div>
-          <div class="price-row"><span>Combo 6 notti</span><strong>€{apt.prezzi.alta_stagione_sei_notti}</strong></div>
+
+          <!-- TABELLA PREZZI — aggiornata via JS -->
+          <div id="price-rows"></div>
+
           <div class="price-separator"></div>
-          <p class="price-note">* {apt.prezzi.nota}</p>
+          <p class="price-note">* {apt.prezzi_nota}</p>
           <a href="/contatti" class="btn btn-primary" style="width:100%; text-align:center; margin-top:1.5rem; display:block;">
             Richiedi disponibilità
           </a>
@@ -102,15 +118,9 @@ import { appartamento2 as apt } from '../content/appartamento2';
 
 </Layout>
 
-<style>
+<style is:global>
   .apt-hero { position: relative; height: 65vh; min-height: 400px; display: flex; align-items: flex-end; overflow: hidden; }
-  .apt-hero-bg {
-    position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(to top, rgba(28,28,28,0.85) 0%, rgba(44,62,45,0.3) 60%, transparent 100%),
-      url('/foto/appartamento2/cucina1-duplex.jpeg') center/cover no-repeat;
-  }
+  .apt-hero-bg { position: absolute; inset: 0; background: linear-gradient(to top, rgba(28,28,28,0.85) 0%, rgba(74,55,40,0.3) 60%, transparent 100%), url('/foto/appartamento2/cucina1-duplex.jpeg') center/cover no-repeat; }
   .apt-hero-content { position: relative; z-index: 2; padding: 3rem; color: var(--cream); }
   .apt-hero-content .eyebrow { color: var(--gold-light); }
   .apt-hero-content h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); color: var(--cream); margin-bottom: 0.5rem; }
@@ -122,73 +132,24 @@ import { appartamento2 as apt } from '../content/appartamento2';
 
   /* ── GALLERIA ── */
   .gallery { margin: 3rem 0; }
-
-  .gallery-main-wrap {
-    position: relative;
-    display: flex;
-    align-items: center;
-  }
-
-  .gallery-main {
-    flex: 1;
-    height: 420px;
-    overflow: hidden;
-    background: var(--cream);
-    border: 2px solid var(--stone);
-    padding: 8px;
-    box-shadow: 0 4px 20px rgba(74,55,40,0.12);
-  }
-
-  .gallery-img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    background: var(--cream);
-    transition: opacity 0.25s ease;
-    display: block;
-  }
-
-  .gallery-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 10;
-    background: rgba(253,250,244,0.92);
-    border: 1px solid var(--stone);
-    color: var(--bark);
-    width: 2.6rem;
-    height: 2.6rem;
-    border-radius: 50%;
-    font-size: 1rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.2s, color 0.2s, border-color 0.2s;
-    box-shadow: 0 2px 8px rgba(74,55,40,0.15);
-  }
+  .gallery-main-wrap { position: relative; display: flex; align-items: center; }
+  .gallery-main { flex: 1; height: 420px; overflow: hidden; background: var(--cream); border: 2px solid var(--stone); padding: 8px; box-shadow: 0 4px 20px rgba(74,55,40,0.12); }
+  .gallery-img { width: 100%; height: 100%; object-fit: contain; background: var(--cream); transition: opacity 0.25s ease; display: block; }
+  .gallery-arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 10; background: rgba(253,250,244,0.92); border: 1px solid var(--stone); color: var(--bark); width: 2.6rem; height: 2.6rem; border-radius: 50%; font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s, color 0.2s; box-shadow: 0 2px 8px rgba(74,55,40,0.15); }
   .gallery-arrow:hover { background: var(--bark); color: var(--cream); border-color: var(--bark); }
   .arrow-prev { left: 0.6rem; }
   .arrow-next { right: 0.6rem; }
-
-  .gallery-meta {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 0.5rem;
-    padding: 0 0.2rem;
-  }
-  .gallery-alt { font-size: 0.82rem; color: var(--text-light); font-style: italic; letter-spacing: 0.03em; }
+  .gallery-meta { display: flex; align-items: center; justify-content: space-between; margin-top: 0.5rem; padding: 0 0.2rem; }
+  .gallery-alt { font-size: 0.82rem; color: var(--text-light); font-style: italic; }
   .gallery-count { font-size: 0.75rem; color: var(--text-light); letter-spacing: 0.08em; }
-
   .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 0.6rem; margin-top: 0.75rem; }
   .gallery-thumb { border: 2px solid var(--stone); padding: 3px; cursor: pointer; overflow: hidden; height: 80px; background: var(--cream); border-radius: var(--radius); transition: border-color 0.2s, transform 0.2s; }
   .gallery-thumb:hover { transform: scale(1.03); border-color: var(--bark); }
   .gallery-thumb.attiva { border-color: var(--gold); box-shadow: 0 0 0 1px var(--gold); }
   .thumb-img { width: 100%; height: 100%; object-fit: cover; display: block; }
-
   .img-placeholder { width: 100%; height: 100%; background: var(--cream); border: 2px dashed var(--stone); display: flex; align-items: center; justify-content: center; color: var(--text-light); font-size: 0.85rem; text-align: center; padding: 1rem; }
 
+  /* ── DOTAZIONI & REGOLE ── */
   .apt-section { margin-top: 3rem; }
   .apt-section h3 { font-family: var(--font-display); font-size: 1.6rem; color: var(--deep-wood); margin-bottom: 1.2rem; padding-bottom: 0.7rem; border-bottom: 1px solid var(--stone); }
   .dotazioni-grid { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem 1.5rem; }
@@ -197,13 +158,36 @@ import { appartamento2 as apt } from '../content/appartamento2';
   .regole-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
   .regole-list li { font-size: 0.9rem; color: var(--text-light); padding-left: 1rem; border-left: 2px solid var(--stone); }
 
+  /* ── PRICE CARD ── */
   .price-card { background: var(--cream); padding: 2rem; position: sticky; top: 100px; border-top: 3px solid var(--gold); }
   .price-card h3 { font-family: var(--font-display); font-size: 1.5rem; color: var(--deep-wood); }
-  .price-row { display: flex; justify-content: space-between; align-items: center; padding: 0.6rem 0; font-size: 0.95rem; color: var(--text-light); }
+
+  /* Selettore ospiti */
+  .ospiti-selector { margin: 1.2rem 0 0; }
+  .ospiti-label { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bark); margin-bottom: 0.7rem; }
+  .ospiti-btns { display: flex; gap: 0.5rem; }
+  .ospiti-btn {
+    flex: 1;
+    padding: 0.55rem 0;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--bark);
+    background: var(--warm-white);
+    border: 1px solid var(--stone);
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+  }
+  .ospiti-btn:hover { border-color: var(--bark); }
+  .ospiti-btn.attivo { background: var(--deep-wood); color: var(--cream); border-color: var(--deep-wood); }
+
+  /* Righe prezzi generate da JS */
+  .price-fascia-label { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bark); margin: 1rem 0 0.3rem; }
+  .price-fascia-mesi { font-size: 0.75rem; font-weight: 300; color: var(--text-light); letter-spacing: 0; text-transform: none; display: block; margin-bottom: 0.2rem; }
+  .price-row { display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 0; font-size: 0.95rem; color: var(--text-light); transition: opacity 0.2s; }
   .price-row strong { font-family: var(--font-display); font-size: 1.4rem; color: var(--deep-wood); font-weight: 600; }
   .price-separator { height: 1px; background: var(--stone); margin: 1rem 0; opacity: 0.4; }
-  .price-label { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bark); margin-bottom: 0.5rem; }
-  .price-label small { text-transform: none; letter-spacing: 0; font-weight: 300; }
   .price-note { font-size: 0.75rem; color: var(--text-light); line-height: 1.6; }
 
   @media (max-width: 900px) {
@@ -217,40 +201,77 @@ import { appartamento2 as apt } from '../content/appartamento2';
 </style>
 
 <script>
-  const foto = JSON.parse(document.getElementById('gallery')!.dataset.foto!);
+  // ── GALLERIA ──────────────────────────────────────────────
+  const foto        = JSON.parse(document.getElementById('gallery')!.dataset.foto!);
+  const imgPrinc    = document.getElementById('foto-principale') as HTMLImageElement;
+  const altEl       = document.getElementById('gallery-alt') as HTMLElement;
+  const countEl     = document.getElementById('gallery-count') as HTMLElement;
+  const thumbs      = document.querySelectorAll<HTMLButtonElement>('.gallery-thumb');
+  const btnPrev     = document.getElementById('arrow-prev') as HTMLButtonElement;
+  const btnNext     = document.getElementById('arrow-next') as HTMLButtonElement;
+  const totFoto     = foto.length;
+  let corrente      = 0;
 
-  const imgPrincipale = document.getElementById('foto-principale') as HTMLImageElement;
-  const altEl         = document.getElementById('gallery-alt') as HTMLElement;
-  const countEl       = document.getElementById('gallery-count') as HTMLElement;
-  const thumbs        = document.querySelectorAll<HTMLButtonElement>('.gallery-thumb');
-  const btnPrev       = document.getElementById('arrow-prev') as HTMLButtonElement;
-  const btnNext       = document.getElementById('arrow-next') as HTMLButtonElement;
-  const totale        = foto.length;
-  let corrente        = 0;
-
-  function vai(indice: number) {
-    corrente = (indice + totale) % totale;
-
-    imgPrincipale.style.opacity = '0';
+  function vaiFoto(i: number) {
+    corrente = (i + totFoto) % totFoto;
+    imgPrinc.style.opacity = '0';
     setTimeout(() => {
-      imgPrincipale.src = foto[corrente].src;
-      imgPrincipale.alt = foto[corrente].alt;
-      imgPrincipale.style.opacity = '1';
+      imgPrinc.src = foto[corrente].src;
+      imgPrinc.alt = foto[corrente].alt;
+      imgPrinc.style.opacity = '1';
     }, 200);
-
     altEl.textContent   = foto[corrente].alt;
-    countEl.textContent = `${corrente + 1} / ${totale}`;
-
-    thumbs.forEach((t, i) => t.classList.toggle('attiva', i === corrente));
+    countEl.textContent = `${corrente + 1} / ${totFoto}`;
+    thumbs.forEach((t, idx) => t.classList.toggle('attiva', idx === corrente));
     thumbs[corrente]?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
   }
 
-  thumbs.forEach((thumb, i) => thumb.addEventListener('click', () => vai(i)));
-  btnPrev.addEventListener('click', () => vai(corrente - 1));
-  btnNext.addEventListener('click', () => vai(corrente + 1));
-
+  thumbs.forEach((t, i) => t.addEventListener('click', () => vaiFoto(i)));
+  btnPrev.addEventListener('click', () => vaiFoto(corrente - 1));
+  btnNext.addEventListener('click', () => vaiFoto(corrente + 1));
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowLeft')  vai(corrente - 1);
-    if (e.key === 'ArrowRight') vai(corrente + 1);
+    if (e.key === 'ArrowLeft')  vaiFoto(corrente - 1);
+    if (e.key === 'ArrowRight') vaiFoto(corrente + 1);
   });
+
+  // ── PREZZI ────────────────────────────────────────────────
+  const card        = document.getElementById('price-card')!;
+  const prezziTutti = JSON.parse(card.dataset.prezzi!);
+  const fasce       = JSON.parse(card.dataset.fasce!);
+  const rowsEl      = document.getElementById('price-rows')!;
+  const ospitiBtns  = document.querySelectorAll<HTMLButtonElement>('.ospiti-btn');
+
+  function renderPrezzi(ospiti: string) {
+    const p = prezziTutti[ospiti];
+    if (!p) return;
+
+    let html = '';
+    for (const fascia of fasce) {
+      html += `<p class="price-fascia-label">${fascia.label}</p>`;
+      if (fascia.mesi?.length) {
+        html += `<p class="price-fascia-mesi">${fascia.mesi.join(', ')}</p>`;
+      }
+      for (const voce of fascia.voci) {
+        const valore = p[voce.chiave] ?? '—';
+        html += `
+          <div class="price-row">
+            <span>${voce.label}</span>
+            <strong>€${valore}</strong>
+          </div>`;
+      }
+    }
+    rowsEl.innerHTML = html;
+  }
+
+  ospitiBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      ospitiBtns.forEach(b => b.classList.remove('attivo'));
+      btn.classList.add('attivo');
+      renderPrezzi(btn.dataset.ospiti!);
+    });
+  });
+
+  // Inizializza con il primo valore
+  const primoOspiti = ospitiBtns[0]?.dataset.ospiti ?? '1';
+  renderPrezzi(primoOspiti);
 </script>

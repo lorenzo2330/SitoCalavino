@@ -50,7 +50,7 @@ export const contatti = {
 
   // ── FORM ──────────────────────────────────────────────────
   // Sostituisci TUOID con il tuo ID Formspree (gratuito su formspree.io)
-  formspree_id: "TUOID",
+  formspree_id: "mojklgga",
 
   // ── TESTI PAGINA ──────────────────────────────────────────
   hero_eyebrow: "Siamo qui per te",

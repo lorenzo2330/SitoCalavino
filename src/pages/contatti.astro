@@ -21,7 +21,8 @@ import { contatti as c } from '../content/contatti';
         <div class="divider" style="margin-left:0"></div>
         <p class="form-intro">{c.form_intro}</p>
 
-        <form class="contact-form" action={`https://formspree.io/f/${c.formspree_id}`} method="POST">
+        <!-- FORM -->
+        <form class="contact-form" id="contact-form">
           <div class="form-row">
             <div class="field">
               <label for="nome">Nome e cognome</label>
@@ -37,9 +38,9 @@ import { contatti as c } from '../content/contatti';
               <label for="appartamento">Appartamento di interesse</label>
               <select id="appartamento" name="appartamento">
                 <option value="">— Seleziona —</option>
-                <option value="apt1">Mini appartamento</option>
-                <option value="apt2">Appartamento Duplex</option>
-                <option value="entrambi">Entrambi</option>
+                <option value="Mini appartamento">Mini appartamento</option>
+                <option value="Appartamento Duplex">Appartamento Duplex</option>
+                <option value="Entrambi">Entrambi</option>
               </select>
             </div>
             <div class="field">
@@ -61,17 +62,27 @@ import { contatti as c } from '../content/contatti';
             <label for="messaggio">Messaggio</label>
             <textarea id="messaggio" name="messaggio" rows="5" placeholder="Scrivi qui la tua richiesta..."></textarea>
           </div>
-          <button type="submit" class="btn btn-primary">Invia richiesta</button>
+          <button type="submit" class="btn btn-primary" id="btn-submit">Invia richiesta</button>
         </form>
+
+        <!-- MESSAGGIO DI CONFERMA (nascosto finché non inviato) -->
+        <div class="form-success" id="form-success">
+          <div class="success-icon">✓</div>
+          <h3>Messaggio inviato!</h3>
+          <p>Ti risponderemo entro 24 ore. A presto!</p>
+        </div>
+
+        <!-- MESSAGGIO DI ERRORE (nascosto finché non serve) -->
+        <div class="form-error" id="form-error">
+          <p>Qualcosa è andato storto. Riprova oppure scrivici direttamente via email.</p>
+        </div>
       </div>
 
       <aside class="contact-info">
-
         <div class="info-card">
           <h3>Informazioni di contatto</h3>
           <div class="divider" style="margin-left:0; margin-top:1rem;"></div>
 
-          <!-- TELEFONI -->
           <div class="info-row">
             <span class="info-icon">📞</span>
             <div class="info-body">
@@ -83,6 +94,7 @@ import { contatti as c } from '../content/contatti';
                     <a href={t.href}>{t.numero}</a>
                     <a href={t.whatsapp} target="_blank" rel="noopener noreferrer" class="wa-link">
                       <svg viewBox="0 0 24 24" class="wa-icon" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.533 5.851L.057 23.985l6.305-1.654A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.371l-.359-.214-3.722.976.994-3.622-.234-.372A9.818 9.818 0 1112 21.818z" fill-rule="evenodd"/></svg>
+                      WA
                     </a>
                   </div>
                 </div>
@@ -90,7 +102,6 @@ import { contatti as c } from '../content/contatti';
             </div>
           </div>
 
-          <!-- EMAIL -->
           <div class="info-row">
             <span class="info-icon">✉️</span>
             <div class="info-body">
@@ -104,7 +115,6 @@ import { contatti as c } from '../content/contatti';
             </div>
           </div>
 
-          <!-- INDIRIZZO — clicca per aprire Maps -->
           <div class="info-row">
             <span class="info-icon">📍</span>
             <div class="info-body">
@@ -115,7 +125,6 @@ import { contatti as c } from '../content/contatti';
               </a>
             </div>
           </div>
-
         </div>
 
         <div class="info-card">
@@ -134,37 +143,21 @@ import { contatti as c } from '../content/contatti';
           </div>
           <p style="font-size:0.82rem; color:var(--text-light); margin-top:1rem;">{c.orari_nota}</p>
         </div>
-
       </aside>
+
     </div>
   </section>
 
 </Layout>
 
 <style>
-  .page-hero {
-    position: relative;
-    height: 40vh;
-    min-height: 280px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    text-align: center;
-  }
-  .page-hero-bg {
-    position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(to bottom, rgba(44,62,45,0.75), rgba(28,28,28,0.6)),
-      url('https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=1600&q=80') center/cover no-repeat;
-  }
+  .page-hero { position: relative; height: 40vh; min-height: 280px; display: flex; align-items: center; justify-content: center; overflow: hidden; text-align: center; }
+  .page-hero-bg { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(44,62,45,0.75), rgba(28,28,28,0.6)), url('/foto/generali/home.jpeg') center/cover no-repeat; }
   .page-hero-content { position: relative; z-index: 2; color: var(--cream); }
   .page-hero-content .eyebrow { color: var(--gold-light); }
   .page-hero-content h1 { font-size: clamp(2.5rem, 6vw, 4rem); color: var(--cream); }
 
   .contacts-layout { display: grid; grid-template-columns: 1fr 360px; gap: 4rem; align-items: start; }
-
   .contact-form-wrap h2 { font-size: 2rem; color: var(--deep-wood); }
   .form-intro { color: var(--text-light); margin-bottom: 2.5rem; line-height: 1.8; font-size: 0.95rem; }
   .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
@@ -175,41 +168,109 @@ import { contatti as c } from '../content/contatti';
   input:focus, select:focus, textarea:focus { border-color: var(--bark); }
   textarea { resize: vertical; min-height: 120px; }
 
+  /* ── CONFERMA & ERRORE ── */
+  .form-success, .form-error { display: none; }
+
+  .form-success {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: var(--cream);
+    border-top: 3px solid var(--gold);
+    margin-top: 1rem;
+  }
+  .success-icon {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    background: var(--forest);
+    color: var(--cream);
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.2rem;
+  }
+  .form-success h3 { font-family: var(--font-display); font-size: 1.8rem; color: var(--deep-wood); margin-bottom: 0.5rem; }
+  .form-success p { color: var(--text-light); font-size: 0.95rem; }
+
+  .form-error {
+    padding: 1rem 1.2rem;
+    background: #fff5f5;
+    border-left: 3px solid #c0392b;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #c0392b;
+  }
+
   /* ── SIDEBAR ── */
   .contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
   .info-card { background: var(--cream); padding: 1.8rem; border-top: 3px solid var(--gold); }
   .info-card h3 { font-family: var(--font-display); font-size: 1.4rem; color: var(--deep-wood); }
-
   .info-row { display: flex; align-items: flex-start; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid rgba(196,180,154,0.3); }
   .info-row:last-child { border-bottom: none; }
   .info-icon { font-size: 1.2rem; margin-top: 0.15rem; flex-shrink: 0; }
   .info-body { display: flex; flex-direction: column; gap: 0.5rem; flex: 1; }
   .info-label { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--bark); }
-
-  /* Riga persona (nome + link/numero) */
   .info-persona { display: flex; align-items: center; justify-content: space-between; gap: 0.8rem; }
   .info-nome { font-size: 0.82rem; font-weight: 500; color: var(--text-light); min-width: 50px; }
   .info-links { display: flex; align-items: center; gap: 0.8rem; }
   .info-persona a, .info-row a { font-size: 0.92rem; color: var(--text); text-decoration: none; transition: color 0.2s; }
   .info-persona a:hover, .info-row a:hover { color: var(--gold); }
-
-  /* Bottone WhatsApp */
   .wa-link { display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bark) !important; border: 1px solid var(--stone); padding: 0.2rem 0.6rem; border-radius: 20px; transition: background 0.2s, color 0.2s, border-color 0.2s !important; }
   .wa-link:hover { background: #25D366; color: white !important; border-color: #25D366; }
   .wa-icon { width: 14px; height: 14px; fill: currentColor; }
-
-  /* Indirizzo cliccabile */
   .indirizzo-link { display: flex; flex-direction: column; gap: 0.2rem; font-size: 0.92rem; color: var(--text); text-decoration: none; transition: color 0.2s; }
   .indirizzo-link:hover { color: var(--gold); }
   .indirizzo-hint { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bark); }
-
-  /* Check-in/out */
   .checkinout-row { display: flex; align-items: center; gap: 1.5rem; padding-top: 0.5rem; }
   .co-separator { width: 1px; height: 40px; background: var(--stone); opacity: 0.5; }
   .time { font-family: var(--font-display); font-size: 1.3rem; color: var(--deep-wood); }
+
+  /* ── BOTTONE LOADING ── */
+  .btn-loading { opacity: 0.7; cursor: not-allowed; pointer-events: none; }
 
   @media (max-width: 900px) {
     .contacts-layout { grid-template-columns: 1fr; }
     .form-row { grid-template-columns: 1fr; }
   }
 </style>
+
+<script define:vars={{ formspreeId: c.formspree_id }}>
+  const form      = document.getElementById('contact-form');
+  const btnSubmit = document.getElementById('btn-submit');
+  const success   = document.getElementById('form-success');
+  const error     = document.getElementById('form-error');
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // Stato loading
+    btnSubmit.textContent = 'Invio in corso...';
+    btnSubmit.classList.add('btn-loading');
+    error.style.display = 'none';
+
+    try {
+      const data = new FormData(form);
+      const res  = await fetch(`https://formspree.io/f/${formspreeId}`, {
+        method:  'POST',
+        body:    data,
+        headers: { 'Accept': 'application/json' },
+      });
+
+      if (res.ok) {
+        // Successo: nascondi form, mostra conferma
+        form.style.display        = 'none';
+        success.style.display     = 'block';
+        // Scrolla la conferma in vista
+        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else {
+        throw new Error('Risposta non OK');
+      }
+    } catch {
+      // Errore: mostra messaggio errore, ripristina bottone
+      error.style.display       = 'block';
+      btnSubmit.textContent     = 'Invia richiesta';
+      btnSubmit.classList.remove('btn-loading');
+    }
+  });
+</script>

@@ -1,129 +1,67 @@
 // ============================================================
 //  appartamento1.ts — contenuti dell'Appartamento 1
-//  Modifica qui testi, prezzi, dotazioni, regole e FOTO
+//  Per modificare la struttura delle fasce → prezzi.ts
 // ============================================================
+
+import type { PrezziAppartamento } from './prezzi';
 
 export const appartamento1 = {
 
-  // ── IDENTITÀ ──────────────────────────────────────────────
-  nome: "Mini appartamento",
-  eyebrow: "Primo piano",
-  ospiti_max: 2,
-  caratteristiche: "Fino a 2 ospiti · 1 camera da letto · 1 bagno",
+  nome:             "Mini appartamento",
+  eyebrow:          "Primo piano",
+  ospiti_max:       2,
+  caratteristiche:  "Fino a 2 ospiti · 1 camera da letto · 1 bagno",
 
-  // ── TESTI ─────────────────────────────────────────────────
-  sezione_eyebrow: "Perfetto per la tua esperienza in Trentino",
-  sezione_titolo: "TODO-Titolo",
-  descrizione_1: "TODO-Ideale per una coppia, offre tutto il necessario per un soggiorno rigenerante in montagna, in ogni stagione dell'anno.",
-  descrizione_2: "TODO-Appartamento luminoso e accogliente, con una camera da letto matrimoniale, un bagno moderno e una cucina completamente attrezzata. Perfetto per chi cerca intimità e relax, con la comodità di essere a pochi passi dalle meraviglie naturali del Trentino",
+  sezione_eyebrow:  "Perfetto per la tua esperienza in Trentino",
+  sezione_titolo:   "Mini appartamento (41m^2)",
+  descrizione_1:    "Mini appartamento ristrutturato, ideale per coppie e con tutti i confort necessari.",
+  descrizione_2:    "Dispone di camera matrimoniale, bagno moderno e cucina completamente attrezzata. Comfort e praticità in ogni dettaglio.",
+  descrizione_breve:"Accogliente e luminoso. Perfetto per coppie che cercano intimità e relax.",
 
-  // Testo breve per la card in Home
-  descrizione_breve: "Accogliente e luminoso. Perfetto per coppie che cercano intimità e relax.",
-
-  // ── FOTO ──────────────────────────────────────────────────
-  //
-  //  Come aggiungere foto:
-  //
-  //  OPZIONE A — foto caricate nella cartella del progetto:
-  //    1. Metti il file in:  public/foto/appartamento1/
-  //    2. Scrivi il percorso: "/foto/appartamento1/nome-del-file.jpg"
-  //
-  //  OPZIONE B — foto da Google Drive:
-  //    1. Apri la foto su Google Drive
-  //    2. Clic destro → "Ottieni link" → imposta "Chiunque abbia il link"
-  //    3. Copia l'ID dal link (la parte dopo /d/ e prima di /view)
-  //       Es: https://drive.google.com/file/d/  →ABC123←  /view
-  //    4. Scrivi: "https://drive.google.com/uc?export=view&id=ABC123"
-  //
-  //  OPZIONE C — foto da iCloud:
-  //    1. Apri icloud.com → Foto → seleziona la foto
-  //    2. Clicca "Condividi" → "Copia link"
-  //    3. Incolla il link direttamente
-  //
-  //  La prima foto è quella principale (grande).
-  //  Le altre appaiono nella griglia sotto.
-  //  Puoi aggiungere quante foto vuoi — basta aggiungere righe.
-  //
   foto: [
-    {
-      src: "/foto/appartamento1/soggiorno1-mini.jpeg",  // ← cambia con la tua foto
-      alt: "Soggiorno",
-    },
-    {
-      src: "/foto/appartamento1/soggiorno2-mini.jpeg",
-      alt: "Soggiorno",
-    },
-    {
-      src: "/foto/appartamento1/soggiorno3-mini.jpeg",
-      alt: "Soggiorno",
-    },
-    {
-      src: "/foto/appartamento1/cucina1-mini.jpeg",
-      alt: "Cucina",
-    },
-    {
-      src: "/foto/appartamento1/cucina2-mini.jpeg",
-      alt: "Cucina",
-    },
-    {
-      src: "/foto/appartamento1/camera1-mini.jpeg",
-      alt: "Camera da letto",
-    },
-    {
-      src: "/foto/appartamento1/camera2-mini.jpeg",
-      alt: "Camera da letto",
-    },
-    {
-      src: "/foto/appartamento1/camera3-mini.jpeg",
-      alt: "Camera da letto",
-    },
-    {
-      src: "/foto/appartamento1/cabinaArmadio-mini.jpeg",
-      alt: "Cabina armadio",
-    },
-    {
-      src: "/foto/appartamento1/lavanderia-mini.jpeg",
-      alt: "Lavatrice e asciugatrice",
-    },    
-    {
-      src: "/foto/appartamento1/bagno1-mini.jpeg",
-      alt: "Bagno",
-    },
-    {
-      src: "/foto/appartamento1/bagno2-mini.jpeg",
-      alt: "Bagno",
-    },
-    {
-      src: "/foto/appartamento1/atrio-mini.jpeg",
-      alt: "Atrio",
-    },
-    {
-      src: "/foto/generali/planimetria_p0.png",
-      alt: "Planimetria piano terra",
-    },
-    {
-      src: "/foto/generali/planimetria_p1.png",
-      alt: "Planimetria appartamento",
-    },
-    // Aggiungi altre foto qui sotto seguendo lo stesso formato:
-    // {
-    //   src: "/foto/appartamento1/altra-foto.jpg",
-    //   alt: "Descrizione della foto",
-    // },
+    { src: "/foto/appartamento1/soggiorno1-mini.jpeg", alt: "Soggiorno" },
+    { src: "/foto/appartamento1/soggiorno2-mini.jpeg", alt: "Soggiorno" },
+    { src: "/foto/appartamento1/soggiorno3-mini.jpeg", alt: "Soggiorno" },
+    { src: "/foto/appartamento1/cucina1-mini.jpeg",    alt: "Cucina" },
+    { src: "/foto/appartamento1/cucina2-mini.jpeg",    alt: "Cucina" },
+    { src: "/foto/appartamento1/camera1-mini.jpeg",    alt: "Camera da letto" },
+    { src: "/foto/appartamento1/camera2-mini.jpeg",    alt: "Camera da letto" },
+    { src: "/foto/appartamento1/camera3-mini.jpeg",    alt: "Camera da letto" },
+    { src: "/foto/appartamento1/cabinaArmadio-mini.jpeg", alt: "Cabina armadio" },
+    { src: "/foto/appartamento1/lavanderia-mini.jpeg", alt: "Lavatrice e asciugatrice" },
+    { src: "/foto/appartamento1/bagno1-mini.jpeg",     alt: "Bagno" },
+    { src: "/foto/appartamento1/bagno2-mini.jpeg",     alt: "Bagno" },
+    { src: "/foto/appartamento1/atrio-mini.jpeg",      alt: "Atrio" },
+    { src: "/foto/generali/planimetria_p0.png",        alt: "Planimetria piano terra" },
+    { src: "/foto/generali/planimetria_p1.png",        alt: "Planimetria appartamento" },
   ],
 
   // ── PREZZI ────────────────────────────────────────────────
+  // Struttura: numero di ospiti → voci prezzi
+  // Le chiavi corrispondono a quelle definite in prezzi.ts
   prezzi: {
-    feriale: 100,
-    festivo: 110,
-    alta_stagione_mesi: ["Giugno", "Luglio", "Agosto", "Dicembre", "Gennaio"],
-    alta_stagione: 115,
-    alta_stagione_cinque_notti: 525,
-    alta_stagione_sei_notti: 615,
-    nota: "Prezzi per notte, IVA inclusa. Pulizia finale inclusa nel prezzo.",
-  },
+    "1": {
+      bassa_feriale: 82,
+      bassa_festivo: 82,
+      bassa_tre:    70,   
+      bassa_sei:    74,
+      alta_notte:   86,
+      alta_tre:     78,   
+      alta_sei:     82,   
+    },
+    "2": {
+      bassa_feriale: 100,
+      bassa_festivo: 105,
+      bassa_tre:      90,   
+      bassa_sei:      95,   
+      alta_notte:    110,
+      alta_tre:      100,  
+      alta_sei:      105,  
+    },
+  } satisfies PrezziAppartamento,
 
-  // ── DOTAZIONI ─────────────────────────────────────────────
+  prezzi_nota: "Prezzi per notte, IVA inclusa. Pulizia finale inclusa nel prezzo.",
+
   dotazioni: [
     "Posto auto privato",
     "Wi-Fi gratuito",
@@ -138,7 +76,6 @@ export const appartamento1 = {
     "Zona parcheggio biciclette",
   ],
 
-  // ── REGOLE ────────────────────────────────────────────────
   regole: [
     "Check-in: 14:00 - 18:00",
     "Check-out: 08:00 - 11:00",
@@ -147,7 +84,6 @@ export const appartamento1 = {
     "Massimo 2 ospiti",
   ],
 
-  // ── SEO ───────────────────────────────────────────────────
-  seo_title: "Appartamento 1 — Mini appartamento",
+  seo_title:       "Appartamento 1 — Mini appartamento",
   seo_description: "Appartamento per 2 persone.",
 };

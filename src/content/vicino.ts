@@ -76,11 +76,27 @@ export const luoghiVicini = [
   },
   {
     categoria: "Escursioni / Sentieri" as Categoria,
+    nome: "Lago di Lagolo",
+    descrizione: "Luogo tranquillo con percorsi attorno al lago, adatto a tutta la famiglia.",
+    distanza: "12 km",
+    icona: "🏞️",
+    maps_url: "https://maps.app.goo.gl/ymyubkCE7Fwoehw67",
+  },
+  {
+    categoria: "Escursioni / Sentieri" as Categoria,
     nome: "Cima Gazza",
     descrizione: "Escursione impegnativa con vista spettacolare sulla Valle dei Laghi.",
     distanza: "5 km",
     icona: "⛰️",
     maps_url: "https://maps.google.com/maps?q=Cima+Gazza+Trentino",
+  },
+  {
+    categoria: "Escursioni / Sentieri" as Categoria,
+    nome: "Roggia di Calavino",
+    descrizione: "Sentiero nella natura.",
+    distanza: "2.6 km",
+    icona: "⛰️",
+    maps_url: "https://maps.app.goo.gl/E2afwYRWNKgXSrQL9",
   },
 
   // ── SCI / IMPIANTI ────────────────────────────────────────
@@ -113,7 +129,7 @@ export const luoghiVicini = [
 
     // ── ALTRO ───────────────────────────────────────────────
   {
-    categoria: "Altro" as Categoria,
+    categoria: "Esperienze" as Categoria,
     nome: "Paintball Park Trento (Vezzano)",
     descrizione: "Campo di paintball",
     distanza: "5 km",

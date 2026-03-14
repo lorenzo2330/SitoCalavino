@@ -30,22 +30,22 @@ export const chiSiamo = {
   proprietari: [
     {
       nome: "Sara",
-      ruolo: "Ospitalità & Comunicazione",
-      bio: "Sono la persona di riferimento per prenotazioni e accoglienza. Amo che ogni ospite si senta a casa fin dal primo momento — per questo curo ogni dettaglio, dalla biancheria ai consigli sui sentieri migliori della stagione.",
+      ruolo: "",
+      bio: "TODO: Descrizione Sara",
       // Metti la foto in public/foto/chisiamo/ e aggiorna il percorso
       foto: "/foto/chisiamo/sara.png",   // ← sostituisci con la tua foto
       foto_alt: "Sara, proprietaria",
       contatto_label: "Scrivimi",
-      contatto_href: "/contatti",
+      contatto_href: "https://wa.me/393292844904",
     },
     {
       nome: "Simone",
-      ruolo: "Gestione & Manutenzione",
-      bio: "Mi occupo di tutto ciò che riguarda gli appartamenti: ristrutturazioni, manutenzione e miglioramenti continui. Il mio obiettivo è che ogni soggiorno sia ancora più bello del precedente.",
+      ruolo: "",
+      bio: "TODO: Descrizione Simone",
       foto: "/foto/chisiamo/simone.png",  // ← sostituisci con la tua foto
       foto_alt: "Simone, proprietario",
       contatto_label: "Scrivimi",
-      contatto_href: "/contatti",
+      contatto_href: "https://wa.me/393341003503",
     },
   ],
 

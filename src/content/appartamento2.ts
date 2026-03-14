@@ -1,193 +1,91 @@
 // ============================================================
 //  appartamento2.ts — contenuti dell'Appartamento 2
-//  Modifica qui testi, prezzi, dotazioni e regole
+//  Per modificare la struttura delle fasce → prezzi.ts
 // ============================================================
+
+import type { PrezziAppartamento } from './prezzi';
 
 export const appartamento2 = {
 
-  // ── IDENTITÀ ──────────────────────────────────────────────
-  nome: "Appartamento Duplex",
-  eyebrow: "Secondo e terzo piano",
-  ospiti_max: 5,
-  caratteristiche: "Fino a 5 ospiti · 2 camere da letto · 2 bagni",
+  nome:             "Appartamento Duplex",
+  eyebrow:          "Secondo e terzo piano",
+  ospiti_max:       4,
+  caratteristiche:  "Fino a 4 ospiti · 2 camere da letto · 2 bagni",
 
-  // ── TESTI ─────────────────────────────────────────────────
-  sezione_eyebrow: "Perfetto per la tua esperienza in Trentino",
-  sezione_titolo: "TODO-Titolo",
-  descrizione_1: "TODO-Descrizione 1",
-  descrizione_2: "TODO-Descrizione 2",
+  sezione_eyebrow:  "Perfetto per la tua esperienza in Trentino",
+  sezione_titolo:   "Appartamento Duplex (98m^2)",
+  descrizione_1:    "Spazioso e luminoso appartamento su due piani con vista panoramica sulle montagne del Trentino.",
+  descrizione_2:    "Dispone di due camere da letto con cabina armadio e due bagni, uno per piano. La cucina, ampia e luminosissima grazie alle finestre a Velux, è completamente attrezzata. Il soggiorno, altrettanto spazioso, si apre su un balcone con vista.",
+  descrizione_breve:"Appartamento su due piani con vista panoramica sulle montagne del Trentino",
 
-  // Testo breve per la card in Home
-  descrizione_breve: "Appartamento su due piani con vista panoramica sulle montagne del Trentino",
-
-  // ── FOTO ──────────────────────────────────────────────────
-  //
-  //  Come aggiungere foto:
-  //
-  //  OPZIONE A — foto caricate nella cartella del progetto:
-  //    1. Metti il file in:  public/foto/appartamento2/
-  //    2. Scrivi il percorso: "/foto/appartamento2/nome-del-file.jpg"
-  //
-  //  OPZIONE B — foto da Google Drive:
-  //    1. Apri la foto su Google Drive
-  //    2. Clic destro → "Ottieni link" → imposta "Chiunque abbia il link"
-  //    3. Copia l'ID dal link (la parte dopo /d/ e prima di /view)
-  //       Es: https://drive.google.com/file/d/  →ABC123←  /view
-  //    4. Scrivi: "https://drive.google.com/uc?export=view&id=ABC123"
-  //
-  //  OPZIONE C — foto da iCloud:
-  //    1. Apri icloud.com → Foto → seleziona la foto
-  //    2. Clicca "Condividi" → "Copia link"
-  //    3. Incolla il link direttamente
-  //
-  //  La prima foto è quella principale (grande).
-  //  Le altre appaiono nella griglia sotto.
-  //  Puoi aggiungere quante foto vuoi — basta aggiungere righe.
-  //
   foto: [
-    {
-      src: "/foto/appartamento2/cucina1-duplex.jpeg",
-      alt: "Cucina",
-    },
-    {
-      src: "/foto/appartamento2/cucina2-duplex.jpeg",
-      alt: "Cucina",
-    },
-    {
-      src: "/foto/appartamento2/cucina3-duplex.jpeg",
-      alt: "Cucina",
-    },
-    {
-      src: "/foto/appartamento2/cucina4-duplex.jpeg",
-      alt: "Cucina",
-    },
-    {
-      src: "/foto/appartamento2/camera1-duplex.jpeg",
-      alt: "Camera da letto",
-    },
-    {
-      src: "/foto/appartamento2/camera2-duplex.jpeg",
-      alt: "Camera da letto",
-    },
-    {
-      src: "/foto/appartamento2/camera3-duplex.jpeg",
-      alt: "Camera da letto",
-    },
-    {
-      src: "/foto/appartamento2/camera4-duplex.jpeg",
-      alt: "Camera da letto",
-    },
-    {
-      src: "/foto/appartamento2/camera5-duplex.jpeg",
-      alt: "Camera da letto",
-    },
-    {
-      src: "/foto/appartamento2/camera6-duplex.jpeg",
-      alt: "Camera da letto",
-    },
-    {
-      src: "/foto/appartamento2/camera7-duplex.jpeg",
-      alt: "Camera da letto",
-    },
-    {
-      src: "/foto/appartamento2/camera8-duplex.jpeg",
-      alt: "Camera da letto",
-    },
-    {
-      src: "/foto/appartamento2/bagno1-duplex.jpeg",
-      alt: "Bagno",
-    },
-    {
-      src: "/foto/appartamento2/bagno2-duplex.jpeg",
-      alt: "Bagno",
-    },
-    {
-      src: "/foto/appartamento2/bagno3-duplex.jpeg",
-      alt: "Bagno",
-    },
-    {
-      src: "/foto/appartamento2/bagno4-duplex.jpeg",
-      alt: "Bagno",
-    },
-    {
-      src: "/foto/appartamento2/bagno5-duplex.jpeg",
-      alt: "Bagno",
-    },
-    {
-      src: "/foto/appartamento2/bagno6-duplex.jpeg",
-      alt: "Bagno",
-    },
-    {
-      src: "/foto/appartamento2/soggiorno1-duplex.jpeg",
-      alt: "Soggiorno",
-    },
-    {
-      src: "/foto/appartamento2/soggiorno2-duplex.jpeg",
-      alt: "Soggiorno",
-    },
-    {
-      src: "/foto/appartamento2/soggiorno3-duplex.jpeg",
-      alt: "Soggiorno",
-    },
-    {
-      src: "/foto/appartamento2/esterno1-duplex.jpeg",
-      alt: "Esterno",
-    },
-    {
-      src: "/foto/appartamento2/esterno2-duplex.jpeg",
-      alt: "Esterno",
-    },
-    {
-      src: "/foto/appartamento2/esterno3-duplex.jpeg",
-      alt: "Esterno",
-    },
-    {
-      src: "/foto/appartamento2/esterno4-duplex.jpeg",
-      alt: "Esterno",
-    },
-    {
-      src: "/foto/appartamento2/vista1-duplex.jpeg",
-      alt: "Vista",
-    },
-    {
-      src: "/foto/appartamento2/vista2-duplex.jpeg",
-      alt: "Vista",
-    },
-    {
-      src: "/foto/appartamento2/vista3-duplex.jpeg",
-      alt: "Vista",
-    },
-    {
-      src: "/foto/generali/planimetria_p0.png",
-      alt: "Planimetria piano terra",
-    },
-    {
-      src: "/foto/generali/planimetria_p2.png",
-      alt: "Planimetria appartamento (secondo piano)",
-    },
-    {
-      src: "/foto/generali/planimetria_p3.png",
-      alt: "Planimetria appartamento (terzo piano)",
-    },
-    // Aggiungi altre foto qui sotto seguendo lo stesso formato:
-    // {
-    //   src: "/foto/appartamento2/altra-foto.jpg",
-    //   alt: "Descrizione della foto",
-    // },
+    { src: "/foto/appartamento2/cucina1-duplex.jpeg",   alt: "Cucina" },
+    { src: "/foto/appartamento2/cucina2-duplex.jpeg",   alt: "Cucina" },
+    { src: "/foto/appartamento2/cucina3-duplex.jpeg",   alt: "Cucina" },
+    { src: "/foto/appartamento2/cucina4-duplex.jpeg",   alt: "Cucina" },
+    { src: "/foto/appartamento2/camera1-duplex.jpeg",   alt: "Camera da letto" },
+    { src: "/foto/appartamento2/camera2-duplex.jpeg",   alt: "Camera da letto" },
+    { src: "/foto/appartamento2/camera3-duplex.jpeg",   alt: "Camera da letto" },
+    { src: "/foto/appartamento2/camera4-duplex.jpeg",   alt: "Camera da letto" },
+    { src: "/foto/appartamento2/camera5-duplex.jpeg",   alt: "Camera da letto" },
+    { src: "/foto/appartamento2/camera6-duplex.jpeg",   alt: "Camera da letto" },
+    { src: "/foto/appartamento2/camera7-duplex.jpeg",   alt: "Camera da letto" },
+    { src: "/foto/appartamento2/camera8-duplex.jpeg",   alt: "Camera da letto" },
+    { src: "/foto/appartamento2/bagno1-duplex.jpeg",    alt: "Bagno" },
+    { src: "/foto/appartamento2/bagno2-duplex.jpeg",    alt: "Bagno" },
+    { src: "/foto/appartamento2/bagno3-duplex.jpeg",    alt: "Bagno" },
+    { src: "/foto/appartamento2/bagno4-duplex.jpeg",    alt: "Bagno" },
+    { src: "/foto/appartamento2/bagno5-duplex.jpeg",    alt: "Bagno" },
+    { src: "/foto/appartamento2/bagno6-duplex.jpeg",    alt: "Bagno" },
+    { src: "/foto/appartamento2/soggiorno1-duplex.jpeg",alt: "Soggiorno" },
+    { src: "/foto/appartamento2/soggiorno2-duplex.jpeg",alt: "Soggiorno" },
+    { src: "/foto/appartamento2/soggiorno3-duplex.jpeg",alt: "Soggiorno" },
+    { src: "/foto/appartamento2/esterno1-duplex.jpeg",  alt: "Esterno" },
+    { src: "/foto/appartamento2/esterno2-duplex.jpeg",  alt: "Esterno" },
+    { src: "/foto/appartamento2/esterno3-duplex.jpeg",  alt: "Esterno" },
+    { src: "/foto/appartamento2/esterno4-duplex.jpeg",  alt: "Esterno" },
+    { src: "/foto/appartamento2/vista1-duplex.jpeg",    alt: "Vista" },
+    { src: "/foto/appartamento2/vista2-duplex.jpeg",    alt: "Vista" },
+    { src: "/foto/appartamento2/vista3-duplex.jpeg",    alt: "Vista" },
+    { src: "/foto/generali/planimetria_p0.png",         alt: "Planimetria piano terra" },
+    { src: "/foto/generali/planimetria_p2.png",         alt: "Planimetria appartamento (secondo piano)" },
+    { src: "/foto/generali/planimetria_p3.png",         alt: "Planimetria appartamento (terzo piano)" },
   ],
 
   // ── PREZZI ────────────────────────────────────────────────
+  // Placeholder 999 — da aggiornare quando i prezzi sono definiti
   prezzi: {
-    feriale: 115,
-    festivo: 125,
-    alta_stagione_mesi: ["Giugno", "Luglio", "Agosto", "Dicembre", "Gennaio"],
-    alta_stagione: 130,
-    alta_stagione_cinque_notti: 600,
-    alta_stagione_sei_notti: 700,
-    nota: "Prezzi per notte, IVA inclusa. Pulizia finale inclusa nel prezzo.",
-  },
+    "2": {
+      bassa_feriale: 110,
+      bassa_festivo: 115,
+      bassa_tre: 100,
+      bassa_sei: 105,
+      alta_notte:   120,
+      alta_tre:     110,
+      alta_sei:     115,
+    },
+    "3": {
+      bassa_feriale: 134,
+      bassa_festivo: 140,
+      bassa_tre: 122,
+      bassa_sei: 128,
+      alta_notte:   146,
+      alta_tre:     134,
+      alta_sei:     140,
+    },
+    "4": {
+      bassa_feriale: 140,
+      bassa_festivo: 146,
+      bassa_tre: 127,
+      bassa_sei: 133,
+      alta_notte:   152,
+      alta_tre:     127,
+      alta_sei:     146,
+    },
+  } satisfies PrezziAppartamento,
 
-  // ── DOTAZIONI ─────────────────────────────────────────────
+  prezzi_nota: "Prezzi per notte, IVA inclusa. Pulizia finale inclusa nel prezzo.",
+
   dotazioni: [
     "Wi-Fi gratuito",
     "Cucina (forno, fornello ad induzione, macchina del caffè, frigo, freezer, lavastoviglie, lavandino)",
@@ -201,16 +99,14 @@ export const appartamento2 = {
     "Bagno privato (doccia, asciugacapelli e set di cortesia)",
   ],
 
-  // ── REGOLE ────────────────────────────────────────────────
   regole: [
     "Check-in: 14:00 - 18:00",
     "Check-out: 08:00 - 11:00",
     "Non fumatori",
     "Animali non ammessi",
-    "Massimo 5 ospiti",
+    "Massimo 4 ospiti",
   ],
 
-  // ── SEO ───────────────────────────────────────────────────
-  seo_title: "Appartamento 2 — Appartamento Duplex",
-  seo_description: "Appartamento per 5 persone.",
+  seo_title:       "Appartamento 2 — Appartamento Duplex",
+  seo_description: "Appartamento per 4 persone.",
 };

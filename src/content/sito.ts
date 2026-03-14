@@ -13,12 +13,12 @@ export const sito = {
     eyebrow: "Rifugio in quota",
     titolo_1: "Dove la vacanza",
     titolo_2: "diventa casa",
-    sottotitolo: "Due appartamenti immersi nel silenzio dei boschi.\nComfort autentico, natura a portata di mano.",
+    sottotitolo: "",
   },
 
   intro: {
     eyebrow: "Il nostro alloggio",
-    titolo: "Un'esperienza autentica\ntra natura e comfort",
+    titolo: "La nostra struttura",
     testo: "Calavino è sinonimo di tranquillità, aria pulita e panorami mozzafiato. I nostri due appartamenti sono stati curati nei minimi dettagli per offrire tutto ciò di cui hai bisogno, senza rinunciare al calore di un luogo che sembra fatto su misura per te.",
   },
 

@@ -38,10 +38,8 @@ const piattaformaLogo: Record<string, string> = {
   <!-- INTRO -->
   <section class="section text-center">
     <div class="container">
-      <span class="eyebrow">{sito.intro.eyebrow}</span>
       <h2 class="intro-title">{sito.intro.titolo}</h2>
       <div class="divider"></div>
-      <p class="intro-text">{sito.intro.testo}</p>
     </div>
   </section>
 
@@ -167,6 +165,7 @@ const piattaformaLogo: Record<string, string> = {
           <option value="Escursioni / Sentieri">🥾 Escursioni / Sentieri</option>
           <option value="Sci / Impianti">⛷️ Sci / Impianti</option>
           <option value="Negozi / Supermercati">🛒 Negozi / Supermercati</option>
+          <option value="Esperienze"> 🎉 Esperienze</option>
         </select>
       </div>
 
@@ -208,7 +207,7 @@ const piattaformaLogo: Record<string, string> = {
 <style is:global>
   /* ── HERO ── */
   .hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; background: var(--deep-wood); }
-  .hero-bg { position: absolute; inset: 0; background: linear-gradient(160deg, rgba(44,62,45,0.7) 0%, rgba(74,55,40,0.5) 60%, rgba(28,28,28,0.8) 100%), url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1800&q=80') center/cover no-repeat; }
+  .hero-bg { position: absolute; inset: 0; background: linear-gradient(160deg, rgba(44,62,45,0.7) 0%, rgba(74,55,40,0.5) 60%, rgba(28,28,28,0.8) 100%), url('/foto/generali/home.jpeg') center/cover no-repeat; }
   .hero-content { position: relative; z-index: 2; text-align: center; padding: 2rem; max-width: 760px; }
   .hero-content .eyebrow { color: var(--gold-light); }
   .hero-title { font-size: clamp(3rem, 8vw, 6rem); color: var(--cream); margin-bottom: 1.5rem; line-height: 1.05; }
