@@ -84,7 +84,6 @@ const fasceJson  = JSON.stringify(fascePrezzi);
           <h3>Prezzi per notte</h3>
           <div class="divider" style="margin: 1rem 0;"></div>
 
-          <!-- SELETTORE OSPITI -->
           <div class="ospiti-selector">
             <p class="ospiti-label">Numero di ospiti</p>
             <div class="ospiti-btns" id="ospiti-btns">
@@ -101,10 +100,7 @@ const fasceJson  = JSON.stringify(fascePrezzi);
           </div>
 
           <div class="price-separator"></div>
-
-          <!-- TABELLA PREZZI — aggiornata via JS -->
           <div id="price-rows"></div>
-
           <div class="price-separator"></div>
           <p class="price-note">* {apt.prezzi_nota}</p>
           <a href="/contatti" class="btn btn-primary" style="width:100%; text-align:center; margin-top:1.5rem; display:block;">
@@ -116,16 +112,97 @@ const fasceJson  = JSON.stringify(fascePrezzi);
     </div>
   </section>
 
+  <!-- DISPONIBILITÀ -->
+  <section class="section disponibilita-section">
+    <div class="container">
+      <div class="disp-header">
+        <span class="eyebrow">Calendario</span>
+        <h2 class="disp-titolo">Disponibilità</h2>
+        <div class="divider" style="margin-left:0"></div>
+        <p class="disp-intro">
+          Il calendario è sincronizzato automaticamente con Booking.com, Airbnb e le prenotazioni dirette.
+          Seleziona le date di arrivo e partenza per verificare la disponibilità.
+        </p>
+      </div>
+
+      <div class="disp-legenda">
+        <span class="legenda-item"><span class="legenda-dot dot-libero"></span>Disponibile</span>
+        <span class="legenda-item"><span class="legenda-dot dot-occupato"></span>Non disponibile</span>
+        <span class="legenda-item"><span class="legenda-dot dot-oggi"></span>Oggi</span>
+        <span class="legenda-item"><span class="legenda-dot dot-selezionato"></span>Selezionato</span>
+      </div>
+
+      <div class="cal-nav">
+        <button class="cal-nav-btn" id="cal-prev" aria-label="Mese precedente">&#8592;</button>
+        <span class="cal-nav-label" id="cal-label"></span>
+        <button class="cal-nav-btn" id="cal-next" aria-label="Mese successivo">&#8594;</button>
+      </div>
+
+      <div class="cal-grid" id="cal-grid">
+        <div class="cal-mese" id="cal-mese-1">
+          <div class="cal-mese-titolo" id="cal-mese-titolo-1"></div>
+          <div class="cal-giorni-header">
+            <span>Lu</span><span>Ma</span><span>Me</span><span>Gi</span>
+            <span>Ve</span><span>Sa</span><span>Do</span>
+          </div>
+          <div class="cal-giorni" id="cal-giorni-1"></div>
+        </div>
+        <div class="cal-mese" id="cal-mese-2">
+          <div class="cal-mese-titolo" id="cal-mese-titolo-2"></div>
+          <div class="cal-giorni-header">
+            <span>Lu</span><span>Ma</span><span>Me</span><span>Gi</span>
+            <span>Ve</span><span>Sa</span><span>Do</span>
+          </div>
+          <div class="cal-giorni" id="cal-giorni-2"></div>
+        </div>
+      </div>
+
+      <div class="disp-riepilogo" id="disp-riepilogo" style="display:none">
+        <div class="riepilogo-inner">
+          <div class="riepilogo-date">
+            <div class="riepilogo-campo">
+              <span class="riepilogo-label">Arrivo</span>
+              <span class="riepilogo-valore" id="riepilogo-checkin">—</span>
+            </div>
+            <div class="riepilogo-sep">→</div>
+            <div class="riepilogo-campo">
+              <span class="riepilogo-label">Partenza</span>
+              <span class="riepilogo-valore" id="riepilogo-checkout">—</span>
+            </div>
+            <div class="riepilogo-notti" id="riepilogo-notti"></div>
+          </div>
+          <div class="riepilogo-azioni">
+            <button class="btn-reset-date" id="btn-reset-date">✕ Cancella</button>
+            <a href="#" class="btn btn-primary" id="btn-richiedi">Richiedi disponibilità →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="disp-stato" id="disp-stato">
+        <span class="disp-loading" id="disp-loading">Caricamento disponibilità…</span>
+        <span class="disp-errore" id="disp-errore" style="display:none">
+          ⚠️ Impossibile caricare il calendario. Contattaci per verificare la disponibilità.
+        </span>
+      </div>
+
+      <div style="text-align:center; margin-top:2rem;" id="disp-cta-default">
+        <a href="/contatti" class="btn btn-primary">Richiedi disponibilità</a>
+      </div>
+    </div>
+  </section>
+
 </Layout>
 
 <style is:global>
+  /* ── HERO ── */
   .apt-hero { position: relative; height: 65vh; min-height: 400px; display: flex; align-items: flex-end; overflow: hidden; }
   .apt-hero-bg { position: absolute; inset: 0; background: linear-gradient(to top, rgba(28,28,28,0.85) 0%, rgba(74,55,40,0.3) 60%, transparent 100%), url('/foto/appartamento2/cucina1-duplex.jpeg') center/cover no-repeat; }
-  .apt-hero-content { position: relative; z-index: 2; padding: 3rem; color: var(--cream); }
+  .apt-hero-content { position: relative; z-index: 2; padding: 2.5rem 3.5rem; color: var(--cream); background: rgba(28,20,14,0.45); border: 1px solid rgba(184,146,42,0.5); backdrop-filter: blur(2px); margin: 0 3rem 3rem; }
   .apt-hero-content .eyebrow { color: var(--gold-light); }
   .apt-hero-content h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); color: var(--cream); margin-bottom: 0.5rem; }
   .apt-hero-content p { color: rgba(245,240,232,0.75); font-size: 0.9rem; letter-spacing: 0.1em; }
 
+  /* ── LAYOUT ── */
   .apt-layout { display: grid; grid-template-columns: 1fr 340px; gap: 4rem; align-items: start; }
   .apt-desc h2 { font-size: 2.2rem; color: var(--deep-wood); margin-bottom: 0.5rem; }
   .apt-desc p { color: var(--text-light); line-height: 1.9; }
@@ -161,35 +238,70 @@ const fasceJson  = JSON.stringify(fascePrezzi);
   /* ── PRICE CARD ── */
   .price-card { background: var(--cream); padding: 2rem; position: sticky; top: 100px; border-top: 3px solid var(--gold); }
   .price-card h3 { font-family: var(--font-display); font-size: 1.5rem; color: var(--deep-wood); }
-
-  /* Selettore ospiti */
   .ospiti-selector { margin: 1.2rem 0 0; }
   .ospiti-label { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bark); margin-bottom: 0.7rem; }
   .ospiti-btns { display: flex; gap: 0.5rem; }
-  .ospiti-btn {
-    flex: 1;
-    padding: 0.55rem 0;
-    font-family: var(--font-body);
-    font-size: 0.95rem;
-    font-weight: 400;
-    color: var(--bark);
-    background: var(--warm-white);
-    border: 1px solid var(--stone);
-    border-radius: var(--radius);
-    cursor: pointer;
-    transition: background 0.2s, color 0.2s, border-color 0.2s;
-  }
+  .ospiti-btn { flex: 1; padding: 0.55rem 0; font-family: var(--font-body); font-size: 0.95rem; font-weight: 400; color: var(--bark); background: var(--warm-white); border: 1px solid var(--stone); border-radius: var(--radius); cursor: pointer; transition: background 0.2s, color 0.2s, border-color 0.2s; }
   .ospiti-btn:hover { border-color: var(--bark); }
   .ospiti-btn.attivo { background: var(--deep-wood); color: var(--cream); border-color: var(--deep-wood); }
-
-  /* Righe prezzi generate da JS */
   .price-fascia-label { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bark); margin: 1rem 0 0.3rem; }
   .price-fascia-mesi { font-size: 0.75rem; font-weight: 300; color: var(--text-light); letter-spacing: 0; text-transform: none; display: block; margin-bottom: 0.2rem; }
-  .price-row { display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 0; font-size: 0.95rem; color: var(--text-light); transition: opacity 0.2s; }
+  .price-row { display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 0; font-size: 0.95rem; color: var(--text-light); }
   .price-row strong { font-family: var(--font-display); font-size: 1.4rem; color: var(--deep-wood); font-weight: 600; }
   .price-separator { height: 1px; background: var(--stone); margin: 1rem 0; opacity: 0.4; }
   .price-note { font-size: 0.75rem; color: var(--text-light); line-height: 1.6; }
 
+  /* ── DISPONIBILITÀ ── */
+  .disponibilita-section { background: var(--cream); }
+  .disp-header { margin-bottom: 2rem; }
+  .disp-titolo { font-size: clamp(1.8rem, 3vw, 2.6rem); color: var(--deep-wood); margin-bottom: 0.5rem; }
+  .disp-intro { color: var(--text-light); font-size: 0.9rem; line-height: 1.8; max-width: 580px; margin-top: 0.5rem; }
+  .disp-legenda { display: flex; gap: 1.5rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+  .legenda-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; color: var(--text-light); letter-spacing: 0.05em; }
+  .legenda-dot { width: 14px; height: 14px; border-radius: 3px; flex-shrink: 0; }
+  .dot-libero      { background: var(--warm-white); border: 1px solid var(--stone); }
+  .dot-occupato    { background: #c0392b22; border: 1px solid #c0392b55; }
+  .dot-oggi        { background: var(--gold); border: 1px solid var(--gold); }
+  .dot-selezionato { background: var(--deep-wood); border: 1px solid var(--deep-wood); }
+  .disp-riepilogo { background: var(--warm-white); border: 1px solid var(--gold); border-top: 3px solid var(--gold); padding: 1.2rem 1.5rem; margin-top: 2rem; margin-bottom: 1.5rem; }
+  .riepilogo-inner { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; }
+  .riepilogo-date { display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap; }
+  .riepilogo-campo { display: flex; flex-direction: column; gap: 0.2rem; }
+  .riepilogo-label { font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bark); }
+  .riepilogo-valore { font-family: var(--font-display); font-size: 1.2rem; color: var(--deep-wood); }
+  .riepilogo-sep { color: var(--stone); font-size: 1.2rem; margin-top: 0.8rem; }
+  .riepilogo-notti { font-size: 0.8rem; color: var(--bark); background: var(--cream); border: 1px solid var(--stone); padding: 0.2rem 0.7rem; border-radius: 20px; margin-top: 0.8rem; white-space: nowrap; }
+  .riepilogo-azioni { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+  .btn-reset-date { font-family: var(--font-body); font-size: 0.75rem; letter-spacing: 0.1em; color: var(--text-light); background: none; border: none; cursor: pointer; padding: 0.3rem 0; transition: color 0.2s; }
+  .btn-reset-date:hover { color: var(--deep-wood); }
+  .cal-nav { display: flex; align-items: center; gap: 1.2rem; margin-bottom: 1.5rem; }
+  .cal-nav-btn { background: var(--warm-white); border: 1px solid var(--stone); color: var(--bark); width: 2.4rem; height: 2.4rem; border-radius: 50%; font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s, color 0.2s, border-color 0.2s; }
+  .cal-nav-btn:hover { background: var(--bark); color: var(--cream); border-color: var(--bark); }
+  .cal-nav-label { font-family: var(--font-display); font-size: 1.1rem; color: var(--deep-wood); letter-spacing: 0.05em; min-width: 200px; }
+  .cal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .cal-mese { background: var(--warm-white); border: 1px solid var(--stone); padding: 1.5rem; }
+  .cal-mese-titolo { font-family: var(--font-display); font-size: 1.2rem; color: var(--deep-wood); margin-bottom: 1rem; text-transform: capitalize; }
+  .cal-giorni-header { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; margin-bottom: 4px; }
+  .cal-giorni-header span { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bark); text-align: center; padding: 4px 0; }
+  .cal-giorni { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
+  .cal-giorno { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; font-size: 0.82rem; color: var(--text); border-radius: 3px; transition: background 0.15s, color 0.15s; font-weight: 300; user-select: none; }
+  .cal-giorno.vuoto    { background: transparent; pointer-events: none; }
+  .cal-giorno.libero   { background: var(--warm-white); border: 1px solid transparent; cursor: pointer; }
+  .cal-giorno.libero:hover { border-color: var(--bark); background: var(--cream); }
+  .cal-giorno.occupato { background: rgba(192,57,43,0.1); color: #9b2f22; text-decoration: line-through; text-decoration-color: rgba(192,57,43,0.4); cursor: not-allowed; }
+  .cal-giorno.passato  { opacity: 0.3; cursor: default; pointer-events: none; }
+  .cal-giorno.oggi     { background: var(--gold); color: var(--cream); font-weight: 500; cursor: pointer; }
+  .cal-giorno.sel-inizio,
+  .cal-giorno.sel-fine { background: var(--deep-wood) !important; color: var(--cream) !important; font-weight: 500; cursor: pointer; }
+  .cal-giorno.sel-range   { background: rgba(74,55,40,0.12) !important; }
+  .cal-giorno.hover-range { background: rgba(74,55,40,0.07) !important; }
+  .disp-stato { margin-top: 1rem; min-height: 1.5rem; }
+  .disp-loading { font-size: 0.82rem; color: var(--text-light); display: flex; align-items: center; gap: 0.5rem; }
+  .disp-loading::before { content: ''; display: inline-block; width: 12px; height: 12px; border: 2px solid var(--stone); border-top-color: var(--bark); border-radius: 50%; animation: spin 0.8s linear infinite; }
+  .disp-errore { font-size: 0.85rem; color: #9b2f22; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
     .apt-layout { grid-template-columns: 1fr; }
     .apt-sidebar { order: -1; }
@@ -197,20 +309,24 @@ const fasceJson  = JSON.stringify(fascePrezzi);
     .dotazioni-grid { grid-template-columns: 1fr; }
     .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); }
     .gallery-main { height: 280px; }
+    .cal-grid { grid-template-columns: 1fr; }
+    .cal-nav-label { min-width: 140px; font-size: 0.95rem; }
+    .riepilogo-inner { flex-direction: column; align-items: flex-start; }
+    .apt-hero-content { margin: 0 1rem 2rem; padding: 1.5rem 2rem; }
   }
 </style>
 
 <script>
-  // ── GALLERIA ──────────────────────────────────────────────
-  const foto        = JSON.parse(document.getElementById('gallery')!.dataset.foto!);
-  const imgPrinc    = document.getElementById('foto-principale') as HTMLImageElement;
-  const altEl       = document.getElementById('gallery-alt') as HTMLElement;
-  const countEl     = document.getElementById('gallery-count') as HTMLElement;
-  const thumbs      = document.querySelectorAll<HTMLButtonElement>('.gallery-thumb');
-  const btnPrev     = document.getElementById('arrow-prev') as HTMLButtonElement;
-  const btnNext     = document.getElementById('arrow-next') as HTMLButtonElement;
-  const totFoto     = foto.length;
-  let corrente      = 0;
+  // ── GALLERIA ──
+  const foto     = JSON.parse(document.getElementById('gallery')!.dataset.foto!);
+  const imgPrinc = document.getElementById('foto-principale') as HTMLImageElement;
+  const altEl    = document.getElementById('gallery-alt') as HTMLElement;
+  const countEl  = document.getElementById('gallery-count') as HTMLElement;
+  const thumbs   = document.querySelectorAll<HTMLButtonElement>('.gallery-thumb');
+  const btnPrev  = document.getElementById('arrow-prev') as HTMLButtonElement;
+  const btnNext  = document.getElementById('arrow-next') as HTMLButtonElement;
+  const totFoto  = foto.length;
+  let corrente   = 0;
 
   function vaiFoto(i: number) {
     corrente = (i + totFoto) % totFoto;
@@ -234,7 +350,7 @@ const fasceJson  = JSON.stringify(fascePrezzi);
     if (e.key === 'ArrowRight') vaiFoto(corrente + 1);
   });
 
-  // ── PREZZI ────────────────────────────────────────────────
+  // ── PREZZI ──
   const card        = document.getElementById('price-card')!;
   const prezziTutti = JSON.parse(card.dataset.prezzi!);
   const fasce       = JSON.parse(card.dataset.fasce!);
@@ -244,20 +360,13 @@ const fasceJson  = JSON.stringify(fascePrezzi);
   function renderPrezzi(ospiti: string) {
     const p = prezziTutti[ospiti];
     if (!p) return;
-
     let html = '';
     for (const fascia of fasce) {
       html += `<p class="price-fascia-label">${fascia.label}</p>`;
-      if (fascia.mesi?.length) {
-        html += `<p class="price-fascia-mesi">${fascia.mesi.join(', ')}</p>`;
-      }
+      if (fascia.mesi?.length) html += `<p class="price-fascia-mesi">${fascia.mesi.join(', ')}</p>`;
       for (const voce of fascia.voci) {
         const valore = p[voce.chiave] ?? '—';
-        html += `
-          <div class="price-row">
-            <span>${voce.label}</span>
-            <strong>€${valore}</strong>
-          </div>`;
+        html += `<div class="price-row"><span>${voce.label}</span><strong>€${valore}</strong></div>`;
       }
     }
     rowsEl.innerHTML = html;
@@ -270,8 +379,179 @@ const fasceJson  = JSON.stringify(fascePrezzi);
       renderPrezzi(btn.dataset.ospiti!);
     });
   });
+  renderPrezzi(ospitiBtns[0]?.dataset.ospiti ?? '1');
 
-  // Inizializza con il primo valore
-  const primoOspiti = ospitiBtns[0]?.dataset.ospiti ?? '1';
-  renderPrezzi(primoOspiti);
+  // ── DISPONIBILITÀ ──
+  const apiUrl  = '/api/disponibilita-apt2';
+  const aptNome = 'Appartamento Duplex';
+
+  const MESI_IT    = ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno','Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'];
+  const MESI_BREVI = ['Gen','Feb','Mar','Apr','Mag','Giu','Lug','Ago','Set','Ott','Nov','Dic'];
+
+  let occupiedDays = new Set<string>();
+  let baseYear  = new Date().getFullYear();
+  let baseMonth = new Date().getMonth();
+  let selInizio: string | null = null;
+  let selFine:   string | null = null;
+  let clickInProgress = false;
+
+  const dayElements = new Map<string, HTMLElement>();
+
+  function dateToStr(d: Date) { return d.toISOString().substring(0, 10); }
+  function strToDate(s: string) { return new Date(s + 'T00:00:00'); }
+  function formatIT(s: string) { const d = strToDate(s); return `${d.getDate()} ${MESI_BREVI[d.getMonth()]} ${d.getFullYear()}`; }
+  function diffNotti(a: string, b: string) { return Math.round((strToDate(b).getTime() - strToDate(a).getTime()) / 86400000); }
+  function hasOccupiedInRange(s: string, e: string) {
+    const cur = strToDate(s); cur.setDate(cur.getDate() + 1); const end = strToDate(e);
+    while (cur < end) { if (occupiedDays.has(dateToStr(cur))) return true; cur.setDate(cur.getDate() + 1); }
+    return false;
+  }
+
+  function aggiornaRiepilogo() {
+    console.log('aggiornaRiepilogo chiamato - selInizio:', selInizio, 'selFine:', selFine);
+    const riepilogo   = document.getElementById('disp-riepilogo') as HTMLElement;
+    const ctaDefault  = document.getElementById('disp-cta-default') as HTMLElement;
+    const elCheckin   = document.getElementById('riepilogo-checkin') as HTMLElement;
+    const elCheckout  = document.getElementById('riepilogo-checkout') as HTMLElement;
+    const elNotti     = document.getElementById('riepilogo-notti') as HTMLElement;
+    const btnRichiedi = document.getElementById('btn-richiedi') as HTMLAnchorElement;
+    if (selInizio && selFine) {
+      elCheckin.textContent  = formatIT(selInizio);
+      elCheckout.textContent = formatIT(selFine);
+      const n = diffNotti(selInizio, selFine);
+      elNotti.textContent = `${n} ${n === 1 ? 'notte' : 'notti'}`;
+      const params = new URLSearchParams({ appartamento: aptNome, checkin: selInizio, checkout: selFine });
+      btnRichiedi.href = `/contatti?${params.toString()}`;
+      riepilogo.style.display  = 'block';
+      ctaDefault.style.display = 'none';
+    } else {
+      riepilogo.style.display  = 'none';
+      ctaDefault.style.display = 'block';
+    }
+  }
+
+  function aggiornaClassiSelezione(hoverDate: string | null = null) {
+    dayElements.forEach((div, dateStr) => {
+      div.classList.remove('sel-inizio', 'sel-fine', 'sel-range', 'hover-range');
+      if (selInizio && selFine) {
+        if (dateStr === selInizio)                          div.classList.add('sel-inizio');
+        else if (dateStr === selFine)                       div.classList.add('sel-fine');
+        else if (dateStr > selInizio && dateStr < selFine)  div.classList.add('sel-range');
+      } else if (selInizio && !selFine) {
+        if (dateStr === selInizio) {
+          div.classList.add('sel-inizio');
+        } else if (hoverDate && hoverDate !== selInizio) {
+          const [s, e] = selInizio < hoverDate ? [selInizio, hoverDate] : [hoverDate, selInizio];
+          if (dateStr === e)                                div.classList.add('sel-fine');
+          else if (dateStr > s && dateStr < e)              div.classList.add('hover-range');
+        }
+      }
+    });
+  }
+
+  function resetSelezione() {
+    selInizio = selFine = null;
+    aggiornaClassiSelezione();
+    aggiornaRiepilogo();
+  }
+  document.getElementById('btn-reset-date')?.addEventListener('click', resetSelezione);
+
+  function onClickGiorno(dateStr: string) {
+    clickInProgress = true;
+    if (!selInizio) {
+      selInizio = dateStr; selFine = null;
+    } else if (!selFine) {
+      if (dateStr === selInizio) { resetSelezione(); clickInProgress = false; return; }
+      const [s, e] = selInizio < dateStr ? [selInizio, dateStr] : [dateStr, selInizio];
+      if (hasOccupiedInRange(s, e)) { selInizio = dateStr; selFine = null; }
+      else { selInizio = s; selFine = e; }
+    } else {
+      selInizio = dateStr; selFine = null;
+    }
+    aggiornaClassiSelezione();
+    aggiornaRiepilogo();
+    setTimeout(() => { clickInProgress = false; }, 50);
+  }
+
+  function getClasseBase(dateStr: string, oggiStr: string) {
+    if (dateStr < oggiStr)          return 'cal-giorno passato';
+    if (occupiedDays.has(dateStr))  return 'cal-giorno occupato';
+    if (dateStr === oggiStr)        return 'cal-giorno oggi';
+    return 'cal-giorno libero';
+  }
+
+  function buildMese(containerId: string, titoloId: string, year: number, month: number) {
+    const titolo    = document.getElementById(titoloId) as HTMLElement;
+    const container = document.getElementById(containerId) as HTMLElement;
+    titolo.textContent  = `${MESI_IT[month]} ${year}`;
+    container.innerHTML = '';
+    const oggiStr    = dateToStr(new Date());
+    const offset     = (new Date(year, month, 1).getDay() + 6) % 7;
+    const giorniMese = new Date(year, month + 1, 0).getDate();
+    for (let i = 0; i < offset; i++) {
+      const v = document.createElement('div'); v.className = 'cal-giorno vuoto'; container.appendChild(v);
+    }
+    for (let g = 1; g <= giorniMese; g++) {
+      const dateStr = `${year}-${String(month+1).padStart(2,'0')}-${String(g).padStart(2,'0')}`;
+      const div = document.createElement('div');
+      div.textContent = String(g);
+      div.className   = getClasseBase(dateStr, oggiStr);
+      if (occupiedDays.has(dateStr) && dateStr >= oggiStr) div.title = 'Non disponibile';
+      const clickable = !div.classList.contains('passato') && !div.classList.contains('occupato');
+      if (clickable) {
+        div.addEventListener('click',      () => onClickGiorno(dateStr));
+        div.addEventListener('mouseenter', () => { if (selInizio && !selFine && !clickInProgress) aggiornaClassiSelezione(dateStr); });
+        div.addEventListener('mouseleave', () => { if (selInizio && !selFine && !clickInProgress) aggiornaClassiSelezione(null); });
+        dayElements.set(dateStr, div);
+      }
+      container.appendChild(div);
+    }
+  }
+
+  function renderCalendari() {
+    dayElements.clear();
+    const m2y = baseMonth === 11 ? baseYear + 1 : baseYear;
+    const m2m = (baseMonth + 1) % 12;
+    buildMese('cal-giorni-1', 'cal-mese-titolo-1', baseYear, baseMonth);
+    buildMese('cal-giorni-2', 'cal-mese-titolo-2', m2y, m2m);
+    (document.getElementById('cal-label') as HTMLElement).textContent = `${MESI_IT[baseMonth]} – ${MESI_IT[m2m]}`;
+    aggiornaClassiSelezione();
+  }
+
+  const minYear = new Date().getFullYear(), minMonth = new Date().getMonth();
+  document.getElementById('cal-prev')?.addEventListener('click', () => {
+    if (baseYear === minYear && baseMonth === minMonth) return;
+    if (baseMonth === 0) { baseMonth = 11; baseYear--; } else baseMonth--;
+    renderCalendari();
+  });
+  document.getElementById('cal-next')?.addEventListener('click', () => {
+    if (baseMonth === 11) { baseMonth = 0; baseYear++; } else baseMonth++;
+    renderCalendari();
+  });
+
+  async function caricaDisponibilita() {
+    try {
+      const res  = await fetch(apiUrl);
+      const data = await res.json();
+      occupiedDays = new Set(data.occupied ?? []);
+      (document.getElementById('disp-loading') as HTMLElement).style.display = 'none';
+    } catch {
+      (document.getElementById('disp-loading') as HTMLElement).style.display = 'none';
+      (document.getElementById('disp-errore') as HTMLElement).style.display = 'block';
+    }
+    // Aggiorna solo le classi base senza ricostruire il DOM
+    const oggiStr = dateToStr(new Date());
+    dayElements.forEach((div, dateStr) => {
+      div.classList.remove('libero', 'occupato', 'oggi', 'passato');
+      div.classList.add(getClasseBase(dateStr, oggiStr).replace('cal-giorno ', ''));
+      if (occupiedDays.has(dateStr) && dateStr >= oggiStr) {
+        div.title = 'Non disponibile';
+      }
+    });
+    aggiornaClassiSelezione();
+  }
+
+  renderCalendari();
+  aggiornaRiepilogo();
+  caricaDisponibilita();
 </script>

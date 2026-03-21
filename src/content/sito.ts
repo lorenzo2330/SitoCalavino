@@ -10,7 +10,7 @@ export const sito = {
   descrizione_seo: "Appartamenti a Calavino",
 
   hero: {
-    eyebrow: "Rifugio in quota",
+    eyebrow: "",
     titolo_1: "Dove la vacanza",
     titolo_2: "diventa casa",
     sottotitolo: "",
@@ -18,7 +18,10 @@ export const sito = {
 
   intro: {
     eyebrow: "Il nostro alloggio",
-    titolo: "La nostra struttura",
+    titolo: "La nostra offerta",
+    titolo_maps: "Dove ci troviamo",
+    descrizione_mappa: "I nostri luminosi appartamenti appena ristrutturati si trovano nella parte bassa del paese di Calavino, direttamente sugli antichi portici pedonali, in una posizione tranquilla. ",
+    titolo_appartamenti: "Le nostre strutture",
     testo: "Calavino è sinonimo di tranquillità, aria pulita e panorami mozzafiato. I nostri due appartamenti sono stati curati nei minimi dettagli per offrire tutto ciò di cui hai bisogno, senza rinunciare al calore di un luogo che sembra fatto su misura per te.",
   },
 
@@ -53,7 +56,7 @@ export const sito = {
   },
 
   footer: {
-    tagline: "Dove la montagna diventa casa",
-    copyright: "Calavino — Tutti i diritti riservati",
+    tagline: "Dove la vacanza diventa casa",
+    copyright: "Dimora Concordia Calavino — Tutti i diritti riservati",
   },
 };

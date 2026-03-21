@@ -13,7 +13,7 @@ export const appartamento2 = {
   caratteristiche:  "Fino a 4 ospiti · 2 camere da letto · 2 bagni",
 
   sezione_eyebrow:  "Perfetto per la tua esperienza in Trentino",
-  sezione_titolo:   "Appartamento Duplex (98m^2)",
+  sezione_titolo:   "Appartamento Duplex (98 m^2)",
   descrizione_1:    "Spazioso e luminoso appartamento su due piani con vista panoramica sulle montagne del Trentino.",
   descrizione_2:    "Dispone di due camere da letto con cabina armadio e due bagni, uno per piano. La cucina, ampia e luminosissima grazie alle finestre a Velux, è completamente attrezzata. Il soggiorno, altrettanto spazioso, si apre su un balcone con vista.",
   descrizione_breve:"Appartamento su due piani con vista panoramica sulle montagne del Trentino",

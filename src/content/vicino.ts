@@ -82,14 +82,14 @@ export const luoghiVicini = [
     icona: "🏞️",
     maps_url: "https://maps.app.goo.gl/ymyubkCE7Fwoehw67",
   },
-  {
+  /*{
     categoria: "Escursioni / Sentieri" as Categoria,
     nome: "Cima Gazza",
     descrizione: "Escursione impegnativa con vista spettacolare sulla Valle dei Laghi.",
     distanza: "5 km",
     icona: "⛰️",
-    maps_url: "https://maps.google.com/maps?q=Cima+Gazza+Trentino",
-  },
+    maps_url: "https://maps.app.goo.gl/fLyvYrfXQtLpQkHr8",
+  },*/
   {
     categoria: "Escursioni / Sentieri" as Categoria,
     nome: "Roggia di Calavino",
@@ -103,19 +103,19 @@ export const luoghiVicini = [
   {
     categoria: "Sci / Impianti" as Categoria,
     nome: "Ski Area Paganella",
-    descrizione: "50 km di piste per tutti i livelli, collegamento con Andalo e Molveno.",
-    distanza: "15 km",
+    descrizione: "Piste da sci per tutti i livelli",
+    distanza: "35 km",
     icona: "⛷️",
-    maps_url: "https://maps.google.com/maps?q=Ski+Area+Paganella+Andalo",
+    maps_url: "https://maps.app.goo.gl/f4P1uNYzGMUAHgZF8",
   },
-  {
+  /*{
     categoria: "Sci / Impianti" as Categoria,
     nome: "Pista di fondo Lon",
     descrizione: "Anello di fondo ben tenuto, adatto a principianti e famiglie.",
     distanza: "8 km",
     icona: "🎿",
     maps_url: "https://maps.google.com/maps?q=Pista+fondo+Lon+Trentino",
-  },
+  },*/
 
   // ── NEGOZI / SUPERMERCATI ─────────────────────────────────
   {

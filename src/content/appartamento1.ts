@@ -13,7 +13,7 @@ export const appartamento1 = {
   caratteristiche:  "Fino a 2 ospiti · 1 camera da letto · 1 bagno",
 
   sezione_eyebrow:  "Perfetto per la tua esperienza in Trentino",
-  sezione_titolo:   "Mini appartamento (41m^2)",
+  sezione_titolo:   "Mini appartamento (41 m^2)",
   descrizione_1:    "Mini appartamento ristrutturato, ideale per coppie e con tutti i confort necessari.",
   descrizione_2:    "Dispone di camera matrimoniale, bagno moderno e cucina completamente attrezzata. Comfort e praticità in ogni dettaglio.",
   descrizione_breve:"Accogliente e luminoso. Perfetto per coppie che cercano intimità e relax.",
