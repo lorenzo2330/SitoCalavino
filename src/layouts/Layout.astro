@@ -4,6 +4,8 @@ interface Props {
   description?: string;
 }
 const { title, description = "Appartamenti in affitto tra i monti" } = Astro.props;
+
+import '../styles/appartamento-shared.css';
 ---
 <!DOCTYPE html>
 <html lang="it">
@@ -37,7 +39,7 @@ const { title, description = "Appartamenti in affitto tra i monti" } = Astro.pro
   <footer>
     <div class="footer-inner">
       <p class="footer-brand">Calavino</p>
-      <p class="footer-tagline">Dove la montagna diventa casa</p>
+      <p class="footer-tagline">Dove la vacanza diventa casa</p>
       <div class="footer-links">
         <a href="/">Home</a>
         <a href="/appartamento1">Mini appartamento</a>
@@ -45,7 +47,7 @@ const { title, description = "Appartamenti in affitto tra i monti" } = Astro.pro
         <a href="/chi-siamo">Chi siamo</a>
         <a href="/contatti">Contatti</a>
       </div>
-      <p class="footer-copy">&copy; {new Date().getFullYear()} Calavino — Tutti i diritti riservati</p>
+      <p class="footer-copy">&copy; {new Date().getFullYear()} Dimora Concordia - Calavino — Tutti i diritti riservati</p>
     </div>
   </footer>
 

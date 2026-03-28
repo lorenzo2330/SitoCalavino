@@ -1,0 +1,346 @@
+/* ============================================================
+   appartamento-shared.css
+   Stile condiviso per le pagine appartamento1 e appartamento2
+   ============================================================ */
+
+/* ── HERO ── */
+.apt-hero {
+  position: relative;
+  height: 65vh;
+  min-height: 400px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.apt-hero-bg {
+  position: absolute;
+  inset: 0;
+  /* Il background-image specifico va in appartamento1.css / appartamento2.css */
+  background-blend-mode: normal;
+}
+
+.apt-hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 3rem;
+  color: var(--cream);
+}
+
+.apt-hero-content .eyebrow { color: var(--gold-light); }
+
+.apt-hero-content h1 {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  color: var(--cream);
+  margin-bottom: 0.5rem;
+}
+
+.apt-hero-content p {
+  color: rgba(245, 240, 232, 0.75);
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+}
+
+/* ── LAYOUT ── */
+.apt-layout {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 4rem;
+  align-items: start;
+}
+
+.apt-desc h2 {
+  font-size: 2.2rem;
+  color: var(--deep-wood);
+  margin-bottom: 0.5rem;
+}
+
+.apt-desc p {
+  color: var(--text-light);
+  line-height: 1.9;
+}
+
+/* ── GALLERIA ── */
+.gallery { margin: 3rem 0; }
+
+.gallery-main-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.gallery-main {
+  flex: 1;
+  height: 420px;
+  overflow: hidden;
+  background: var(--cream);
+  border: 2px solid var(--stone);
+  padding: 8px;
+  box-shadow: 0 4px 20px rgba(74, 55, 40, 0.12);
+}
+
+.gallery-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: var(--cream);
+  transition: opacity 0.25s ease;
+  display: block;
+}
+
+.gallery-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background: rgba(253, 250, 244, 0.92);
+  border: 1px solid var(--stone);
+  color: var(--bark);
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, color 0.2s;
+  box-shadow: 0 2px 8px rgba(74, 55, 40, 0.15);
+}
+
+.gallery-arrow:hover {
+  background: var(--bark);
+  color: var(--cream);
+  border-color: var(--bark);
+}
+
+.arrow-prev { left: 0.6rem; }
+.arrow-next { right: 0.6rem; }
+
+.gallery-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+  padding: 0 0.2rem;
+}
+
+.gallery-alt {
+  font-size: 0.82rem;
+  color: var(--text-light);
+  font-style: italic;
+}
+
+.gallery-count {
+  font-size: 0.75rem;
+  color: var(--text-light);
+  letter-spacing: 0.08em;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 0.6rem;
+  margin-top: 0.75rem;
+}
+
+.gallery-thumb {
+  border: 2px solid var(--stone);
+  padding: 3px;
+  cursor: pointer;
+  overflow: hidden;
+  height: 80px;
+  background: var(--cream);
+  border-radius: var(--radius);
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.gallery-thumb:hover {
+  transform: scale(1.03);
+  border-color: var(--bark);
+}
+
+.gallery-thumb.attiva {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 1px var(--gold);
+}
+
+.thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.img-placeholder {
+  width: 100%;
+  height: 100%;
+  background: var(--cream);
+  border: 2px dashed var(--stone);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-light);
+  font-size: 0.85rem;
+  text-align: center;
+  padding: 1rem;
+}
+
+/* ── DOTAZIONI & REGOLE ── */
+.apt-section { margin-top: 3rem; }
+
+.apt-section h3 {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--deep-wood);
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid var(--stone);
+}
+
+.dotazioni-grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.7rem 1.5rem;
+}
+
+.dotazioni-grid li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.9rem;
+  color: var(--text-light);
+}
+
+.check {
+  color: var(--gold);
+  font-weight: bold;
+}
+
+.regole-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.regole-list li {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  padding-left: 1rem;
+  border-left: 2px solid var(--stone);
+}
+
+/* ── PRICE CARD ── */
+.price-card {
+  background: var(--cream);
+  padding: 2rem;
+  position: sticky;
+  top: 100px;
+  border-top: 3px solid var(--gold);
+}
+
+.price-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--deep-wood);
+}
+
+/* Selettore ospiti */
+.ospiti-selector { margin: 1.2rem 0 0; }
+
+.ospiti-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--bark);
+  margin-bottom: 0.7rem;
+}
+
+.ospiti-btns {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.ospiti-btn {
+  flex: 1;
+  padding: 0.55rem 0;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--bark);
+  background: var(--warm-white);
+  border: 1px solid var(--stone);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.ospiti-btn:hover { border-color: var(--bark); }
+
+.ospiti-btn.attivo {
+  background: var(--deep-wood);
+  color: var(--cream);
+  border-color: var(--deep-wood);
+}
+
+/* Righe prezzi generate da JS */
+.price-fascia-label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bark);
+  margin: 1rem 0 0.3rem;
+}
+
+.price-fascia-mesi {
+  font-size: 0.75rem;
+  font-weight: 300;
+  color: var(--text-light);
+  letter-spacing: 0;
+  text-transform: none;
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  font-size: 0.95rem;
+  color: var(--text-light);
+  transition: opacity 0.2s;
+}
+
+.price-row strong {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--deep-wood);
+  font-weight: 600;
+}
+
+.price-separator {
+  height: 1px;
+  background: var(--stone);
+  margin: 1rem 0;
+  opacity: 0.4;
+}
+
+.price-note {
+  font-size: 0.75rem;
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .apt-layout { grid-template-columns: 1fr; }
+  .apt-sidebar { order: -1; }
+  .price-card { position: static; }
+  .dotazioni-grid { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); }
+  .gallery-main { height: 280px; }
+}

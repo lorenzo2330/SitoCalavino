@@ -1,0 +1,152 @@
+/* ============================================================
+   index-vicino.css — sezione "Nelle vicinanze" e CTA finale
+   ============================================================ */
+
+/* ── NELLE VICINANZE ── */
+.vicino-section { background: var(--warm-white); }
+
+.vicino-titolo {
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  color: var(--deep-wood);
+  margin-bottom: 0.5rem;
+}
+
+.vicino-intro {
+  max-width: 540px;
+  margin: 0 auto;
+  color: var(--text-light);
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+
+.vicino-filtro {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 2.5rem 0 2rem;
+  justify-content: center;
+}
+
+.filtro-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--bark);
+  font-weight: 500;
+}
+
+.filtro-select {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--text);
+  background: var(--cream);
+  border: 1px solid var(--stone);
+  padding: 0.55rem 1.2rem;
+  cursor: pointer;
+  outline: none;
+  border-radius: var(--radius);
+  transition: border-color 0.2s;
+  min-width: 220px;
+}
+
+.filtro-select:focus { border-color: var(--bark); }
+
+.vicino-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.2rem;
+  margin-bottom: 3rem;
+}
+
+.luogo-card {
+  background: var(--cream);
+  padding: 1.4rem;
+  border-left: 3px solid var(--gold);
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+
+.luogo-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(74, 55, 40, 0.08);
+}
+
+.luogo-card.nascosto { display: none; }
+
+.luogo-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  margin-bottom: 0.7rem;
+}
+
+.luogo-icona {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.luogo-info { flex: 1; }
+
+.luogo-cat {
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--bark);
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.luogo-nome {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--deep-wood);
+  font-weight: 400;
+}
+
+.luogo-distanza {
+  font-size: 0.75rem;
+  color: var(--text-light);
+  background: var(--warm-white);
+  border: 1px solid var(--stone);
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.luogo-desc {
+  font-size: 0.88rem;
+  color: var(--text-light);
+  line-height: 1.7;
+  margin-bottom: 0.8rem;
+  flex: 1;
+}
+
+.luogo-maps {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bark);
+  text-decoration: none;
+  border-bottom: 1px solid var(--stone);
+  padding-bottom: 0.1rem;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.luogo-maps:hover { color: var(--gold); border-color: var(--gold); }
+
+/* ── CTA FINALE ── */
+.cta-section h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--deep-wood);
+}
+
+@media (max-width: 640px) {
+  .vicino-grid { grid-template-columns: 1fr; }
+}

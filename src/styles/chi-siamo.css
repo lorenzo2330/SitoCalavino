@@ -1,0 +1,160 @@
+/* ============================================================
+   chi-siamo.css — stile della pagina Chi siamo
+   ============================================================ */
+
+/* ── HERO ── */
+.page-hero {
+  position: relative;
+  height: 40vh;
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  text-align: center;
+}
+
+.page-hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom, rgba(44, 62, 45, 0.7), rgba(28, 28, 28, 0.65)),
+    url('/foto/generali/home.jpeg') center / cover no-repeat;
+}
+
+.page-hero-content { position: relative; z-index: 2; color: var(--cream); }
+.page-hero-content .eyebrow { color: var(--gold-light); }
+.page-hero-content h1 { font-size: clamp(2.5rem, 6vw, 4rem); color: var(--cream); }
+
+/* ── INTRO ── */
+.intro-wrap { max-width: 720px; margin: 0 auto; }
+
+.intro-titolo {
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  color: var(--deep-wood);
+}
+
+.intro-testo {
+  color: var(--text-light);
+  font-size: 1.05rem;
+  line-height: 1.9;
+}
+
+/* ── FOTO CENTRALE ── */
+.foto-centrale-section { padding: 0 2rem 4rem; }
+
+.foto-centrale-wrap {
+  max-width: 900px;
+  margin: 0 auto;
+  border: 2px solid var(--stone);
+  padding: 10px;
+  box-shadow: 0 6px 32px rgba(74, 55, 40, 0.13);
+  background: var(--cream);
+}
+
+.foto-centrale-img {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── SCHEDE PROPRIETARI ── */
+.proprietari-section { background: var(--cream); }
+
+.proprietari-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+
+.persona-card {
+  background: var(--warm-white);
+  border-top: 3px solid var(--gold);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.persona-foto-wrap {
+  width: 100%;
+  height: 340px;
+  overflow: hidden;
+}
+
+.persona-foto {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.persona-card:hover .persona-foto { transform: scale(1.03); }
+
+.persona-body {
+  padding: 2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.persona-nome {
+  font-size: 2rem;
+  color: var(--deep-wood);
+  margin-bottom: 0.3rem;
+}
+
+.persona-bio {
+  color: var(--text-light);
+  font-size: 0.95rem;
+  line-height: 1.85;
+  flex: 1;
+}
+
+/* ── VALORI ── */
+.valori-section { background: var(--warm-white); }
+
+.valori-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  text-align: center;
+}
+
+.valore {
+  padding: 2.5rem 1.5rem;
+  background: var(--cream);
+  border-bottom: 3px solid var(--stone);
+}
+
+.valore-icona { font-size: 2rem; margin-bottom: 1rem; }
+
+.valore-titolo {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--deep-wood);
+  margin-bottom: 0.8rem;
+}
+
+.valore-testo {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  line-height: 1.8;
+}
+
+/* ── CTA ── */
+.cta-titolo { font-size: clamp(2rem, 4vw, 3rem); color: var(--deep-wood); }
+.cta-testo  { max-width: 480px; margin: 0 auto 2.5rem; color: var(--text-light); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .proprietari-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .valori-grid { grid-template-columns: 1fr; }
+  .foto-centrale-img { height: 300px; }
+}
+
+@media (max-width: 640px) {
+  .foto-centrale-img { height: 220px; }
+}

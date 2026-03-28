@@ -1,0 +1,11 @@
+/* ============================================================
+   appartamento1.css
+   Stile specifico per appartamento1 — solo ciò che differisce
+   dallo shared. Per tutto il resto → appartamento-shared.css
+   ============================================================ */
+
+.apt-hero-bg {
+  background:
+    linear-gradient(to top, rgba(28, 28, 28, 0.85) 0%, rgba(74, 55, 40, 0.3) 60%, transparent 100%),
+    url('/foto/appartamento1/copertina-mini.jpeg') center / cover no-repeat;
+}
