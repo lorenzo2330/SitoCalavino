@@ -34,6 +34,7 @@ import '../styles/chi-siamo.css';
   </section>
 
   <!-- FOTO CENTRALE -->
+  <!--
   <section class="foto-centrale-section">
     <div class="container">
       <div class="foto-centrale-wrap">
@@ -43,6 +44,19 @@ import '../styles/chi-siamo.css';
           class="foto-centrale-img"
         />
       </div>
+    </div>
+  </section>
+   -->
+
+
+  <!-- CTA -->
+  <section class="section text-center cta-section">
+    <div class="container">
+      <span class="eyebrow">{p.cta_eyebrow}</span>
+      <h2 class="cta-titolo">{p.cta_titolo}</h2>
+      <div class="divider"></div>
+      <p class="cta-testo">{p.cta_testo}</p>
+      <a href="/contatti" class="btn btn-primary">{p.cta_bottone}</a>
     </div>
   </section>
 
@@ -56,7 +70,7 @@ import '../styles/chi-siamo.css';
               <span class="eyebrow" style="text-align:left">{persona.ruolo}</span>
               <h3 class="persona-nome">{persona.nome}</h3>
               <div class="divider" style="margin-left:0; margin-right:auto;"></div>
-              <p class="persona-bio">{persona.bio}</p>
+              <!--<p class="persona-bio">{persona.bio}</p> -->
               <a href={persona.contatto_href} class="btn btn-outline" style="margin-top:1.5rem; display:inline-block;">
                 {persona.contatto_label}
               </a>
@@ -67,15 +81,6 @@ import '../styles/chi-siamo.css';
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="section text-center cta-section">
-    <div class="container">
-      <span class="eyebrow">{p.cta_eyebrow}</span>
-      <h2 class="cta-titolo">{p.cta_titolo}</h2>
-      <div class="divider"></div>
-      <p class="cta-testo">{p.cta_testo}</p>
-      <a href="/contatti" class="btn btn-primary">{p.cta_bottone}</a>
-    </div>
-  </section>
+  
 
 </Layout>

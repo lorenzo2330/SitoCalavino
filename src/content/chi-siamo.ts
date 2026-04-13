@@ -15,14 +15,14 @@ export const chiSiamo = {
 
   // ── INTRO ─────────────────────────────────────────────────
   intro_eyebrow: "Dimora Concordia",
-  intro_titolo: "Una casa, due famiglie, una passione",
-  intro_testo: "Siamo Sara e Simone, fratello e sorella cresciuti a Calavino, nel cuore della Valle dei Laghi. Dimora Concordia non è solo un affitto — è la casa di famiglia che abbiamo scelto di condividere con chi, come noi, ama la montagna, il silenzio e l'autenticità del Trentino.",
+  intro_titolo: "Ci presentiamo",
+  intro_testo: "Siamo due fratelli, Sara e Simone, e da gennaio 2026 abbiamo iniziato insieme questa nuova avventura. Siamo lieti di accogliervi nei nostri appartamenti e faremo del nostro meglio per rendere il vostro soggiorno piacevole. A presto!",
 
   // ── FOTO CENTRALE ─────────────────────────────────────────
   // Una foto che racconta il luogo: la casa, il panorama, o voi insieme
   // Metti il file in public/foto/generali/ e aggiorna il percorso
   foto_centrale: {
-    src: "/foto/chisiamo/conboe.png",   // ← sostituisci con la tua foto
+    src: "/foto/chisiamo/simone.jpeg",   // ← sostituisci con la tua foto
     alt: "Dimora Concordia a Calavino",
   },
 

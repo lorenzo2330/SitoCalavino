@@ -22,7 +22,17 @@
     url('/foto/generali/home.jpeg') center / cover no-repeat;
 }
 
-.page-hero-content { position: relative; z-index: 2; color: var(--cream); }
+.page-hero-content { 
+  position: relative; 
+  z-index: 2; 
+  color: var(--cream); 
+  background: rgba(20, 12, 6, 0.45);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 4px;
+  padding: 2rem 3rem;
+}
 .page-hero-content .eyebrow { color: var(--gold-light); }
 .page-hero-content h1 { font-size: clamp(2.5rem, 6vw, 4rem); color: var(--cream); }
 
@@ -231,4 +241,22 @@ textarea { resize: vertical; min-height: 120px; }
 @media (max-width: 900px) {
   .contacts-layout { grid-template-columns: 1fr; }
   .form-row { grid-template-columns: 1fr; }
+  .contact-form-wrap {
+    padding: 0 1rem;
+  }
+
+  input, select, textarea {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: 4rem 1rem;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
 }

@@ -59,7 +59,7 @@ function expandDates(start: string, end: string): string[] {
 // ── Fetch con timeout ─────────────────────────────────────
 async function fetchIcal(url: string): Promise<string> {
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 8000);
+  const timeout = setTimeout(() => controller.abort(), 15000);
   try {
     const res = await fetch(url, { signal: controller.signal });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);

@@ -1,11 +1,6 @@
 ---
 // ============================================================
-//  appartamento2.astro — layout della pagina Appartamento 2
-//
-//  Testi e dati  →  src/content/appartamento2.ts
-//  Stile shared  →  src/styles/appartamento-shared.css
-//  Stile hero    →  src/styles/appartamento2.css
-//  Script        →  src/scripts/appartamento.ts
+//  appartamento1.astro
 // ============================================================
 
 import Layout from '../layouts/Layout.astro';
@@ -13,6 +8,7 @@ import { appartamento2 as apt } from '../content/appartamento2';
 import { fascePrezzi } from '../content/prezzi';
 
 import '../styles/appartamento2.css';
+import '../styles/disponibilita-shared.css';
 
 const ospitiFull = Object.keys(apt.prezzi).map(Number).sort((a, b) => a - b);
 const prezziJson = JSON.stringify(apt.prezzi);
@@ -36,8 +32,6 @@ const fasceJson  = JSON.stringify(fascePrezzi);
 
       <!-- COLONNA PRINCIPALE -->
       <div class="apt-main">
-
-        <!-- Descrizione -->
         <div class="apt-desc">
           <span class="eyebrow">{apt.sezione_eyebrow}</span>
           <h2>{apt.sezione_titolo}</h2>
@@ -46,40 +40,26 @@ const fasceJson  = JSON.stringify(fascePrezzi);
           <p style="margin-top:1rem">{apt.descrizione_2}</p>
         </div>
 
-        <!-- Galleria -->
         <div class="gallery" id="gallery" data-foto={JSON.stringify(apt.foto)}>
           <div class="gallery-main-wrap">
             <button class="gallery-arrow arrow-prev" id="arrow-prev" aria-label="Foto precedente">&#8592;</button>
             <div class="gallery-main">
               {apt.foto[0] ? (
-                <img
-                  src={apt.foto[0].src}
-                  alt={apt.foto[0].alt}
-                  class="gallery-img"
-                  id="foto-principale"
-                />
+                <img src={apt.foto[0].src} alt={apt.foto[0].alt} class="gallery-img" id="foto-principale" />
               ) : (
-                <div class="img-placeholder">
-                  <span>📷 Aggiungi foto in src/content/appartamento2.ts</span>
-                </div>
+                <div class="img-placeholder"><span>📷 Aggiungi foto in src/content/appartamento2.ts</span></div>
               )}
             </div>
             <button class="gallery-arrow arrow-next" id="arrow-next" aria-label="Foto successiva">&#8594;</button>
           </div>
-
           <div class="gallery-meta">
             <span class="gallery-alt" id="gallery-alt">{apt.foto[0]?.alt ?? ''}</span>
             <span class="gallery-count" id="gallery-count">1 / {apt.foto.length}</span>
           </div>
-
           {apt.foto.length > 1 && (
             <div class="gallery-grid">
               {apt.foto.map((foto, i) => (
-                <button
-                  class={`gallery-thumb${i === 0 ? ' attiva' : ''}`}
-                  data-index={i}
-                  aria-label={`Mostra: ${foto.alt}`}
-                >
+                <button class={`gallery-thumb${i === 0 ? ' attiva' : ''}`} data-index={i} aria-label={`Mostra: ${foto.alt}`}>
                   <img src={foto.src} alt={foto.alt} class="thumb-img" />
                 </button>
               ))}
@@ -87,66 +67,41 @@ const fasceJson  = JSON.stringify(fascePrezzi);
           )}
         </div>
 
-        <!-- Dotazioni -->
         <div class="apt-section">
           <h3>Dotazioni</h3>
           <ul class="dotazioni-grid">
-            {apt.dotazioni.map(d => (
-              <li><span class="check">✓</span>{d}</li>
-            ))}
+            {apt.dotazioni.map(d => (<li><span class="check">✓</span>{d}</li>))}
           </ul>
         </div>
 
-        <!-- Regole -->
         <div class="apt-section">
           <h3>Regole della casa</h3>
           <ul class="regole-list">
             {apt.regole.map(r => <li>{r}</li>)}
           </ul>
         </div>
-
       </div>
 
       <!-- SIDEBAR PREZZI -->
       <aside class="apt-sidebar">
-        <div
-          class="price-card"
-          data-prezzi={prezziJson}
-          data-fasce={fasceJson}
-          id="price-card"
-        >
+        <div class="price-card" data-prezzi={prezziJson} data-fasce={fasceJson} id="price-card">
           <h3>Prezzi per notte</h3>
           <div class="divider" style="margin: 1rem 0;"></div>
-
-          <!-- Selettore ospiti -->
           <div class="ospiti-selector">
             <p class="ospiti-label">Numero di ospiti</p>
             <div class="ospiti-btns" id="ospiti-btns">
               {ospitiFull.map((n, i) => (
-                <button
-                  class={`ospiti-btn${i === 0 ? ' attivo' : ''}`}
-                  data-ospiti={n}
-                  aria-label={`${n} ${n === 1 ? 'ospite' : 'ospiti'}`}
-                >
+                <button class={`ospiti-btn${i === 0 ? ' attivo' : ''}`} data-ospiti={n} aria-label={`${n} ${n === 1 ? 'ospite' : 'ospiti'}`}>
                   {n}
                 </button>
               ))}
             </div>
           </div>
-
           <div class="price-separator"></div>
-
-          <!-- Tabella prezzi — popolata dallo script -->
           <div id="price-rows"></div>
-
           <div class="price-separator"></div>
           <p class="price-note">* {apt.prezzi_nota}</p>
-
-          <a
-            href="/contatti"
-            class="btn btn-primary"
-            style="width:100%; text-align:center; margin-top:1.5rem; display:block;"
-          >
+          <a href="/contatti" class="btn btn-primary" style="width:100%; text-align:center; margin-top:1.5rem; display:block;">
             Richiedi disponibilità
           </a>
         </div>
@@ -155,6 +110,91 @@ const fasceJson  = JSON.stringify(fascePrezzi);
     </div>
   </section>
 
+  <!-- DISPONIBILITÀ -->
+  <section class="section disponibilita-section">
+    <div class="container">
+
+      <div class="disp-header">
+        <span class="eyebrow">Calendario</span>
+        <h2 class="disp-titolo">Disponibilità</h2>
+        <div class="divider" style="margin-left:0"></div>
+        <p class="disp-intro">
+          Il calendario è sincronizzato automaticamente con Booking.com, Airbnb e le prenotazioni dirette.
+          Seleziona le date di arrivo e partenza per verificare la disponibilità.
+        </p>
+      </div>
+
+      <div class="disp-legenda">
+        <span class="legenda-item"><span class="legenda-dot dot-libero"></span>Disponibile</span>
+        <span class="legenda-item"><span class="legenda-dot dot-occupato"></span>Non disponibile</span>
+        <span class="legenda-item"><span class="legenda-dot dot-oggi"></span>Oggi</span>
+        <span class="legenda-item"><span class="legenda-dot dot-selezionato"></span>Selezionato</span>
+      </div>
+
+      <div class="cal-nav">
+        <button class="cal-nav-btn" id="cal-prev" aria-label="Mese precedente">&#8592;</button>
+        <span class="cal-nav-label" id="cal-label"></span>
+        <button class="cal-nav-btn" id="cal-next" aria-label="Mese successivo">&#8594;</button>
+      </div>
+
+      <div class="cal-grid" id="cal-grid">
+        <div class="cal-mese" id="cal-mese-1">
+          <div class="cal-mese-titolo" id="cal-mese-titolo-1"></div>
+          <div class="cal-giorni-header">
+            <span>Lu</span><span>Ma</span><span>Me</span><span>Gi</span><span>Ve</span><span>Sa</span><span>Do</span>
+          </div>
+          <div class="cal-giorni" id="cal-giorni-1"></div>
+        </div>
+        <div class="cal-mese" id="cal-mese-2">
+          <div class="cal-mese-titolo" id="cal-mese-titolo-2"></div>
+          <div class="cal-giorni-header">
+            <span>Lu</span><span>Ma</span><span>Me</span><span>Gi</span><span>Ve</span><span>Sa</span><span>Do</span>
+          </div>
+          <div class="cal-giorni" id="cal-giorni-2"></div>
+        </div>
+      </div>
+
+      <!-- Riepilogo selezione — sotto il calendario -->
+      <div class="disp-riepilogo" id="disp-riepilogo" style="display:none">
+        <div class="riepilogo-inner">
+          <div class="riepilogo-date">
+            <div class="riepilogo-campo">
+              <span class="riepilogo-label">Arrivo</span>
+              <span class="riepilogo-valore" id="riepilogo-checkin">—</span>
+            </div>
+            <div class="riepilogo-sep">→</div>
+            <div class="riepilogo-campo">
+              <span class="riepilogo-label">Partenza</span>
+              <span class="riepilogo-valore" id="riepilogo-checkout">—</span>
+            </div>
+            <div class="riepilogo-notti" id="riepilogo-notti"></div>
+          </div>
+          <div class="riepilogo-azioni">
+            <button class="btn-reset-date" id="btn-reset-date">✕ Cancella</button>
+            <a href="#" class="btn btn-primary" id="btn-richiedi">Richiedi disponibilità →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="disp-stato" id="disp-stato">
+        <span class="disp-loading" id="disp-loading">Caricamento disponibilità…</span>
+        <span class="disp-errore" id="disp-errore" style="display:none">
+          ⚠️ Impossibile caricare il calendario. Contattaci per verificare la disponibilità.
+        </span>
+      </div>
+
+      <div style="text-align:center; margin-top:2rem;" id="disp-cta-default">
+        <a href="/contatti" class="btn btn-primary">Richiedi disponibilità</a>
+      </div>
+
+    </div>
+  </section>
+
 </Layout>
 
 <script src="../scripts/appartamento.ts"></script>
+<script src="../scripts/disponibilita.ts"></script>
+<script>
+  window.__DISP_API_URL__  = '/api/disponibilita-apt2';
+  window.__DISP_APT_NOME__ = 'Appartamento Duplex';
+</script>

@@ -20,13 +20,17 @@ function aggiorna(animato = true) {
   if (!animato) track.style.transition = 'none';
   else track.style.transition = 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
 
-  const gap      = 24; // corrisponde al gap: 1.5rem in CSS
+  const gap = 24;
   const larghezza = cards[0].getBoundingClientRect().width + gap;
   track.style.transform = `translateX(-${corrente * larghezza}px)`;
 
   dots.forEach((d, i) => d.classList.toggle('attivo', i === corrente));
   prevBtn.disabled = false;
   nextBtn.disabled = false;
+
+  const viewport = document.getElementById('recensioni-viewport') as HTMLElement;
+  const altezzaCard = cards[corrente].getBoundingClientRect().height;
+  viewport.style.height = `${altezzaCard}px`;
 }
 
 prevBtn.addEventListener('click', () => {

@@ -57,7 +57,7 @@ export const contatti = {
   hero_titolo: "Contatti",
   form_eyebrow: "Scrivici",
   form_titolo: "Richiedi informazioni",
-  form_intro: "Compila il modulo e ti risponderemo entro 24 ore. Per richieste urgenti puoi contattarci direttamente via telefono o WhatsApp.",
+  form_intro: "Compila il modulo e ti risponderemo il prima possibile. Per richieste urgenti puoi contattarci direttamente via telefono o WhatsApp.",
 
   // ── SEO ───────────────────────────────────────────────────
   seo_title: "Contatti — Calavino",
