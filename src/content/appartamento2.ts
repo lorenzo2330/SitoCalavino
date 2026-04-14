@@ -15,7 +15,7 @@ export const appartamento2 = {
   sezione_eyebrow:  "Perfetto per la tua esperienza in Trentino",
   sezione_titolo:   "Appartamento Duplex (98 m^2)",
   descrizione_1:    "Spazioso e luminoso appartamento su due piani con vista panoramica sulle montagne del Trentino.",
-  descrizione_2:    "Dispone di due camere da letto con cabina armadio e due bagni, uno per piano. La cucina, ampia e luminosissima grazie alle finestre a Velux, è completamente attrezzata. Il soggiorno, altrettanto spazioso, si apre su un balcone con vista.",
+  descrizione_2:    "Dispone di due camere da letto con cabina armadio e due bagni, uno per piano. La cucina, ampia e luminosissima grazie alle finestre in falda, è completamente attrezzata. Il soggiorno, altrettanto spazioso, si apre su un balcone con vista.",
   descrizione_breve:"Appartamento su due piani con vista panoramica sulle montagne del Trentino",
 
   foto: [

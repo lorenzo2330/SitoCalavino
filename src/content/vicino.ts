@@ -24,7 +24,7 @@ export const luoghiVicini = [
     categoria: "Ristoranti / Bar" as Categoria,
     nome: "Il Giardino delle Spezie",
     descrizione: "Ristorante pizzeria",
-    distanza: "6 km",
+    distanza: "3 km",
     icona: "🍽️",
     // Come ottenere maps_url:
     // 1. Cerca il posto su Google Maps
@@ -48,7 +48,7 @@ export const luoghiVicini = [
     categoria: "Ristoranti / Bar" as Categoria,
     nome: "Pomodoro",
     descrizione: "Pizzeria",
-    distanza: "4 km",
+    distanza: "4.5 km",
     icona: "🍽️",
     // Come ottenere maps_url:
     // 1. Cerca il posto su Google Maps
@@ -59,7 +59,7 @@ export const luoghiVicini = [
   {
     categoria: "Ristoranti / Bar" as Categoria,
     nome: "Bar Contrada",
-    descrizione: "Colazioni, aperitivi e snack veloci nel centro del paese.",
+    descrizione: "Colazioni, aperitivi e snack veloci nel centro del paese",
     distanza: "300 m",
     icona: "☕",
     maps_url: "https://maps.app.goo.gl/hXm9K2A3mPQ8BWoh9",
@@ -68,20 +68,45 @@ export const luoghiVicini = [
   // ── ESCURSIONI / SENTIERI ─────────────────────────────────
   {
     categoria: "Escursioni / Sentieri" as Categoria,
+    nome: "Lago di Garda",
+    descrizione: "Luogo tranquillo con percorsi attorno al lago, adatto a tutta la famiglia",
+    distanza: "27 km",
+    icona: "🏞️",
+    maps_url: "https://maps.app.goo.gl/ymyubkCE7Fwoehw67",
+  },
+  {
+    categoria: "Escursioni / Sentieri" as Categoria,
+    nome: "Lago di Lagolo",
+    descrizione: "Il lago più grande d'Italia, su cui si affacciano molti paesini e che offre attività come gite in barca, nuoto e passeggiate",
+    distanza: "10 km",
+    icona: "🏞️",
+    maps_url: "https://maps.app.goo.gl/uG9VvNamptH32TbQ7",
+  },
+  {
+    categoria: "Escursioni / Sentieri" as Categoria,
+    nome: "Lago di Molveno",
+    descrizione: "Vasto lago alpino con acque cristalline popolare tra le famiglie e gli appassionati di sport",
+    distanza: "30 km",
+    icona: "🏞️",
+    maps_url: "https://maps.app.goo.gl/8kyc3DMDJZDVT8S39",
+  },
+  {
+    categoria: "Escursioni / Sentieri" as Categoria,
     nome: "Lago di Toblino",
-    descrizione: "Luogo tranquillo con percorsi attorno al lago, adatto a tutta la famiglia.",
+    descrizione: "Luogo tranquillo con percorsi attorno al lago, adatto a tutta la famiglia",
     distanza: "6 km",
     icona: "🏞️",
     maps_url: "https://maps.app.goo.gl/LyWMYQhcEKs2XjiHA",
   },
   {
     categoria: "Escursioni / Sentieri" as Categoria,
-    nome: "Lago di Lagolo",
-    descrizione: "Luogo tranquillo con percorsi attorno al lago, adatto a tutta la famiglia.",
-    distanza: "12 km",
-    icona: "🏞️",
-    maps_url: "https://maps.app.goo.gl/ymyubkCE7Fwoehw67",
+    nome: "Castel Toblino",
+    descrizione: "Castello sul lago con stanze affrescate e opere del 1500, oltre a un ristorante con terrazza",
+    distanza: "4 km",
+    icona: "🏰",
+    maps_url: "https://maps.app.goo.gl/fpCwgePrpJ8dUVJr8",
   },
+  
   /*{
     categoria: "Escursioni / Sentieri" as Categoria,
     nome: "Cima Gazza",
@@ -93,8 +118,8 @@ export const luoghiVicini = [
   {
     categoria: "Escursioni / Sentieri" as Categoria,
     nome: "Roggia di Calavino",
-    descrizione: "Sentiero nella natura.",
-    distanza: "2.6 km",
+    descrizione: "Sentiero nella natura. Percorso andata e ritorno di circa 5 km",
+    distanza: "300 m",
     icona: "⛰️",
     maps_url: "https://maps.app.goo.gl/E2afwYRWNKgXSrQL9",
   },
@@ -108,20 +133,20 @@ export const luoghiVicini = [
     icona: "⛷️",
     maps_url: "https://maps.app.goo.gl/f4P1uNYzGMUAHgZF8",
   },
-  /*{
+  {
     categoria: "Sci / Impianti" as Categoria,
-    nome: "Pista di fondo Lon",
-    descrizione: "Anello di fondo ben tenuto, adatto a principianti e famiglie.",
-    distanza: "8 km",
-    icona: "🎿",
-    maps_url: "https://maps.google.com/maps?q=Pista+fondo+Lon+Trentino",
-  },*/
+    nome: "Monte Bondone",
+    descrizione: "Meta popolare per lo sci invernale",
+    distanza: "24 km",
+    icona: "⛷️",
+    maps_url: "https://maps.app.goo.gl/iD9cFqnTsPQo2vqQ9",
+  },
 
   // ── NEGOZI / SUPERMERCATI ─────────────────────────────────
   {
     categoria: "Negozi / Supermercati" as Categoria,
     nome: "Margherita Conad",
-    descrizione: "Fornito supermercato con prodotti locali trentini.",
+    descrizione: "Fornito supermercato con prodotti locali trentini",
     distanza: "350 m",
     icona: "🛒",
     maps_url: "https://maps.app.goo.gl/pNXaxiM5wD6e8dVZ7",
@@ -132,11 +157,26 @@ export const luoghiVicini = [
     categoria: "Esperienze" as Categoria,
     nome: "Paintball Park Trento (Vezzano)",
     descrizione: "Campo di paintball",
-    distanza: "5 km",
+    distanza: "6 km",
     icona: "🔫",
     maps_url: "https://maps.app.goo.gl/9htzELiGNqq642pBA",
   },
-
+  {
+    categoria: "Esperienze" as Categoria,
+    nome: "Crossodromo Ciclamino Pietramurata",
+    descrizione: "Impianto per gare fuoristrada",
+    distanza: "8 km",
+    icona: "🏁",
+    maps_url: "https://maps.app.goo.gl/udZvnc4hrCHrDQZB8",
+  },
+  {
+    categoria: "Esperienze" as Categoria,
+    nome: "Trento",
+    descrizione: "Capoluogo del Trentino, con centro storico, musei e ristoranti",
+    distanza: "18 km",
+    icona: "🏙️",
+    maps_url: "https://maps.app.goo.gl/kQSY2LiWuUBcJ18z9",
+  },
   // Aggiungi altri luoghi qui sotto:
   // {
   //   categoria: "Ristoranti / Bar",
