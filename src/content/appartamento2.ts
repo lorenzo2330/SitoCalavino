@@ -30,7 +30,6 @@ export const appartamento2 = {
     { src: "/foto/appartamento2/camera5-duplex.jpeg",   alt: "Camera da letto" },
     { src: "/foto/appartamento2/camera6-duplex.jpeg",   alt: "Camera da letto" },
     { src: "/foto/appartamento2/camera7-duplex.jpeg",   alt: "Camera da letto" },
-    { src: "/foto/appartamento2/camera8-duplex.jpeg",   alt: "Camera da letto" },
     { src: "/foto/appartamento2/bagno1-duplex.jpeg",    alt: "Bagno" },
     { src: "/foto/appartamento2/bagno2-duplex.jpeg",    alt: "Bagno" },
     { src: "/foto/appartamento2/bagno3-duplex.jpeg",    alt: "Bagno" },

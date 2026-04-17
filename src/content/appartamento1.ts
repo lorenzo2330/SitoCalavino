@@ -27,6 +27,7 @@ export const appartamento1 = {
     { src: "/foto/appartamento1/camera1-mini.jpeg",    alt: "Camera da letto" },
     { src: "/foto/appartamento1/camera2-mini.jpeg",    alt: "Camera da letto" },
     { src: "/foto/appartamento1/camera3-mini.jpeg",    alt: "Camera da letto" },
+    { src: "/foto/appartamento1/camera4-mini.jpeg",    alt: "Ingresso cabina armadio" },
     { src: "/foto/appartamento1/cabinaArmadio-mini.jpeg", alt: "Cabina armadio" },
     { src: "/foto/appartamento1/lavanderia-mini.jpeg", alt: "Lavatrice e asciugatrice" },
     { src: "/foto/appartamento1/bagno1-mini.jpeg",     alt: "Bagno" },
