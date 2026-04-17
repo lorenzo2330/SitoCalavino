@@ -237,6 +237,17 @@ textarea { resize: vertical; min-height: 120px; }
 /* ── BOTTONE LOADING ── */
 .btn-loading { opacity: 0.7; cursor: not-allowed; pointer-events: none; }
 
+/* ── FORM PRIVACY ── */
+.form-privacy {
+  font-size: 0.75rem;
+  color: var(--text-light);
+  line-height: 1.6;
+  margin-top: 0.8rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid var(--stone);
+  opacity: 0.8;
+}
+
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
   .contacts-layout { grid-template-columns: 1fr; }

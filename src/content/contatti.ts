@@ -62,4 +62,7 @@ export const contatti = {
   // ── SEO ───────────────────────────────────────────────────
   seo_title: "Contatti — Calavino",
   seo_description: "Contattaci per informazioni e disponibilità.",
+
+  // ── FORM ──────────────────────────────────────────────────
+  form_privacy: "I dati inseriti vengono utilizzati esclusivamente per rispondere alla tua richiesta e non vengono conservati o ceduti a terzi. Il servizio di invio è gestito da Formspree (formspree.io).",
 };
